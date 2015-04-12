@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CAS.UA.SDK.ServerConfigurationBase</id>
+    <version>1.00.00</version>
+    <title>CAS Address Space Model Designer SDK: CAS.UA.SDK.ServerConfigurationBase</title>
+    <authors>CAS</authors>
+    <owners>commsvr.com</owners>
+    <projectUrl>http://www.commsvr.com/</projectUrl>
+    <licenseUrl>http://www.cas.internetdsl.pl/commserver/P_DowloadCenter/Lic-09000401EN_License_Agreement.pdf</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <developmentDependency>false</developmentDependency>
+    <description>
+      CAS Address Space Model Designer SDK provides an API to edit configuration settings and data binding for any custom OPC UA Server using CAS Address Spaca Model Designer tool.
+    </description>
+    <summary>
+      CAS Address Space Model Designer SDK provides an API to edit configuration settings and data binding using CAS ASMD tool.
+    </summary>
+    <releaseNotes>
+      Released for CAS OPC UA Address Space Model Designer Rel. 3.10.02
+    </releaseNotes>
+    <copyright>Copyright (c) 2000-2015 CAS LODZ POLAND</copyright>
+    <tags>OPCUA, CommServer, ASMD, Address Space Model Designer, plug-in, configuration, data binding.</tags>
+  </metadata>
+  <files>
+  </files>
+</package>
+
