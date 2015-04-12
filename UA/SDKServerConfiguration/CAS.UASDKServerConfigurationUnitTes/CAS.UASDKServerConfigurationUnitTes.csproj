@@ -45,8 +45,14 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.XML" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CAS.UASDKServerConfiguration\CAS.UASDKServerConfiguration.csproj">
+      <Project>{fc6b4551-cd6b-4408-8e11-1141341e88d3}</Project>
+      <Name>CAS.UASDKServerConfiguration</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="cas.snk" />
     <None Include="Properties\AssemblyInfo.tt">
@@ -58,6 +64,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDirectoryHelperUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
