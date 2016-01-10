@@ -17,9 +17,9 @@
       CAS Address Space Model Designer SDK provides an API to edit configuration settings and data binding using CAS ASMD tool.
     </summary>
     <releaseNotes>
-      Released for CAS OPC UA Address Space Model Designer Rel. 3.10.03
+      Released for CAS OPC UA Address Space Model Designer Rel. 3.20.0
     </releaseNotes>
-    <copyright>Copyright (c) 2000-2015 CAS LODZ POLAND</copyright>
+    <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
     <tags>OPCUA, CommServer, ASMD, Address Space Model Designer, plug-in, configuration, data binding.</tags>
   </metadata>
   <files>

@@ -7,7 +7,7 @@
 //  $URL: svn://svnserver.hq.cas.com.pl/VS/trunk/PR39-CommonResources/T4Definitions/AssemblyInfo.tt $
 //  $Id: AssemblyInfo.tt 11296 2015-02-04 21:03:37Z mpostol $
 //
-//  Copyright (c) 2000-2015 CAS LODZ POLAND
+//  Copyright (c) 2000-2016 CAS LODZ POLAND
 //  +48 (42) 686 25 47
 //  techsupp@cas.eu
 //  www.cas.eu
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CAS")]
 [assembly: AssemblyProduct("CAS CommServer Family")]
-[assembly: AssemblyCopyright("Copyright (c) 2000-2015 CAS LODZ POLAND")]
+[assembly: AssemblyCopyright("Copyright (c) 2000-2016 CAS LODZ POLAND")]
 [assembly: AssemblyTrademark("CAS CommServer Family")]
 [assembly: AssemblyCulture("")]
 [assembly: Guid("0D35C51F-B6A5-4637-8C7A-8B9D4AAF733A")]
