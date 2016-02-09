@@ -51,9 +51,9 @@
     <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CAS.UASDKServerConfiguration\CAS.UASDKServerConfiguration.csproj">
+    <ProjectReference Include="..\CAS.UASDKServerConfiguration\CommServer.UA.ConfigurationEditor.Common.csproj">
       <Project>{fc6b4551-cd6b-4408-8e11-1141341e88d3}</Project>
-      <Name>CAS.UASDKServerConfiguration</Name>
+      <Name>CommServer.UA.ConfigurationEditor.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
