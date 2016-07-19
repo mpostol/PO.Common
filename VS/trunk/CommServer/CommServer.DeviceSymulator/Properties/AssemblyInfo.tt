@@ -19,21 +19,19 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("<#=m_AssemblyTitle#>")]
-[assembly: AssemblyDescription("<#=AssemblyProduct#>: <#=m_AssemblyTitle#>")]
+[assembly: AssemblyDescription("Device Simulator for CommServer family.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("<#=AssemblyCompany#>")]
 [assembly: AssemblyProduct("<#=AssemblyProduct#>")]
 [assembly: AssemblyCopyright("<#=AssemblyCopyright#>")]
 [assembly: AssemblyTrademark("<#=AssemblyTrademark#>")]
 [assembly: AssemblyCulture("")]
-
 [assembly: ComVisible(false)]
-// The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("D23A1A53-1461-4a5c-9BAF-35CCB7111723")]
-[assembly: AssemblyVersion("<#= CLibCoreProductVersion #>")]
-[assembly: AssemblyFileVersion("<#= CLibCoreProductFileVersion #>")]
+[assembly: AssemblyVersion("<#=CASCommServer_ProductVersion#>.*")]
+[assembly: AssemblyFileVersion("<#=CASCommServer_ProductVersion#>")]
 
-<#@ include file = "..\..\..\PR39-CommonResources\T4Definitions\AssemblyInfo.t4" #>
+<#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
 <#+
-string m_AssemblyTitle = "Device Simulator";
+string m_AssemblyTitle = "CAS.CommServer.DeviceSimulator";
 #>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CAS.CommServer.DeviceSimulator</id>
+    <version>5.01.00</version>
+    <title>CommServer Device Simulator Library</title>
+    <authors>CAS</authors>
+    <owners>commsvr.com</owners>
+    <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer</projectUrl>
+    <licenseUrl>http://www.commsvr.com/DownloadCenter/ProductSoftware/LicenseAgreement.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>false</developmentDependency>
+    <description>
+      Device Simulator for CommServer family.
+    </description>
+    <summary>
+      Device Simulator for CommServer family.
+    </summary>
+    <releaseNotes>
+      Released for.NET 4.51 Maintenece 2016
+    </releaseNotes>
+    <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
+    <tags>OPCUA, CommServer, ASMD, Address Space Model Designer.</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.51">
+         <dependency id="CAS.RealTime" version="5.0.2" />
+         <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.106" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+     <file src="content\net451\_._" target="content\net451\_._" />
+  </files>
+</package>
+
