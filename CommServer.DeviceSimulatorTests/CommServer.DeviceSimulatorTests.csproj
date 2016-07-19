@@ -54,9 +54,9 @@
     <Compile Include="DeviceSimulatorUnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DeviceSymulator\BK.DeviceSimulator.csproj">
+    <ProjectReference Include="..\CommServer.DeviceSymulator\CommServer.DeviceSymulator.csproj">
       <Project>{35351030-92ff-4547-ad45-6123e09278be}</Project>
-      <Name>BK.DeviceSimulator</Name>
+      <Name>CommServer.DeviceSymulator</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
