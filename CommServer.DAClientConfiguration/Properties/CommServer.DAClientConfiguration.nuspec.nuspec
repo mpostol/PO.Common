@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CAS.CommServer.DAClientConfiguration</id>
+    <version>3.12.0</version>
+    <title>OPC Classic Client Configuration Library</title>
+    <authors>CAS</authors>
+    <owners>commsvr.com</owners>
+    <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer/CommServer.DAClientConfiguration</projectUrl>
+    <licenseUrl>http://www.commsvr.com/DownloadCenter/ProductSoftware/LicenseAgreement.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>false</developmentDependency>
+    <description>
+      Library supporting OPC Classic Configuration management functions.
+    </description>
+    <summary>
+      Library supporting OPC Classic Configuration management functions.
+    </summary>
+    <releaseNotes>
+      The library was moved to trunk/CommServer.
+    </releaseNotes>
+    <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
+    <tags>OPC, CommServer, DA Client, DataPorter.</tags>
+    <dependencies>
+      <dependency id="CAS.RealTime" version="5.0.2" />
+      <dependency id="CAS.CodeProtect" version="5.0.2" />
+      <dependency id="CAS.Windows.Forms" version="5.0.2" />
+      <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.106" />
+    </dependencies>
+  </metadata>
+  <files>
+        <file src="..\bin\Release\CAS.CommServer.DAClientConfiguration.dll" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll" />
+        <file src="..\bin\Release\CAS.CommServer.DAClientConfiguration.dll.config" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll.config" />
+        <file src="..\bin\Release\CAS.CommServer.DAClientConfiguration.XML" target="lib\net451\CAS.CommServer.DAClientConfiguration.XML" />
+  </files>
+</package>
+
