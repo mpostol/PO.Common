@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T4Definitions", "PR39-Commo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.DeviceSimulatorTests", "CommServer.DeviceSimulatorTests\CommServer.DeviceSimulatorTests.csproj", "{4D18520F-B0DB-4065-9228-4119A804ABCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.DAClientConfiguration", "CommServer.DAClientConfiguration\CommServer.DAClientConfiguration.csproj", "{6A9D0309-3FCA-4A32-917D-68BD883B3F37}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.DAClientConfiguration.UnitTests", "CommServer.DAClientConfiguration.UnitTests\CommServer.DAClientConfiguration.UnitTests.csproj", "{B56EC2B0-2C3C-49BB-8EA3-724895DF68B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{4D18520F-B0DB-4065-9228-4119A804ABCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D18520F-B0DB-4065-9228-4119A804ABCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D18520F-B0DB-4065-9228-4119A804ABCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A9D0309-3FCA-4A32-917D-68BD883B3F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A9D0309-3FCA-4A32-917D-68BD883B3F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A9D0309-3FCA-4A32-917D-68BD883B3F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A9D0309-3FCA-4A32-917D-68BD883B3F37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B56EC2B0-2C3C-49BB-8EA3-724895DF68B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B56EC2B0-2C3C-49BB-8EA3-724895DF68B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B56EC2B0-2C3C-49BB-8EA3-724895DF68B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B56EC2B0-2C3C-49BB-8EA3-724895DF68B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

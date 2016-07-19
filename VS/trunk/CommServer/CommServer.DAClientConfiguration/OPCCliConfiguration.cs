@@ -40,27 +40,27 @@ namespace CAS.DataPorter.Configurator
       public ConnectData GetConnectData()
       {
         NetworkCredential credential = new NetworkCredential();
-        ConnectData output = new ConnectData( credential );
-        if ( !IsUserNameNull() )
+        ConnectData output = new ConnectData(credential);
+        if (!IsUserNameNull())
           credential.UserName = UserName;
-        if ( !IsPasswordNull() )
+        if (!IsPasswordNull())
           credential.Password = Password;
-        if ( !IsDomainNull() )
+        if (!IsDomainNull())
           credential.Domain = Domain;
-        if ( !IsLicenseKeyNull() )
+        if (!IsLicenseKeyNull())
           output.LicenseKey = LicenseKey;
         return output;
       }
     }
     partial class ConnectDataDataTable
     {
-      internal void Save( ConnectData credentials, long parentKey )
+      internal void Save(ConnectData credentials, long parentKey)
       {
         ConnectDataRow row = NewConnectDataRow();
         row.ID_Server = parentKey;
-        if ( !string.IsNullOrEmpty( credentials.LicenseKey ) )
+        if (!string.IsNullOrEmpty(credentials.LicenseKey))
           row.LicenseKey = credentials.LicenseKey;
-        if ( credentials.Credentials != null )
+        if (credentials.Credentials != null)
         {
           row.UserName = credentials.Credentials.UserName;
           row.Password = credentials.Credentials.Password;
@@ -76,27 +76,27 @@ namespace CAS.DataPorter.Configurator
       /// <param name="item">The item.</param>
       /// <param name="parentKey">The parent key.</param>
       /// <returns></returns>
-      public long Save( Opc.Da.Item item, long parentKey )
+      public long Save(Opc.Da.Item item, long parentKey)
       {
         ItemsRow row = NewItemsRow();
         //TODO assign rw.Async = ????
         //TODO assign rw.Conversion = ?????
         row.ID_Subscription = parentKey;
         row.RequestedType = item.ReqType;
-        if ( item.MaxAgeSpecified )
+        if (item.MaxAgeSpecified)
           row.MaxAge = item.MaxAge;
-        if ( item.ActiveSpecified )
+        if (item.ActiveSpecified)
           row.Active = item.Active;
-        if ( item.DeadbandSpecified )
+        if (item.DeadbandSpecified)
           row.Deadband = item.Deadband;
-        if ( item.SamplingRateSpecified )
+        if (item.SamplingRateSpecified)
           row.SamplingRate = item.SamplingRate;
-        if ( item.EnableBufferingSpecified )
+        if (item.EnableBufferingSpecified)
           row.EnableBuffering = item.EnableBuffering;
         row.Name = item.ItemName;
-        if ( !string.IsNullOrEmpty( item.ItemPath ) )
+        if (!string.IsNullOrEmpty(item.ItemPath))
           row.ItemPath = item.ItemPath;
-        this.AddItemsRow( row );
+        this.AddItemsRow(row);
         return row.ID;
       }
     }
@@ -108,8 +108,8 @@ namespace CAS.DataPorter.Configurator
       /// <value>The type of the requested.</value>
       public System.Type RequestedType
       {
-        get { return IsRequestedTypeFullNameNull() ? null : System.Type.GetType( this.RequestedTypeFullName ); }
-        set { if ( value != null ) this.RequestedTypeFullName = value.FullName; }
+        get { return IsRequestedTypeFullNameNull() ? null : System.Type.GetType(this.RequestedTypeFullName); }
+        set { if (value != null) this.RequestedTypeFullName = value.FullName; }
       }
       /// <summary>
       /// Gets the item form the configuration.
@@ -131,15 +131,15 @@ namespace CAS.DataPorter.Configurator
             SamplingRateSpecified = !IsSamplingRateNull(),
             MaxAgeSpecified = !IsMaxAgeNull()
           };
-          if ( ret.ActiveSpecified )
+          if (ret.ActiveSpecified)
             Active = Active;
-          if ( ret.DeadbandSpecified )
+          if (ret.DeadbandSpecified)
             Deadband = Deadband;
-          if ( ret.EnableBufferingSpecified )
+          if (ret.EnableBufferingSpecified)
             EnableBuffering = EnableBuffering;
-          if ( ret.MaxAgeSpecified )
+          if (ret.MaxAgeSpecified)
             MaxAge = MaxAge;
-          if ( ret.SamplingRateSpecified )
+          if (ret.SamplingRateSpecified)
             SamplingRate = SamplingRate;
           return ret;
         }
@@ -155,20 +155,20 @@ namespace CAS.DataPorter.Configurator
       /// <param name="asynchronous">if set to <c>true</c> [asynchronous].</param>
       /// <param name="parentKey">The parent key.</param>
       /// <returns></returns>
-      public long Save( SubscriptionState state, bool enabled, bool asynchronous, long parentKey )
+      public long Save(SubscriptionState state, bool enabled, bool asynchronous, long parentKey)
       {
         SubscriptionsRow row = this.NewSubscriptionsRow();
         row.Active = state.Active;
         row.Deadband = state.Deadband;
         row.ID_server = parentKey;
         row.KeepAliveRate = state.KeepAlive;
-        if ( !string.IsNullOrEmpty( state.Locale ) )
+        if (!string.IsNullOrEmpty(state.Locale))
           row.Locale = state.Locale;
         row.Name = state.Name;
         row.UpdateRate = state.UpdateRate;
         row.Enabled = enabled;
         row.Asynchronous = asynchronous;
-        this.AddSubscriptionsRow( row );
+        this.AddSubscriptionsRow(row);
         return row.ID;
       }
     }
@@ -189,11 +189,11 @@ namespace CAS.DataPorter.Configurator
             ClientHandle = Guid.NewGuid(),
             UpdateRate = UpdateRate
           };
-          if ( !IsDeadbandNull() )
+          if (!IsDeadbandNull())
             state.Deadband = Deadband;
-          if ( !IsKeepAliveRateNull() )
+          if (!IsKeepAliveRateNull())
             state.KeepAlive = KeepAliveRate;
-          if ( !IsLocaleNull() )
+          if (!IsLocaleNull())
             state.Locale = Locale;
           return state;
         }
@@ -209,7 +209,7 @@ namespace CAS.DataPorter.Configurator
       /// <param name="locale">The locale.</param>
       /// <param name="filter">The filter.</param>
       /// <returns></returns>
-      public long Save( Opc.Da.Server server, ConnectData connectData, string locale, ResultFilter filter )
+      public long Save(Opc.Da.Server server, ConnectData connectData, string locale, ResultFilter filter)
       {
         ServersRow rw = this.NewServersRow();
         rw.IsConnected = server.IsConnected;
@@ -217,12 +217,12 @@ namespace CAS.DataPorter.Configurator
         rw.PreferedSpecyficationID = server.PreferedSpecyfication.ID;
         rw.PreferedSpecyficationDsc = server.PreferedSpecyfication.Description;
         rw.URL = server.Url.ToString();
-        if ( !string.IsNullOrEmpty( locale ) )
+        if (!string.IsNullOrEmpty(locale))
           rw.Locale = locale;
         rw.Filter = (int)filter;
-        this.AddServersRow( rw );
-        if ( connectData != null )
-          ( (OPCCliConfiguration)this.DataSet ).ConnectData.Save( connectData, rw.ID );
+        this.AddServersRow(rw);
+        if (connectData != null)
+          ((OPCCliConfiguration)this.DataSet).ConnectData.Save(connectData, rw.ID);
         return rw.ID;
       }
     }
@@ -232,11 +232,11 @@ namespace CAS.DataPorter.Configurator
       /// Gets the options.
       /// </summary>
       /// <param name="options">The options.</param>
-      public void GetOptions( IOptions options )
+      public void GetOptions(IOptions options)
       {
-        if ( !this.IsLocaleNull() )
+        if (!this.IsLocaleNull())
           options.Locale = Locale;
-        if ( !this.IsFilterNull() )
+        if (!this.IsFilterNull())
           options.Filter = (global::Opc.Da.ResultFilter)Filter;
       }
       /// <summary>
@@ -270,22 +270,22 @@ namespace CAS.DataPorter.Configurator
       /// <param name="BadQualityValue">The bad quality value.</param>
       /// <param name="StopIfBadQuality">if set to <c>true</c> [stop if bad quality].</param>
       /// <returns></returns>
-      public long Save( string Name, long? IDItemIn, int? Deadband,
-        int? MinUpdateRate, int TransactionRate, string Comment, string BadQualityValue, bool StopIfBadQuality )
+      public long Save(string Name, long? IDItemIn, int? Deadband,
+        int? MinUpdateRate, int TransactionRate, string Comment, string BadQualityValue, bool StopIfBadQuality)
       {
         TransactionsRow rw = this.NewTransactionsRow();
         rw.Name = Name;
-        if ( IDItemIn != null )
+        if (IDItemIn != null)
           rw.ID_itemIN = (long)IDItemIn;
-        if ( Deadband != null )
+        if (Deadband != null)
           rw.Deadband = (int)Deadband;
-        if ( MinUpdateRate != null )
+        if (MinUpdateRate != null)
           rw.MinUpdateRate = (int)MinUpdateRate;
         rw.TransactionRate = TransactionRate;
         rw.Comment = Comment;
         rw.BadQualityValue = BadQualityValue;
         rw.StopIfBadQuality = StopIfBadQuality;
-        this.AddTransactionsRow( rw );
+        this.AddTransactionsRow(rw);
         return rw.ID;
       }
     }
@@ -299,7 +299,7 @@ namespace CAS.DataPorter.Configurator
       {
         get
         {
-          if ( IsID_itemINNull() )
+          if (IsID_itemINNull())
             return null;
           else
             return (long)ID_itemIN;
@@ -318,20 +318,20 @@ namespace CAS.DataPorter.Configurator
       /// <param name="IDItem">The  item ID.</param>
       /// <param name="Comment">The comment.</param>
       /// <returns></returns>
-      public long Save( string Name, long IDTransaction, string Parameter,
-        Guid OperationType, long? IDItem, string Comment )
+      public long Save(string Name, long IDTransaction, string Parameter,
+        Guid OperationType, long? IDItem, string Comment)
       {
-        if ( IDTransaction != long.MinValue )
+        if (IDTransaction != long.MinValue)
         {
           OperationsRow rw = this.NewOperationsRow();
           rw.Name = Name;
           rw.ID_Transaction = IDTransaction;
           rw.Param = Parameter;
-          if ( IDItem != null )
+          if (IDItem != null)
             rw.ID_Item = (long)IDItem;
           rw.OperationType = OperationType;
           rw.Comment = Comment;
-          this.AddOperationsRow( rw );
+          this.AddOperationsRow(rw);
           return rw.ID;
         }
         return long.MinValue;
@@ -347,7 +347,7 @@ namespace CAS.DataPorter.Configurator
       {
         get
         {
-          if ( IsID_ItemNull() )
+          if (IsID_ItemNull())
             return null;
           else
             return (long)ID_Item;
@@ -363,16 +363,16 @@ namespace CAS.DataPorter.Configurator
       /// <param name="InputNumber">The input number.</param>
       /// <param name="IDChildOperation">The  child operation ID.</param>
       /// <param name="ChildOutputNumber">The child output number.</param>
-      public void Save( long IDOperation, int InputNumber, long IDChildOperation, int ChildOutputNumber )
+      public void Save(long IDOperation, int InputNumber, long IDChildOperation, int ChildOutputNumber)
       {
         OPCCliConfiguration.OperationLinksRow existrow =
-          this.FindByID_OperationInput_number( IDOperation, InputNumber );
-        if ( existrow != null )
+          this.FindByID_OperationInput_number(IDOperation, InputNumber);
+        if (existrow != null)
         {
-          Debug.Assert( IDChildOperation == existrow.IDChild_Operation,
-            "This row already exist but contains other values" );
-          Debug.Assert( ChildOutputNumber == existrow.ChildOutput_number,
-            "This row already exist but contains other values" );
+          Debug.Assert(IDChildOperation == existrow.IDChild_Operation,
+            "This row already exist but contains other values");
+          Debug.Assert(ChildOutputNumber == existrow.ChildOutput_number,
+            "This row already exist but contains other values");
           return;
         }
         OperationLinksRow rw = this.NewOperationLinksRow();
@@ -380,7 +380,7 @@ namespace CAS.DataPorter.Configurator
         rw.Input_number = InputNumber;
         rw.IDChild_Operation = IDChildOperation;
         rw.ChildOutput_number = ChildOutputNumber;
-        this.AddOperationLinksRow( rw );
+        this.AddOperationLinksRow(rw);
       }
     }
   }

@@ -55,9 +55,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommServer.DA.Client.Configuration\CommServer.DA.Client.Configuration.csproj">
+    <ProjectReference Include="..\CommServer.DAClientConfiguration\CommServer.DAClientConfiguration.csproj">
       <Project>{6a9d0309-3fca-4a32-917d-68bd883b3f37}</Project>
-      <Name>CommServer.DA.Client.Configuration</Name>
+      <Name>CommServer.DAClientConfiguration</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
