@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="CAS.Lib.CommonBus.DataProviderID">
+    <Position X="1.25" Y="2" Width="2.5" />
+    <TypeIdentifier>
+      <FileName>IDataProviderID.cs</FileName>
+      <HashCode>IiIAgggCAQAAQFAECAAAAASAAIAAAAAAAJAgAIAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GetDataProviderDescription" />
+      <Property Name="SelectedCommunicationLayer" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CAS.Lib.CommonBus.Management.PluginCollection">
+    <Position X="5.25" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>Management\PluginColection.cs</FileName>
+      <HashCode>ACAAAAAAACAAAAABCAAAAAAAAAAAAAAAAAAAAAAgQgA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="this[System.Guid]" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="BaseStation.Management.Protocol">
+    <Position X="12" Y="11.25" Width="1.5" />
+    <TypeIdentifier />
+    <ShowAsAssociation>
+      <Property Name="GetProtDescriptions" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Struct Name="BaseStation.Management.ProtocolDsc">
+    <Position X="9" Y="12.5" Width="1.5" />
+    <TypeIdentifier />
+  </Struct>
+  <Interface Name="CAS.Lib.CommonBus.IDataProviderDescription" Collapsed="true">
+    <Position X="1" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>IDataProviderDescription.cs</FileName>
+      <HashCode>IAAAAAABAAAgAMAAAAAAAAAAAAAAEAABAAAARAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CAS.Lib.CommonBus.CommunicationLayer.ICommunicationLayerId" Collapsed="true">
+    <Position X="5" Y="6" Width="2" />
+    <TypeIdentifier>
+      <FileName>CommunicationLayer\ICommunicationLayerId.cs</FileName>
+      <HashCode>AAAAAAgAAAAAAEAAAAAAAACAAEAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="CAS.Lib.CommonBus.IDataProviderID">
+    <Position X="4.5" Y="7.5" Width="3.25" />
+    <TypeIdentifier>
+      <FileName>IDataProviderID.cs</FileName>
+      <HashCode>AAAAAAgAAAAAAEAACAAAAASAAIAAAAAAAJAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="this[System.String]" />
+    </ShowAsAssociation>
+  </Interface>
+  <Interface Name="BaseStation.Management.IProtocol" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="BaseStation.Management.IProtocolParent" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+</ClassDiagram>
