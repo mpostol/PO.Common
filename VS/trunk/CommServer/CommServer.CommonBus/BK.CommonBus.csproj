@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1D36638B-465E-4603-9A50-2F66D3B5B92B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CAS.Lib.CommonBus</RootNamespace>
+    <AssemblyName>CAS.CommonBus</AssemblyName>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>cas.snk</AssemblyOriginatorKeyFile>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\CAS.CommonBus.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\CAS.CommonBus.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CAS.RTLibComm, Version=5.0.0.32231, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\CommonBinaries\PR36-CAS_MAIN_CORE_PCKG\50000\CAS.RTLibComm.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationLayer\ALProtocol.cs" />
+    <Compile Include="ApplicationLayer\ApplicationLayerCommon.cs" />
+    <Compile Include="ApplicationLayer\ApplicationLayerInterfaceNotImplementedException.cs" />
+    <Compile Include="ApplicationLayer\ApplicationLayerMaster.cs" />
+    <Compile Include="ApplicationLayer\IApplicationLayerData.cs" />
+    <Compile Include="ApplicationLayer\IApplicationLayerMaster.cs" />
+    <Compile Include="ApplicationLayer\IApplicationLayerSlave.cs" />
+    <Compile Include="ApplicationLayer\IApplicationLayerSniffer.cs" />
+    <Compile Include="ApplicationLayer\ProtocolALMessage.cs" />
+    <Compile Include="ApplicationLayer\ProtocolParameters.cs" />
+    <Compile Include="CommonBusControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommonBusControl.Designer.cs">
+      <DependentUpon>CommonBusControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CommunicationLayer\CommunicationLayerFactory.cs" />
+    <Compile Include="CommunicationLayer\Generic\SesDBufferPool.cs" />
+    <Compile Include="CommunicationLayer\ICommunicationLayer.cs" />
+    <Compile Include="CommunicationLayer\ICommunicationLayerDescription.cs" />
+    <Compile Include="CommunicationLayer\ICommunicationLayerFactory.cs" />
+    <Compile Include="CommunicationLayer\ICommunicationLayerId.cs" />
+    <Compile Include="CommunicationLayer\ISesDBuffer.cs" />
+    <Compile Include="CommunicationLayer\Medium_to_Serial.cs" />
+    <Compile Include="CommunicationLayer\Net\NetCommunicationLayerId.cs" />
+    <Compile Include="CommunicationLayer\Net\Net_to_Serial.cs" />
+    <Compile Include="CommunicationLayer\NULL\NullCommunicationLayerId.cs" />
+    <Compile Include="CommunicationLayer\NULL\NULL_to_Serial.cs" />
+    <Compile Include="CommunicationLayer\RS\RSCommunicationLayerId.cs" />
+    <Compile Include="CommunicationLayer\RS\RS_to_Serial.cs">
+    </Compile>
+    <Compile Include="CommunicationLayer\RS\SerialPortSettings.cs" />
+    <Compile Include="CommunicationLayer\UMessage.cs" />
+    <Compile Include="Components\AvailableDPTree.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\AvailableDPTree.Designer.cs">
+      <DependentUpon>AvailableDPTree.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Components\DPSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Components\DPSettings.Designer.cs">
+      <DependentUpon>DPSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IAddressSpaceDescriptor.cs" />
+    <Compile Include="IConnectionManagement.cs" />
+    <Compile Include="IDataProviderDescription.cs" />
+    <Compile Include="IDataProviderID.cs" />
+    <Compile Include="IItemDefaultSettings.cs" />
+    <Compile Include="Management\PluginColection.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TraceEvent.cs" />
+    <Compile Include="Xml\XmlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cas.snk" />
+    <None Include="Diagrams\CommunicationLayer.cd" />
+    <None Include="Diagrams\DataProviderID.cd" />
+    <None Include="Diagrams\UMessage.cd" />
+    <None Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CommonBusControl.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>CommonBusControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\AvailableDPTree.resx">
+      <DependentUpon>AvailableDPTree.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Components\DPSettings.resx">
+      <DependentUpon>DPSettings.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
