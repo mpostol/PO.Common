@@ -31,8 +31,8 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\bin\Release\CAS.CommServer.DeviceSymulator.dll" target="lib\net451\CAS.CommServer.DeviceSymulator.dll" />
-    <file src="..\bin\Release\CAS.CommServer.DeviceSymulator.xml" target="lib\net451\CAS.CommServer.DeviceSymulator.xml" />
+    <file src="..\bin\Release\CAS.CommServer.DeviceSimulator.dll" target="lib\net451\CAS.CommServer.DeviceSimulator.dll" />
+    <file src="..\bin\Release\CAS.CommServer.DeviceSimulator.xml" target="lib\net451\CAS.CommServer.DeviceSimulator.xml" />
   </files>
 </package>
 
