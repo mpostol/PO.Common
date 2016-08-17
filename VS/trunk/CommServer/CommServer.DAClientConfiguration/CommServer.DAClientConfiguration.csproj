@@ -137,10 +137,10 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\CommServer.DAClientConfiguration.nuspec.nuspec">
+    <None Include="Properties\CAS.CommServer.DAClientConfiguration.nuspec">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CommServer.DAClientConfiguration.nuspec.tt</DependentUpon>
+      <DependentUpon>CAS.CommServer.DAClientConfiguration.tt</DependentUpon>
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\Open.png" />
@@ -154,9 +154,9 @@
     <None Include="Resources\FloppyDisk.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\CommServer.DAClientConfiguration.nuspec.tt">
+    <Content Include="Properties\CAS.CommServer.DAClientConfiguration.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CommServer.DAClientConfiguration.nuspec.nuspec</LastGenOutput>
+      <LastGenOutput>CAS.CommServer.DAClientConfiguration.nuspec</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Properties\AssemblyInfo.tt">

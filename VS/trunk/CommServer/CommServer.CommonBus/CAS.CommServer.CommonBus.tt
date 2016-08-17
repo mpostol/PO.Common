@@ -4,8 +4,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id><#=m_AssemblyTitle#></id>
-    <version><#= CASCommServer_ProductVersion #></version>
-    <title>CommServer Device Simulator Library</title>
+    <version><#= CASCommServer_ProductVersion #><#= CASCommServer_Prerelease #></version>
+    <title>CAS CommServer Family Common Communication Functionality</title>
     <authors><#=AssemblyCompany#></authors>
     <owners><#=Owner#></owners>
     <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer</projectUrl>
@@ -13,30 +13,29 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <developmentDependency>false</developmentDependency>
     <description>
-      Device Simulator for CommServer family.
+      Common Communication Funmctionality for the CommServer family.
     </description>
     <summary>
-      Device Simulator for CommServer family.
+      Common Communication Funmctionality for the CommServer family.
     </summary>
     <releaseNotes>
       Released for.NET 4.51 Maintenece 2016
     </releaseNotes>
     <copyright><#=AssemblyCopyright#></copyright>
-    <tags>OPCUA, CommServer, ASMD, Address Space Model Designer.</tags>
+    <tags>OPC DA, CommServer, ASMD</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.51">
          <dependency id="CAS.RealTime" version="5.0.2" />
-         <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.106" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\bin\Release\CAS.CommServer.DeviceSymulator.dll" target="lib\net451\CAS.CommServer.DeviceSymulator.dll" />
-    <file src="..\bin\Release\CAS.CommServer.DeviceSymulator.xml" target="lib\net451\CAS.CommServer.DeviceSymulator.xml" />
+    <file src="bin\Release\CAS.CommServer.CommonBus.dll" target="lib\net451\CAS.CommServer.CommonBus.dll" />
+    <file src="bin\Release\CAS.CommServer.CommonBus.xml" target="lib\net451\CAS.CommServer.CommonBus.xml" />
   </files>
 </package>
 
-<#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
+<#@ include file = "..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
 <#+
-string m_AssemblyTitle = "CAS.CommServer.DeviceSimulator";
+string m_AssemblyTitle = "CAS.CommServer.CommonBus";
 #>

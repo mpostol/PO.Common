@@ -19,7 +19,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("<#=m_AssemblyTitle#>")]
-[assembly: AssemblyDescription("CAS CommServer Family Common Communication Functionality")]
+[assembly: AssemblyDescription("UnitTests for CAS CommServer Family Common Communication Funmctionality")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("<#=AssemblyCompany#>")]
 [assembly: AssemblyProduct("<#=AssemblyProduct#>")]
@@ -27,11 +27,11 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("<#=AssemblyTrademark#>")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: Guid("8cf11d5b-146c-461d-8e09-c8afeac943f6")]
+[assembly: Guid("d7e134e8-6bd7-4250-9722-1991ce44cd3d")]
 [assembly: AssemblyVersion("<#= CASCommServer_ProductVersion #>.*")]
 [assembly: AssemblyFileVersion("<#= CASCommServer_ProductVersion #>")]
 
 <#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
 <#+
-string m_AssemblyTitle = "CAS.CommServer.CommonBus";
+string m_AssemblyTitle = "CAS.CommServer.CommonBus.UnitTests";
 #>
