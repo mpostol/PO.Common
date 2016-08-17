@@ -1,36 +1,31 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿//<summary>
+//  Title   : Assembly info for: CAS.CommServer.CommonBus.UnitTests
+//  System  : Microsoft Visual C# .NET
+//  $LastChangedDate: 2014-10-17 23:06:15 +0200 (Pt, 17 paź 2014) $
+//  $Rev:  $
+//  $LastChangedBy:  $
+//  $URL:  $
+//  $Id:  $
+//
+//  Copyright (c) 2000-2016 CAS LODZ POLAND
+//  +48 (42) 686 25 47
+//  techsupp@cas.eu
+//  www.cas.eu
+//</summary>
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("CommonBusTests")]
-[assembly: AssemblyDescription("CommonBusTests")]
+[assembly: AssemblyTitle("CAS.CommServer.CommonBus.UnitTests")]
+[assembly: AssemblyDescription("UnitTests for CAS CommServer Family Common Communication Funmctionality")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CAS")]
-[assembly: AssemblyProduct("CommServer")]
-[assembly: AssemblyCopyright("Copyright ©  CAS 2014")]
+[assembly: AssemblyProduct("CAS CommServer Family")]
+[assembly: AssemblyCopyright("Copyright (c) 2000-2016 CAS LODZ POLAND")]
 [assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
-
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
 [assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("d7e134e8-6bd7-4250-9722-1991ce44cd3d")]
+[assembly: AssemblyVersion("5.01.02.*")]
+[assembly: AssemblyFileVersion("5.01.02")]
 
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("5.0.0.*")]
-[assembly: AssemblyFileVersion("5.0.0.0")]

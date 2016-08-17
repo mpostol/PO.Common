@@ -1,11 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".nuspec" #>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>CAS.CommServer.DeviceSimulator</id>
-    <version>5.01.00</version>
+    <id><#=m_AssemblyTitle#></id>
+    <version><#= CASCommServer_ProductVersion #><#= CASCommServer_Prerelease #></version>
     <title>CommServer Device Simulator Library</title>
-    <authors>CAS</authors>
-    <owners>commsvr.com</owners>
+    <authors><#=AssemblyCompany#></authors>
+    <owners><#=Owner#></owners>
     <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer</projectUrl>
     <licenseUrl>http://www.commsvr.com/DownloadCenter/ProductSoftware/LicenseAgreement.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -19,7 +21,7 @@
     <releaseNotes>
       Released for.NET 4.51 Maintenece 2016
     </releaseNotes>
-    <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
+    <copyright><#=AssemblyCopyright#></copyright>
     <tags>OPCUA, CommServer, ASMD, Address Space Model Designer.</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.51">
@@ -34,3 +36,7 @@
   </files>
 </package>
 
+<#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
+<#+
+string m_AssemblyTitle = "CAS.CommServer.DeviceSimulator";
+#>

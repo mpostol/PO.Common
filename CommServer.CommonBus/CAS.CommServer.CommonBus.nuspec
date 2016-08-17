@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>CAS.CommServer.CommonBus</id>
+    <version>5.01.02-Alpha</version>
+    <title>CAS CommServer Family Common Communication Functionality</title>
+    <authors>CAS</authors>
+    <owners>commsvr.com</owners>
+    <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer</projectUrl>
+    <licenseUrl>http://www.commsvr.com/DownloadCenter/ProductSoftware/LicenseAgreement.aspx</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>false</developmentDependency>
+    <description>
+      Common Communication Funmctionality for the CommServer family.
+    </description>
+    <summary>
+      Common Communication Funmctionality for the CommServer family.
+    </summary>
+    <releaseNotes>
+      Released for.NET 4.51 Maintenece 2016
+    </releaseNotes>
+    <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
+    <tags>OPC DA, CommServer, ASMD</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.51">
+         <dependency id="CAS.RealTime" version="5.0.2" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\Release\CAS.CommServer.CommonBus.dll" target="lib\net451\CAS.CommServer.CommonBus.dll" />
+    <file src="bin\Release\CAS.CommServer.CommonBus.xml" target="lib\net451\CAS.CommServer.CommonBus.xml" />
+  </files>
+</package>
+

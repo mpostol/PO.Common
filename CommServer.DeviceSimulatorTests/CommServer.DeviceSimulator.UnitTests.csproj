@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9F6312FE-DF0A-4F70-BDE4-4699CD9947DC}</ProjectGuid>
+    <ProjectGuid>{4D18520F-B0DB-4065-9228-4119A804ABCF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CAS.Lib.CommonBus.Tests</RootNamespace>
-    <AssemblyName>CAS.CommonBusTests</AssemblyName>
+    <RootNamespace>CAS.Lib.DeviceSimulator.Tests</RootNamespace>
+    <AssemblyName>CAS.DeviceSimulatorTests</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,11 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CAS.RTLibComm">
-      <HintPath>..\..\CommonBinaries\PR36-CAS_MAIN_CORE_PCKG\50000\CAS.RTLibComm.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.XML" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -55,12 +51,12 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CommonBusUnitTest1.cs" />
+    <Compile Include="DeviceSimulatorUnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommonBus\BK.CommonBus.csproj">
-      <Project>{1d36638b-465e-4603-9a50-2f66d3b5b92b}</Project>
-      <Name>BK.CommonBus</Name>
+    <ProjectReference Include="..\CommServer.DeviceSymulator\CommServer.DeviceSimulator.csproj">
+      <Project>{35351030-92ff-4547-ad45-6123e09278be}</Project>
+      <Name>CommServer.DeviceSimulator</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
