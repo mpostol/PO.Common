@@ -8,7 +8,7 @@
     <ProjectGuid>{1D36638B-465E-4603-9A50-2F66D3B5B92B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CAS.Lib.CommonBus</RootNamespace>
+    <RootNamespace>CAS.CommServer.CommonBus</RootNamespace>
     <AssemblyName>CAS.CommServer.CommonBus</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>cas.snk</AssemblyOriginatorKeyFile>
