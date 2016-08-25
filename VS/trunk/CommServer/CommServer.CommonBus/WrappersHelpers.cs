@@ -26,43 +26,42 @@ using System.Collections;
 using System.Collections.Generic;
 using CAS.Lib.CommonBus;
 
-namespace NetworkConfig.HMI
+namespace CAS.CommServer.CommonBus
 {
   /// <summary>
-  /// Class containg methods responsible for converting some numeric parameters humen readable format 
+  /// Class contains static methods helping management of the <see cref="IAddressSpaceDescriptor"/> collections.
   /// </summary>
-  internal class WrappersHelpers
+  public static class WrappersHelpers
   {
     #region Methods
     /// <summary>
-    /// Returns the name related to specifed id 
+    /// Returns the name of indexed by <paramref name="index"/> of an object implementing <see cref="IAddressSpaceDescriptor"/>. 
+    /// If the object is not present <paramref name="index"/> is converted to string.
     /// </summary>
-    /// <param name="table">has table with  enum </param>
-    /// <param name="id">Id that will be changed to the name</param>
-    /// <returns>String related to the id</returns>
-    internal static string GetName( SortedList<short, IAddressSpaceDescriptor> table, short? id )
+    /// <param name="table">table of indexed <see cref="IAddressSpaceDescriptor"/></param>
+    /// <param name="index">Index of the <see cref="IAddressSpaceDescriptor"/> to retrieve its name.</param>
+    /// <returns>Name of the <see cref="IAddressSpaceDescriptor"/> indexed by the <paramref name="index"/>, or "N/A" if <paramref name="table"/> is null.</returns>
+    public static string GetName(SortedList<short, IAddressSpaceDescriptor> table, short? index)
     {
       string name = "N/A";
-      if ( id.HasValue && table != null )
+      if (index.HasValue && table != null)
       {
         try
         {
-          return table[ (short)id ].Name;
+          return table[(short)index].Name;
         }
-        catch ( Exception )
+        catch (Exception)
         {
-          if ( id.HasValue )
+          if (index.HasValue)
           {
-            return id.ToString();
+            return index.ToString();
           }
         }
       }
       else
       {
-        if ( table == null && id.HasValue )
-        {
-          return id.ToString();
-        }
+        if (table == null && index.HasValue)
+          return index.ToString();
       }
       return name;
     }
@@ -72,14 +71,14 @@ namespace NetworkConfig.HMI
     /// <param name="table">has table with  enum </param>
     /// <param name="name">Name that will be changed to id</param>
     /// <returns>Integer related to the specified name</returns>
-    internal static short? GetID( SortedList<short, IAddressSpaceDescriptor> table, string name )
+    public static short? GetID(SortedList<short, IAddressSpaceDescriptor> table, string name)
     {
-      if ( table != null )
+      if (table != null)
       {
         // znaczy sie jest tablica zawierajaca dane
-        foreach ( KeyValuePair<short, IAddressSpaceDescriptor> kvpIAddressSpaceDescriptor in table )
+        foreach (KeyValuePair<short, IAddressSpaceDescriptor> kvpIAddressSpaceDescriptor in table)
         {
-          if ( kvpIAddressSpaceDescriptor.Value.Name == name )
+          if (kvpIAddressSpaceDescriptor.Value.Name == name)
             return kvpIAddressSpaceDescriptor.Value.Identifier;
         }
       }
@@ -87,9 +86,9 @@ namespace NetworkConfig.HMI
       // jesli nie to znczy ze zostawiamy null
       try
       {
-        return System.Convert.ToInt16( name );
+        return System.Convert.ToInt16(name);
       }
-      catch ( Exception )
+      catch (Exception)
       {
         return null;
       }
@@ -100,14 +99,14 @@ namespace NetworkConfig.HMI
     /// <param name="table">has table with  enum </param>
     /// <param name="name">Name that will be changed to id</param>
     /// <returns>Integer related to the specified name</returns>
-    internal static short? GetID( IAddressSpaceDescriptor[] table, string name )
+    public static short? GetID(IAddressSpaceDescriptor[] table, string name)
     {
-      if ( table != null )
+      if (table != null)
       {
         // znaczy sie jest tablica zawierajaca dane
-        foreach ( IAddressSpaceDescriptor myIAddressSpaceDescriptor in table )
+        foreach (IAddressSpaceDescriptor myIAddressSpaceDescriptor in table)
         {
-          if ( myIAddressSpaceDescriptor.Name == name )
+          if (myIAddressSpaceDescriptor.Name == name)
             return myIAddressSpaceDescriptor.Identifier;
         }
       }
@@ -115,9 +114,9 @@ namespace NetworkConfig.HMI
       // jesli nie to znczy ze zostawiamy null
       try
       {
-        return System.Convert.ToInt16( name );
+        return System.Convert.ToInt16(name);
       }
-      catch ( Exception )
+      catch (Exception)
       {
         return null;
       }
@@ -127,23 +126,23 @@ namespace NetworkConfig.HMI
     /// </summary>
     /// <param name="array">The array of address space descriptors.</param>
     /// <returns>all keys</returns>
-    internal static string[] GetNames( SortedList<short, IAddressSpaceDescriptor> array )
+    public static string[] GetNames(SortedList<short, IAddressSpaceDescriptor> array)
     {
       int count = 256;
-      if ( array != null )
+      if (array != null)
         count = array.Keys.Count;
-      string[] return_array = new string[ count ];
+      string[] return_array = new string[count];
       int idx = 0;
-      if ( array != null )
+      if (array != null)
       {
-        foreach ( IAddressSpaceDescriptor AddressSpaceDescriptor in array.Values )
+        foreach (IAddressSpaceDescriptor AddressSpaceDescriptor in array.Values)
         {
-          return_array[ idx++ ] = AddressSpaceDescriptor.Name;
+          return_array[idx++] = AddressSpaceDescriptor.Name;
         }
       }
       else
-        for ( int i = 0; i < 256; i++ )
-          return_array[ i ] = i.ToString();
+        for (int i = 0; i < 256; i++)
+          return_array[i] = i.ToString();
       return return_array;
     }
     #endregion
