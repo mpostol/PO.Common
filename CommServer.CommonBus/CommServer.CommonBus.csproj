@@ -147,7 +147,9 @@
     <None Include="Diagrams\CommunicationLayer.cd" />
     <None Include="Diagrams\DataProviderID.cd" />
     <None Include="Diagrams\UMessage.cd" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\AssemblyInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
