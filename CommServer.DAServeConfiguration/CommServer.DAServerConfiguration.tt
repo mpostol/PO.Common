@@ -1,0 +1,41 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".nuspec" #>
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id><#=CASCommServerDAServerConfigurationProduct#></id>
+    <version><#= CASCommServerDAServerConfigurationVersion #><#= CASCommServerDAServerConfigurationPrerelease #></version>
+    <title>Obsolete use CAS.CommServer.DAServerConfiguration instead. <#=CASCommServerDAServerConfigurationTitle#></title>
+    <authors><#=AssemblyCompany#></authors>
+    <owners><#=Owner#></owners>
+    <projectUrl>http://www.commsvr.com/Download/CAS.CommServer.DA.Server.Configuration/</projectUrl>
+    <licenseUrl>http://www.cas.internetdsl.pl/commserver/P_DowloadCenter/Lic-09000401EN_License_Agreement.pdf</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <developmentDependency>false</developmentDependency>
+    <description>
+      Obsolete use CAS.CommServer.DAServerConfiguration instead.
+      CAS.CommServer.DA.Server.Configuration - Server Configuration Management Library provides CAS.NetworkConfigLib name space
+      The namespace is subject to change according to Id.
+    </description>
+    <summary>
+      DataPoter Configuration Management
+    </summary>
+    <releaseNotes>
+      The library was moved to separate repo - only unimportant changes.
+    </releaseNotes>
+    <copyright><#=AssemblyCopyright#></copyright>
+    <tags>OPC, CommServer, DA Client, DataPorter.</tags>
+    <dependencies>
+       <dependency id="CAS.RealTime" version="5.0.2" />
+       <dependency id="CAS.CodeProtect" version="5.0.2" />
+       <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.106" />
+    </dependencies>
+  </metadata>
+  <files>
+        <file src="bin\Release\CAS.CommServer.DAServerConfiguration.dll" target="lib\net451\CAS.CommServer.DAServerConfiguration.dll" />
+        <file src="bin\Release\CAS.CommServer.DAServerConfiguration.dll.config" target="lib\net451\CAS.CommServer.DAServerConfiguration.dll.config" />
+        <file src="bin\Release\CAS.CommServer.DAServerConfiguration.xml" target="lib\net451\CAS.CommServer.DAServerConfiguration.xml" />
+  </files>
+</package>
+
+<#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
