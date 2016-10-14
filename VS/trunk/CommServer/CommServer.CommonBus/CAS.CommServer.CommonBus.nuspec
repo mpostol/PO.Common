@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.CommonBus</id>
-    <version>5.01.02-Delta</version>
+    <version>5.01.02-Echo</version>
     <title>CAS CommServer Family Common Communication Functionality</title>
     <authors>CAS</authors>
     <owners>commsvr.com</owners>
