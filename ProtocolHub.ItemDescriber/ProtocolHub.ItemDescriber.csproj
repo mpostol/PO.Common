@@ -189,7 +189,9 @@
     <None Include="ItemDecriberDataSet.xsx">
       <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">

@@ -1,5 +1,5 @@
 ﻿//<summary>
-//  Title   : Assembly info for: CAS.CommServer.DAServerConfiguration
+//  Title   : Assembly info for: CAS.CommServer.DA.Server.Configuration
 //  System  : Microsoft Visual C# .NET
 //  $LastChangedDate: $
 //  $Rev:  $
@@ -16,8 +16,8 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("CAS.CommServer.DAServerConfiguration")]
-[assembly: AssemblyDescription("CAS.CommServer.DAServerConfiguration - CommServer Configuration Management")]
+[assembly: AssemblyTitle("CAS.CommServer.DA.Server.Configuration")]
+[assembly: AssemblyDescription("CAS.CommServer.DA.Server.Configuration - CommServer Configuration Management")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CAS")]
 [assembly: AssemblyProduct("CAS CommServer Family")]
