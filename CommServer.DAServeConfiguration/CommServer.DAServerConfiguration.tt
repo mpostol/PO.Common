@@ -4,7 +4,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id><#=CASCommServerDAServerConfigurationProduct#></id>
-    <version><#= CASCommServerDAServerConfigurationVersion #><#= CASCommServerDAServerConfigurationPrerelease #></version>
+    <version><#= CASCommServerVersion #><#= CASCommServerPrerelease #></version>
     <title>Obsolete use CAS.CommServer.DAServerConfiguration instead. <#=CASCommServerDAServerConfigurationTitle#></title>
     <authors><#=AssemblyCompany#></authors>
     <owners><#=Owner#></owners>

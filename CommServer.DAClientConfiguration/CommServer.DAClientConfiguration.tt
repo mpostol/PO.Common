@@ -4,7 +4,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.DAClientConfiguration</id>
-    <version><#= CASCommServerDAClientConfigurationVersion #><#= CASCommServerDAClientConfigurationPrerelease #></version>
+    <version><#= CASCommServerVersion #><#= CASCommServerPrerelease #></version>
     <title><#=CASCommServerDAClientConfigurationTitle#></title>
     <authors><#=AssemblyCompany#></authors>
     <owners><#=Owner#></owners>
@@ -38,4 +38,4 @@
   </files>
 </package>
 
-<#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
+<#@ include file = "..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>

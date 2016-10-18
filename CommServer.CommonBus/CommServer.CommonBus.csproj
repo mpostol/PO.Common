@@ -149,8 +149,8 @@
     <Compile Include="Xml\XmlHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="CAS.CommServer.CommonBus.nuspec">
-      <DependentUpon>CAS.CommServer.CommonBus.tt</DependentUpon>
+    <None Include="CommServer.CommonBus.nuspec">
+      <DependentUpon>CommServer.CommonBus.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Designer</SubType>
       <DesignTime>True</DesignTime>
@@ -192,9 +192,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CAS.CommServer.CommonBus.tt">
+    <Content Include="CommServer.CommonBus.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CAS.CommServer.CommonBus.nuspec</LastGenOutput>
+      <LastGenOutput>CommServer.CommonBus.nuspec</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

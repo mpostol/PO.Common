@@ -1,7 +1,8 @@
-﻿using System;
+﻿
+using CAS.Lib.DeviceSimulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace CAS.Lib.DeviceSimulator.Tests
+namespace CAS.CommServer.DeviceSimulator.UnitTests
 {
   [TestClass]
   public class DeviceSimulatorUnitTest1

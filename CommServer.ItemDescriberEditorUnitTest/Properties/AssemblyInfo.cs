@@ -1,5 +1,5 @@
 ﻿//_______________________________________________________________
-//  Title   :  Assembly info for: CAS.CommServer.DA.ItemDescriber
+//  Title   :  Assembly info for: CAS.CommServer.DA.ItemDescriberEditor.UnitTest
 //  System  : Microsoft VisualStudio 2015 / C#
 //  $LastChangedDate$
 //  $Rev$
@@ -16,16 +16,16 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("CAS.CommServer.DA.ItemDescriber")]
-[assembly: AssemblyDescription("Item Describer Library")]
+[assembly: AssemblyTitle("CAS.CommServer.DA.ItemDescriberEditor.UnitTest")]
+[assembly: AssemblyDescription("Item Describer Editor Unit Testing")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CAS")]
 [assembly: AssemblyProduct("CAS CommServer Family")]
 [assembly: AssemblyCopyright("Copyright (c) 2000-2016 CAS LODZ POLAND")]
 [assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
-[assembly: GuidAttribute( "EF38E546-4B92-4d36-A32A-CC8ABBF548F8" )]
+[assembly: Guid("e4d74dfe-36e4-4c4e-bfcb-e1c46d8877af")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.00.2.*")]
-[assembly: AssemblyFileVersion("1.00.2")]
+[assembly: AssemblyVersion("5.01.04.*")]
+[assembly: AssemblyFileVersion("5.01.04")]
 

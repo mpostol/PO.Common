@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using CAS.DataPorter.Configurator;
 
-namespace CAS.CommServer.DA.Client.Configuration.UnitTests
+namespace CAS.CommServer.DAClientConfiguration.UnitTests
 {
   [TestClass]
   public class DataPorterConfigLibUnitTest

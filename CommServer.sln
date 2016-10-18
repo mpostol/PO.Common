@@ -1,4 +1,3 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
@@ -23,11 +22,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.DAServerConfigur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.DAServerConfigurationUnitTests", "CommServer.DAServerConfigurationUnitTests\CommServer.DAServerConfigurationUnitTests.csproj", "{35CA4EA5-B285-43A0-A5A7-BD69401B0A28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolHub.ItemDescriber", "ProtocolHub.ItemDescriber\ProtocolHub.ItemDescriber.csproj", "{4D16DA6F-CACB-40B7-820A-704F9141FE8E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.ItemDescriber", "CommServer.ItemDescriber\CommServer.ItemDescriber.csproj", "{4D16DA6F-CACB-40B7-820A-704F9141FE8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolHub.ItemDescriberEditor", "ProtocolHub.ItemDescriberEditor\ProtocolHub.ItemDescriberEditor.csproj", "{D5AB197F-7133-4BD0-A6DB-F9375DB33ACA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.ItemDescriberEditor", "CommServer.ItemDescriberEditor\CommServer.ItemDescriberEditor.csproj", "{D5AB197F-7133-4BD0-A6DB-F9375DB33ACA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProtocolHub.ItemDescriberEditorUnitTest", "ProtocolHub.ItemDescriberEditorUnitTest\ProtocolHub.ItemDescriberEditorUnitTest.csproj", "{E4D74DFE-36E4-4C4E-BFCB-E1C46D8877AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommServer.ItemDescriberEditorUnitTest", "CommServer.ItemDescriberEditorUnitTest\CommServer.ItemDescriberEditorUnitTest.csproj", "{E4D74DFE-36E4-4C4E-BFCB-E1C46D8877AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

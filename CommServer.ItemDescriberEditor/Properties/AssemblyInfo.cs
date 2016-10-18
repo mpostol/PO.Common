@@ -1,11 +1,11 @@
 ﻿//_______________________________________________________________
 //  Title   :  Assembly info for: CAS.CommServer.DA.ItemDescriberEditor
 //  System  : Microsoft VisualStudio 2015 / C#
-//  $LastChangedDate:  $
-//  $Rev:  $
-//  $LastChangedBy: $
-//  $URL:  $
-//  $Id:  $
+//  $LastChangedDate$
+//  $Rev$
+//  $LastChangedBy$
+//  $URL$
+//  $Id$
 //
 //  Copyright (c) 2000-2016 CAS LODZ POLAND
 //  +48 (42) 686 25 47
@@ -27,8 +27,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: Guid("d5ab197f-7133-4bd0-a6db-f9375db33aca")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("1.00.2.*")]
-[assembly: AssemblyFileVersion("1.00.2")]
+[assembly: AssemblyVersion("5.01.04.*")]
+[assembly: AssemblyFileVersion("5.01.04")]
 [assembly: InternalsVisibleToAttribute("CAS.CommServer.DA..ItemDescriberEditorUnitTest, PublicKey=0024000004800000940000000602000000240000525341310004000001000100b3cff1bec656a6" +
                                                                        "e3784c75cacce8ee3bc695d0ce135d820c86465eb49b2353f0438d28ad9a458e5350c0c141393d" +
                                                                        "d9ad606bd9f4e0a8e1b0c49fa37835630b16798ece56df81c756f4c6bd37f07d68cc91ebfa7be7" +
