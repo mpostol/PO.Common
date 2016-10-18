@@ -1,11 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".nuspec" #>
+<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>CAS.CommServer.ProtocolHub.ItemDescriber</id>
-    <version>1.00.2-Hotel</version>
+    <id><#=m_AssemblyTitle#></id>
+    <version><#= CASCommServerVersion #><#= CASCommServerPrerelease #></version>
     <title>Obsolete use: CAS.CommServer.DA.ItemDescriber; Item Describer Editor and Library</title>
-    <authors>CAS</authors>
-    <owners>commsvr.com</owners>
+    <authors><#=AssemblyCompany#></authors>
+    <owners><#=Owner#></owners>
     <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer.DA</projectUrl>
     <licenseUrl>http://www.commsvr.com/DownloadCenter/ProductSoftware/LicenseAgreement.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -21,7 +23,7 @@
     <releaseNotes>
       Maintenace 2016 release
     </releaseNotes>
-    <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
+    <copyright><#=AssemblyCopyright#></copyright>
     <tags>CommServer, OPC DA, OPC Client, OPC Server.</tags>
         <dependencies>
             <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.106" />
@@ -36,3 +38,7 @@
   </files>
 </package>
 
+<#@ include file = "..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
+<#+
+string m_AssemblyTitle = "CAS.CommServer.ProtocolHub.ItemDescriber";
+  #>

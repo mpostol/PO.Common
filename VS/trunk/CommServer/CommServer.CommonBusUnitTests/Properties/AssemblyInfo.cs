@@ -1,11 +1,11 @@
 ﻿//<summary>
 //  Title   : Assembly info for: CAS.CommServer.CommonBus.UnitTests
 //  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: 2014-10-17 23:06:15 +0200 (Pt, 17 paź 2014) $
-//  $Rev:  $
-//  $LastChangedBy:  $
-//  $URL:  $
-//  $Id:  $
+//  $LastChangedDate$
+//  $Rev$
+//  $LastChangedBy$
+//  $URL$
+//  $Id$
 //
 //  Copyright (c) 2000-2016 CAS LODZ POLAND
 //  +48 (42) 686 25 47
@@ -17,7 +17,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("CAS.CommServer.CommonBus.UnitTests")]
-[assembly: AssemblyDescription("UnitTests for CAS CommServer Family Common Communication Funmctionality")]
+[assembly: AssemblyDescription("Unit Tests for CAS CommServer Family Common Communication Functionality")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CAS")]
 [assembly: AssemblyProduct("CAS CommServer Family")]
@@ -26,6 +26,6 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("d7e134e8-6bd7-4250-9722-1991ce44cd3d")]
-[assembly: AssemblyVersion("5.01.02.*")]
-[assembly: AssemblyFileVersion("5.01.02")]
+[assembly: AssemblyVersion("5.01.04.*")]
+[assembly: AssemblyFileVersion("5.01.04")]
 

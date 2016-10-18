@@ -1,16 +1,32 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿//<summary>
+//  Title   : Assembly info for: CAS.RealTime
+//  System  : Microsoft Visual C# .NET
+//  $LastChangedDate: $
+//  $Rev:  $
+//  $LastChangedBy:  $
+//  $URL:  $
+//  $Id:  $
+//
+//  Copyright (c) 2000-2016 CAS LODZ POLAND
+//  +48 (42) 686 25 47
+//  techsupp@cas.eu
+//  www.cas.eu
+//</summary>
+
+using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("CAS.CommServer.DAClientConfiguration")]
-[assembly: AssemblyDescription("DA Client Configuration Unit Tests")]
+[assembly: AssemblyTitle("CAS.CommServer.DAClientConfiguration.UnitTests")]
+[assembly: AssemblyDescription("OPC Classic Client Configuration Library Unit Tests")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("CAS")]
 [assembly: AssemblyProduct("CAS Framework Core")]
-[assembly: AssemblyCopyright("Copyright ©  2016")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCopyright("Copyright (c) 2000-2016 CAS LODZ POLAND")]
+[assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: Guid("b56ec2b0-2c3c-49bb-8ea3-724895df68b1")]
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: Guid("7c0ea31e-34e9-42bb-8751-785b2f85b3cf")]
+[assembly: AssemblyVersion("5.01.04.*")]
+[assembly: AssemblyFileVersion("5.01.04")]
+
+

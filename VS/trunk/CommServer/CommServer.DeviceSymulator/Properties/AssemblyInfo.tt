@@ -1,13 +1,14 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ output extension=".cs" #>
+
 //<summary>
 //  Title   : Assembly info for: <#=m_AssemblyTitle#>
 //  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: 2014-10-17 23:06:15 +0200 (Pt, 17 paź 2014) $
-//  $Rev:  $
-//  $LastChangedBy:  $
-//  $URL:  $
-//  $Id:  $
+//  $LastChangedDate: $
+//  $Rev: $
+//  $LastChangedBy: $
+//  $URL: $
+//  $Id: $
 //
 //  <#=AssemblyCopyright#>
 //  <#=Phone#>
@@ -28,8 +29,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("D23A1A53-1461-4a5c-9BAF-35CCB7111723")]
-[assembly: AssemblyVersion("<#=CASCommServer_ProductVersion#>.*")]
-[assembly: AssemblyFileVersion("<#=CASCommServer_ProductVersion#>")]
+[assembly: AssemblyVersion("<#=CASCommServerVersion#>.*")]
+[assembly: AssemblyFileVersion("<#=CASCommServerVersion#>")]
 
 <#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
 <#+

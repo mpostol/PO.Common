@@ -19,19 +19,19 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("<#=m_AssemblyTitle#>")]
-[assembly: AssemblyDescription("Item Describer Library")]
+[assembly: AssemblyDescription("Item Describer Editor Unit Testing")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("<#=AssemblyCompany#>")]
 [assembly: AssemblyProduct("<#=DefaultProductName#>")]
 [assembly: AssemblyCopyright("<#=AssemblyCopyright#>")]
 [assembly: AssemblyTrademark("<#=DefaultProductTrademark#>")]
 [assembly: AssemblyCulture("")]
-[assembly: GuidAttribute( "EF38E546-4B92-4d36-A32A-CC8ABBF548F8" )]
+[assembly: Guid("e4d74dfe-36e4-4c4e-bfcb-e1c46d8877af")]
 [assembly: ComVisible(false)]
-[assembly: AssemblyVersion("<#= CASCommServerDAItemDescriberVersion #>.*")]
-[assembly: AssemblyFileVersion("<#= CASCommServerDAItemDescriberVersion #>")]
+[assembly: AssemblyVersion("<#= CASCommServerVersion #>.*")]
+[assembly: AssemblyFileVersion("<#= CASCommServerVersion #>")]
 
 <#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
 <#+
-string m_AssemblyTitle = "CAS.CommServer.DA.ItemDescriber";
+string m_AssemblyTitle = "CAS.CommServer.DA.ItemDescriberEditor.UnitTest";
 #>

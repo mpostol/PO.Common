@@ -28,8 +28,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("8cf11d5b-146c-461d-8e09-c8afeac943f6")]
-[assembly: AssemblyVersion("<#= CASCommServer_ProductVersion #>.*")]
-[assembly: AssemblyFileVersion("<#= CASCommServer_ProductVersion #>")]
+[assembly: AssemblyVersion("<#= CASCommServerVersion #>.*")]
+[assembly: AssemblyFileVersion("<#= CASCommServerVersion #>")]
 
 <#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
 <#+

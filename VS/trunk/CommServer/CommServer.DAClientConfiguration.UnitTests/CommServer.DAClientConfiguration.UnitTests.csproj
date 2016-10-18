@@ -6,8 +6,8 @@
     <ProjectGuid>{B56EC2B0-2C3C-49BB-8EA3-724895DF68B1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CAS.CommServer.DA.Client.Configuration.UnitTests</RootNamespace>
-    <AssemblyName>CAS.CommServer.DA.Client.Configuration.UnitTests</AssemblyName>
+    <RootNamespace>CAS.CommServer.DAClientConfiguration.UnitTests</RootNamespace>
+    <AssemblyName>CAS.CommServer.DAClientConfigurationUnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -52,13 +52,27 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConfigurationUnitTest.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AssemblyInfo.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CommServer.DAClientConfiguration\CommServer.DAClientConfiguration.csproj">
       <Project>{6a9d0309-3fca-4a32-917d-68bd883b3f37}</Project>
       <Name>CommServer.DAClientConfiguration</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Properties\AssemblyInfo.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

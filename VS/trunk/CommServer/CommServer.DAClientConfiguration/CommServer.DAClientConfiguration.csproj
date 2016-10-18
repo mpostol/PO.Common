@@ -47,8 +47,8 @@
       <HintPath>..\packages\CAS.CodeProtect.6.0.0-Charlie\lib\net451\CAS.CodeProtect.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="CAS.CommServer.OPCClassicSDK.Core, Version=2.1.1061.39650, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
-      <HintPath>..\packages\CAS.CommServer.OPCClassic.SDK.Core.2.01.1061-Bravo\lib\net451\CAS.CommServer.OPCClassicSDK.Core.dll</HintPath>
+    <Reference Include="CAS.CommServer.OPCClassicSDK.Core, Version=2.1.1062.39746, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\CAS.CommServer.OPCClassic.SDK.Core.2.01.1062\lib\net451\CAS.CommServer.OPCClassicSDK.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="CAS.RTLib, Version=5.0.4.28382, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
@@ -149,10 +149,10 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Properties\CAS.CommServer.DAClientConfiguration.nuspec">
+    <None Include="CommServer.DAClientConfiguration.nuspec">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CAS.CommServer.DAClientConfiguration.tt</DependentUpon>
+      <DependentUpon>CommServer.DAClientConfiguration.tt</DependentUpon>
       <SubType>Designer</SubType>
     </None>
     <None Include="Resources\Open.png" />
@@ -166,9 +166,9 @@
     <None Include="Resources\FloppyDisk.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\CAS.CommServer.DAClientConfiguration.tt">
+    <Content Include="CommServer.DAClientConfiguration.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>CAS.CommServer.DAClientConfiguration.nuspec</LastGenOutput>
+      <LastGenOutput>CommServer.DAClientConfiguration.nuspec</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Properties\AssemblyInfo.tt">

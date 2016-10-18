@@ -14,8 +14,8 @@
 //</summary>
 
 using BaseStation.ItemDescriber;
-using CAS.Lib.CodeProtect.Controls;
 using CAS.Lib.ControlLibrary;
+using CAS.Windows.Forms.CodeProtectControls;
 using Opc.Da;
 using System;
 using System.Reflection;
@@ -40,7 +40,7 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
     }
 
     #region private
-    private BaseStation.ItemDescriber.ItemDecriberDataSet m_ItemDescriberDataSet;
+    private ItemDecriberDataSet m_ItemDescriberDataSet;
     private void CloseForm()
     {
       Close();
@@ -199,12 +199,10 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
       Assembly cMyAss = Assembly.GetEntryAssembly();
       using (LicenseForm cAboutForm = new LicenseForm(null, usr, cMyAss))
       {
-        using (Licences cLicDial = new Licences())
+        using (Licenses cLicDial = new Licenses())
         {
           cAboutForm.SetAdditionalControl = cLicDial;
-          cAboutForm.LicenceRequestMessageProvider
-            = new LicenseForm.LicenceRequestMessageProviderDelegate(
-               delegate () { return cLicDial.GetLicenseMessageRequest(); });
+          cAboutForm.LicenceRequestMessageProvider = new LicenseForm.LicenceRequestMessageProviderDelegate(delegate () { return cLicDial.GetLicenseMessageRequest(); });
           cAboutForm.ShowDialog();
         }
       }

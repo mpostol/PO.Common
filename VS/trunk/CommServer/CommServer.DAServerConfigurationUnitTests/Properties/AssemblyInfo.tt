@@ -1,9 +1,9 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ output extension=".cs" #>
 //<summary>
-//  Title   : Assembly info for: <#=m_AssemblyTitle#>
+//  Title   : Assembly info for: <#=CASCommServerDAServerConfigurationProduct#>
 //  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: 2014-10-17 23:06:15 +0200 (Pt, 17 paź 2014) $
+//  $LastChangedDate: $
 //  $Rev:  $
 //  $LastChangedBy:  $
 //  $URL:  $
@@ -18,8 +18,8 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("<#=m_AssemblyTitle#>")]
-[assembly: AssemblyDescription("Unit Tests for CAS CommServer Family Common Communication Functionality")]
+[assembly: AssemblyTitle("CAS.CommServer.DAServerConfigurationUnitTests")]
+[assembly: AssemblyDescription("CAS CommServer DA Server Configuration Unit Tests")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("<#=AssemblyCompany#>")]
 [assembly: AssemblyProduct("<#=AssemblyProduct#>")]
@@ -27,11 +27,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("<#=AssemblyTrademark#>")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
-[assembly: Guid("d7e134e8-6bd7-4250-9722-1991ce44cd3d")]
+[assembly: Guid("35ca4ea5-b285-43a0-a5a7-bd69401b0a28")]
 [assembly: AssemblyVersion("<#= CASCommServerVersion #>.*")]
 [assembly: AssemblyFileVersion("<#= CASCommServerVersion #>")]
 
 <#@ include file = "..\..\PR39-CommonResources\T4Definitions\CAS.OPC.t4" #>
-<#+
-string m_AssemblyTitle = "CAS.CommServer.CommonBus.UnitTests";
-#>
+
