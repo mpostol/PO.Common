@@ -29,10 +29,10 @@
     </dependencies>
   </metadata>
   <files>
-        <file src="..\DemoConfiguration.oses" target="content\DemoConfiguration.oses" />
-        <file src="..\bin\Release\CAS.CommServer.DAClientConfiguration.dll" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll" />
-        <file src="..\bin\Release\CAS.CommServer.DAClientConfiguration.dll.config" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll.config" />
-        <file src="..\bin\Release\CAS.CommServer.DAClientConfiguration.XML" target="lib\net451\CAS.CommServer.DAClientConfiguration.XML" />
+        <file src="DemoConfiguration.oses" target="content\DemoConfiguration.oses" />
+        <file src="bin\Release\CAS.CommServer.DAClientConfiguration.dll" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll" />
+        <file src="bin\Release\CAS.CommServer.DAClientConfiguration.dll.config" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll.config" />
+        <file src="bin\Release\CAS.CommServer.DAClientConfiguration.XML" target="lib\net451\CAS.CommServer.DAClientConfiguration.XML" />
   </files>
 </package>
 
