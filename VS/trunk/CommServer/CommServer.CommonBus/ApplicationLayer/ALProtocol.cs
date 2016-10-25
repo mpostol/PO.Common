@@ -28,8 +28,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
   public abstract class ALProtocol<T_ALMessage> where T_ALMessage: ProtocolALMessage
   {
     #region private
-    private void InitObject
-      ( ICommunicationLayer cCommLayer, ProtocolParameters cProtParameters, IProtocolParent cStatistic )
+    private void InitObject( ICommunicationLayer cCommLayer, ProtocolParameters cProtParameters, IProtocolParent cStatistic )
     {
       this.myCommLayer = cCommLayer;
       this.myProtParameters = cProtParameters;

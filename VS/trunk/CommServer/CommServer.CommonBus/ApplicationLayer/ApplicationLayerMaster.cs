@@ -20,6 +20,7 @@
 using CAS.Lib.CommonBus.CommunicationLayer.Generic;
 using CAS.Lib.RTLib.Management;
 using CAS.Lib.RTLib.Processes;
+using System.Diagnostics;
 
 namespace CAS.Lib.CommonBus.ApplicationLayer
 {
@@ -27,8 +28,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
   /// Base implementation of IapplicationLayerMaster interface.
   /// </summary>
   /// <typeparam name="T_ALMessage">The type of the message that is used in communication through this protocol.</typeparam>
-  public abstract class ApplicationLayerMaster<T_ALMessage>
-    : ApplicationLayerCommon, IApplicationLayerMaster where T_ALMessage: ProtocolALMessage
+  public abstract class ApplicationLayerMaster<T_ALMessage> : ApplicationLayerCommon, IApplicationLayerMaster where T_ALMessage : ProtocolALMessage
   {
     #region private
     private SesDBufferPool<T_ALMessage> m_Pool;
@@ -43,16 +43,16 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// <param name="cRetries"></param>
     /// <returns>
     ///   ALRes_Success: Operation accomplished successfully 
-    ///   ALRes_DatTransferErrr: Data transfer is imposible because of a communication error – loss of 
+    ///   ALRes_DatTransferErrr: Data transfer is impossible because of a communication error – loss of 
     ///      communication with a station
     ///   ALRes_DisInd: Disconnect indication – connection has been shut down remotely or lost because of 
     ///      communication error. Data is unavailable
     /// </returns>
-    private AL_ReadData_Result TxGetResponse( T_ALMessage cTxmsg, byte cRetries )
+    private AL_ReadData_Result TxGetResponse(T_ALMessage cTxmsg, byte cRetries)
     {
       T_ALMessage rxmsg;
-      AL_ReadData_Result res = TxGetResponse( cTxmsg, out rxmsg, cRetries );
-      if ( rxmsg != null )
+      AL_ReadData_Result res = TxGetResponse(cTxmsg, out rxmsg, cRetries);
+      if (rxmsg != null)
         rxmsg.ReturnEmptyEnvelope();
       return res;
     }
@@ -68,27 +68,27 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// <param name="cRetries">Number of retries to get frame from remote unit.</param>
     /// <returns>
     ///   ALRes_Success: Operation accomplished successfully 
-    ///   ALRes_DatTransferErrr: Data transfer is imposible because of a communication error – loss of 
+    ///   ALRes_DatTransferErrr: Data transfer is impossible because of a communication error – loss of 
     ///      communication with a station
     ///   ALRes_DisInd: Disconnect indication – connection has been shut down remotely or lost because of 
     ///      communication error. Data is unavailable
     /// </returns>
-    private AL_ReadData_Result TxGetResponse( T_ALMessage Txmsg, out T_ALMessage Rxmsg, byte cRetries )
+    private AL_ReadData_Result TxGetResponse(T_ALMessage Txmsg, out T_ALMessage Rxmsg, byte cRetries)
     {
       Rxmsg = null;
       TGRState currState = TGRState.TxReq;
-      if ( Txmsg == null )
+      if (Txmsg == null)
       {
-        TraceEvent.Tracer.TraceInformation( 81, "ApplicationLayerMaster.TxGetResponse", "Transmitted message cannot be null." );
+        AssemblyTraceEvent.Tracer.TraceEvent(TraceEventType.Information, 83, "ApplicationLayerMaster.TxGetResponse - Transmitted message cannot be null.");
         return AL_ReadData_Result.ALRes_DatTransferErrr;
       }
-      while ( true )
+      while (true)
       {
-        switch ( currState )
+        switch (currState)
         {
           case TGRState.TxReq:
-            Timer.WaitTimeout( m_protocol.GetProtocolParameters.InterframeGapSpan, InterfrarmeStopwatch );
-            switch ( m_protocol.TransmitMessage( Txmsg ) )
+            Timer.WaitTimeout(m_protocol.GetProtocolParameters.InterframeGapSpan, InterfrarmeStopwatch);
+            switch (m_protocol.TransmitMessage(Txmsg))
             {
               case AL_ReadData_Result.ALRes_Success:
                 currState = TGRState.RxRes;
@@ -100,21 +100,21 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
             }
             break;
           case TGRState.RxRes:
-            if ( Txmsg == null )
+            if (Txmsg == null)
             {
-              TraceEvent.Tracer.TraceInformation( 104, "ApplicationLayerMaster.TxGetResponse", "Before: m_protocol.GetMessage( out Rxmsg, Txmsg ): Transmitted message cannot be null." );
+              AssemblyTraceEvent.Tracer.TraceEvent( TraceEventType.Information, 105, "ApplicationLayerMaster.TxGetResponse - Before: m_protocol.GetMessage( out Rxmsg, Txmsg ): Transmitted message cannot be null.");
               return AL_ReadData_Result.ALRes_DatTransferErrr;
             }
-            AL_ReadData_Result res = m_protocol.GetMessage( out Rxmsg, Txmsg );
+            AL_ReadData_Result res = m_protocol.GetMessage(out Rxmsg, Txmsg);
             InterfrarmeStopwatch.Reset();
             InterfrarmeStopwatch.Start();
-            switch ( res )
+            switch (res)
             {
               case AL_ReadData_Result.ALRes_Success:
                 InterfrarmeStopwatch.Reset();
                 InterfrarmeStopwatch.Start();
-                ProtocolALMessage.CheckResponseResult lastCheckResult = Rxmsg.CheckResponseFrame( Txmsg );
-                switch ( lastCheckResult )
+                ProtocolALMessage.CheckResponseResult lastCheckResult = Rxmsg.CheckResponseFrame(Txmsg);
+                switch (lastCheckResult)
                 {
                   case ProtocolALMessage.CheckResponseResult.CR_OK:
                     m_Statistic.IncStRxFrameCounter();
@@ -135,16 +135,16 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
                     m_Statistic.IncStRxNAKCounter();
                     break;
                 }
-                if ( !( (IEnvelope)Rxmsg ).InPool )
+                if (!((IEnvelope)Rxmsg).InPool)
                   Rxmsg.ReturnEmptyEnvelope();
                 Rxmsg = null;
                 currState = TGRState.Retray;
                 break;
-                //return AL_ReadData_Result.ALRes_DatTransferErrr;
+              //return AL_ReadData_Result.ALRes_DatTransferErrr;
               case AL_ReadData_Result.ALRes_DisInd:
-                if ( Rxmsg != null  )
+                if (Rxmsg != null)
                 {
-                  if ( !( (IEnvelope)Rxmsg ).InPool )
+                  if (!((IEnvelope)Rxmsg).InPool)
                     Rxmsg.ReturnEmptyEnvelope();
                   Rxmsg = null;
                 }
@@ -155,13 +155,13 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
             }
             break;
           case TGRState.Retray:
-            if ( Rxmsg != null )
+            if (Rxmsg != null)
             {
-              if ( !( (IEnvelope)Rxmsg ).InPool )
+              if (!((IEnvelope)Rxmsg).InPool)
                 Rxmsg.ReturnEmptyEnvelope();
               Rxmsg = null;
             }
-            if ( cRetries == 0 )
+            if (cRetries == 0)
             {
               return AL_ReadData_Result.ALRes_DatTransferErrr;
             }
@@ -189,28 +189,28 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     ///      communication error. Data is unavailable
     /// </returns>
     AL_ReadData_Result IApplicationLayerMaster.ReadData
-      ( IBlockDescription block, int station, out IReadValue data, byte retries )
+      (IBlockDescription block, int station, out IReadValue data, byte retries)
     {
       data = null;
-      if ( !m_protocol.GetICommunicationLayer.Connected )
+      if (!m_protocol.GetICommunicationLayer.Connected)
         return AL_ReadData_Result.ALRes_DisInd;
       T_ALMessage request = m_Pool.GetEmptyISesDBuffer();
-      T_ALMessage response; 
-      request.PrepareRequest( station, block );
-      AL_ReadData_Result res = TxGetResponse( request, out response, retries );
-      if ( res == AL_ReadData_Result.ALRes_Success )
+      T_ALMessage response;
+      request.PrepareRequest(station, block);
+      AL_ReadData_Result res = TxGetResponse(request, out response, retries);
+      if (res == AL_ReadData_Result.ALRes_Success)
       {
-        response.SetBlockDescription( station, block );
+        response.SetBlockDescription(station, block);
         data = (IReadValue)response;
       }
       else
-        if (  response!= null && !( (IEnvelope)response ).InPool)
-        {
-          EventLogMonitor.WriteToEventLogInfo( "TxGetResponse has failed and  response != null  && !( (IEnvelope)response ).InPool", 195 );
-          response.ReturnEmptyEnvelope();
-        }
+        if (response != null && !((IEnvelope)response).InPool)
+      {
+        EventLogMonitor.WriteToEventLogInfo("TxGetResponse has failed and  response != null  && !( (IEnvelope)response ).InPool", 195);
+        response.ReturnEmptyEnvelope();
+      }
       request.ReturnEmptyEnvelope();
-      m_protocol.GetIProtocolParent.RxDataBlock( res == AL_ReadData_Result.ALRes_Success );
+      m_protocol.GetIProtocolParent.RxDataBlock(res == AL_ReadData_Result.ALRes_Success);
       return res;
     }
     /// <summary>
@@ -222,10 +222,10 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// </param>
     /// <returns>A buffer ready to be filled up with the data and write down to the destination – remote station.
     /// </returns>
-    IWriteValue IApplicationLayerMaster.GetEmptyWriteDataBuffor( IBlockDescription block, int station )
+    IWriteValue IApplicationLayerMaster.GetEmptyWriteDataBuffor(IBlockDescription block, int station)
     {
       T_ALMessage frame = m_Pool.GetEmptyISesDBuffer();
-      frame.PrepareReqWriteValue( block, station );
+      frame.PrepareReqWriteValue(block, station);
       return frame;
     }
     /// <summary>
@@ -242,14 +242,14 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     ///   ALRes_DisInd: Disconnect indication – connection has been shut down remotely or lost because of 
     ///      communication error. Data is unavailable
     /// </returns>
-    AL_ReadData_Result IApplicationLayerMaster.WriteData( ref IWriteValue data, byte retries )
+    AL_ReadData_Result IApplicationLayerMaster.WriteData(ref IWriteValue data, byte retries)
     {
-      if ( !m_protocol.GetICommunicationLayer.Connected )
+      if (!m_protocol.GetICommunicationLayer.Connected)
         return AL_ReadData_Result.ALRes_DisInd;
-      AL_ReadData_Result response = TxGetResponse( (T_ALMessage)data, retries );
+      AL_ReadData_Result response = TxGetResponse((T_ALMessage)data, retries);
       data.ReturnEmptyEnvelope();
-      data = null; 
-      m_protocol.GetIProtocolParent.TxDataBlock( response == AL_ReadData_Result.ALRes_Success );
+      data = null;
+      m_protocol.GetIProtocolParent.TxDataBlock(response == AL_ReadData_Result.ALRes_Success);
       return response;
     }
     #endregion
@@ -266,16 +266,16 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// <param name="disposing">
     /// If disposing equals true, the method has been called directly or indirectly by a user's code.
     /// </param>
-    protected override void Dispose( bool disposing )
+    protected override void Dispose(bool disposing)
     {
-      if ( disposing )
+      if (disposing)
       {
         // Release managed resources.
       }
       // Release unmanaged resources.
       // Set large fields to null.
       // Call Dispose on your base class.
-      base.Dispose( disposing );
+      base.Dispose(disposing);
     }
     #endregion
     #region creator
@@ -284,8 +284,8 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// </summary>
     /// <param name="cProtocol">Protocol to be used to transfer data.</param>
     /// <param name="cPool">Empty frames pool to be used by the protocol.</param>
-    public ApplicationLayerMaster( ALProtocol<T_ALMessage> cProtocol, SesDBufferPool<T_ALMessage> cPool )
-      : base( cProtocol.GetICommunicationLayer )
+    public ApplicationLayerMaster(ALProtocol<T_ALMessage> cProtocol, SesDBufferPool<T_ALMessage> cPool)
+      : base(cProtocol.GetICommunicationLayer)
     {
       this.m_protocol = cProtocol;
       this.m_Pool = cPool;
