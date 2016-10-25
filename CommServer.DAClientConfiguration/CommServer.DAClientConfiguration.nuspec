@@ -22,17 +22,17 @@
     <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
     <tags>OPC, CommServer, DA Client, DataPorter.</tags>
     <dependencies>
-      <dependency id="CAS.RealTime" version="5.0.2" />
-      <dependency id="CAS.CodeProtect" version="5.0.2" />
-      <dependency id="CAS.Windows.Forms" version="5.0.2" />
-      <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.106" />
+      <dependency id="CAS.CodeProtect" version="6.0.1" />
+      <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.1062"  />
+      <dependency id="CAS.RealTime" version="5.0.5"  />
+      <dependency id="CAS.Windows.Forms" version="6.0.1"  />
     </dependencies>
   </metadata>
   <files>
-        <file src="DemoConfiguration.oses" target="content\DemoConfiguration.oses" />
-        <file src="bin\Release\CAS.CommServer.DAClientConfiguration.dll" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll" />
-        <file src="bin\Release\CAS.CommServer.DAClientConfiguration.dll.config" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll.config" />
-        <file src="bin\Release\CAS.CommServer.DAClientConfiguration.XML" target="lib\net451\CAS.CommServer.DAClientConfiguration.XML" />
+    <file src="DemoConfiguration.oses" target="content\DemoConfiguration.oses" />
+    <file src="bin\Release\CAS.CommServer.DAClientConfiguration.dll" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll" />
+    <file src="bin\Release\CAS.CommServer.DAClientConfiguration.dll.config" target="lib\net451\CAS.CommServer.DAClientConfiguration.dll.config" />
+    <file src="bin\Release\CAS.CommServer.DAClientConfiguration.XML" target="lib\net451\CAS.CommServer.DAClientConfiguration.XML" />
   </files>
 </package>
 
