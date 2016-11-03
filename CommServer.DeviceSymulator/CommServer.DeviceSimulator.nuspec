@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.DeviceSimulator</id>
-    <version>5.01.05</version>
+    <version>5.01.06</version>
     <title>CommServer Device Simulator Library</title>
     <authors>CAS</authors>
     <owners>commsvr.com</owners>
