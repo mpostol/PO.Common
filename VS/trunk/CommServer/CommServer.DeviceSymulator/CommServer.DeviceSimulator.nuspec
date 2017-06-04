@@ -19,7 +19,7 @@
     <releaseNotes>
       Released for.NET 4.51 Maintenece 2016
     </releaseNotes>
-    <copyright>Copyright (c) 2000-2016 CAS LODZ POLAND</copyright>
+    <copyright>Copyright (c) 2017 CAS LODZ POLAND</copyright>
     <tags>OPCUA, CommServer, ASMD, Address Space Model Designer.</tags>
     <dependencies>
       <dependency id="CAS.CodeProtect" version="6.0.1"  />
