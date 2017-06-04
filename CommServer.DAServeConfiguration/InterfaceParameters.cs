@@ -16,7 +16,7 @@
 using System;
 using static CAS.NetworkConfigLib.ComunicationNet;
 
-namespace CAS.CommServer.ProtocolHub.Communication
+namespace CAS.NetworkConfigLib
 {
   /// <summary>
   /// Parameters of the interface
