@@ -17,7 +17,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("CAS.CommServer.DAServerConfiguration")]
-[assembly: AssemblyDescription("CAS.CommServer.DAServerConfiguration - CommServer Configuration Management")]
+[assembly: AssemblyDescription("CAS.CommServer.DAServerConfiguration - CAS.CommServer.ProtocolHub configuration")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("CAS")]
 [assembly: AssemblyProduct("CAS CommServer Family")]
