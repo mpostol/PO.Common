@@ -26,7 +26,7 @@ namespace CAS.Lib.CommonBus
   /// </summary>
   public static class AssemblyTraceEvent
   {
-    private static Lazy<TraceSource> m_TraceEventInternal = new Lazy<TraceSource>(() => new TraceSource(Assembly.GetCallingAssembly().GetName().Name) );
+    private static Lazy<TraceSource> m_TraceEventInternal = new Lazy<TraceSource>(() => new TraceSource(Assembly.GetExecutingAssembly().GetName().Name) );
     /// <summary>
     /// Gets the tracer.
     /// </summary>

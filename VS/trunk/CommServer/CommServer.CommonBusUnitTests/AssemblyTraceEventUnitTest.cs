@@ -21,6 +21,7 @@ namespace CAS.CommServer.CommonBus.UnitTests
     {
       TraceSource _tracer = AssemblyTraceEvent.Tracer;
       Assert.IsNotNull(_tracer);
+      Assert.AreEqual<string>("CAS.CommServer.CommonBus", _tracer.Name, $"Actual tracer name: {_tracer.Name}");
       Assert.AreEqual(1, _tracer.Listeners.Count);
       Dictionary<string, TraceListener> _listeners = _tracer.Listeners.Cast<TraceListener>().ToDictionary<TraceListener, string>(x => x.Name);
       Assert.IsTrue(_listeners.ContainsKey("LogFile"));
