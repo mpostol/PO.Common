@@ -23,11 +23,11 @@ namespace CAS.NetworkConfigLib
   /// </summary>
   public struct InterfaceParameters
   {
-    internal readonly TimeSpan InactivityTime;
-    internal readonly TimeSpan InactivityAfterFailureTime;
-    internal string Name;
-    internal ushort Address;
-    internal byte InterfaceNumber;
+    public readonly TimeSpan InactivityTime;
+    public readonly TimeSpan InactivityAfterFailureTime;
+    public string Name;
+    public ushort Address;
+    public byte InterfaceNumber;
     /// <summary>
     /// Gets the interface number max value.
     /// </summary>
