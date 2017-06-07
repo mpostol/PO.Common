@@ -23,10 +23,25 @@ namespace CAS.NetworkConfigLib
   /// </summary>
   public struct InterfaceParameters
   {
+    /// <summary>
+    /// The inactivity time - after this time the segment will be disconnected 
+    /// </summary>
     public readonly TimeSpan InactivityTime;
+    /// <summary>
+    /// The inactivity after failure time.
+    /// </summary>
     public readonly TimeSpan InactivityAfterFailureTime;
+    /// <summary>
+    /// The name
+    /// </summary>
     public string Name;
+    /// <summary>
+    /// The address - addres represented by <see cref="ushort"/> if aplicable
+    /// </summary>
     public ushort Address;
+    /// <summary>
+    /// The interface number
+    /// </summary>
     public byte InterfaceNumber;
     /// <summary>
     /// Gets the interface number max value.
