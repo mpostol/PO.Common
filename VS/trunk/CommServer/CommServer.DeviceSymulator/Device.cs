@@ -37,6 +37,7 @@ namespace CAS.Lib.DeviceSimulator
   [Serializable]
   public struct ItemDsc
   {
+
     /// <summary>
     /// Item identifier
     /// </summary>
@@ -231,7 +232,7 @@ namespace CAS.Lib.DeviceSimulator
       }
     }//getAddressSpace
     #endregion
-    
+
     #region IDeviceIndexed
     /// <summary>
     /// Returns all available properties for the specified item.
@@ -295,28 +296,15 @@ namespace CAS.Lib.DeviceSimulator
     }
     #endregion IDeviceIndexed
 
-    #region protected members
-    //    /// <summary>
-    //    /// Removes the address space for the device to the cache.
-    //    /// </summary>
-    //    private void ClearAddressSpace(Cache cache)
-    //    {
-    //      lock (this)
-    //      {
-    //        foreach (DeviceItem item in m_items.Values)
-    //        {
-    //          cache.RemoveItemAndLink(item.ItemID);
-    //        }
-    //      }
-    //    }
+    #region public
     /// <summary>
-    /// class that represent TAG in Device
+    /// class that represent TAG in Device - 
     /// </summary>
     [Serializable]
     public abstract class TagInDevice : DeviceItem
     {
       /// <summary>
-      /// Initializes the object from a data value.
+      /// Initializes the object from a data value. It creates new TAG in the device address space.
       /// </summary>
       /// <param name="itemID">Item identifier</param>
       public TagInDevice(string itemID)
@@ -325,16 +313,15 @@ namespace CAS.Lib.DeviceSimulator
         Add(itemID, this);
       }
       /// <summary>
-      /// Initializes the object from a data value.
+      /// Initializes the object from a data value. It creates new TAG in the device address space.
       /// </summary>
       /// <param name="itemID">Item identifier</param>
       /// <param name="value">Current value</param>
       /// <param name="InitialQuality">Initial quality</param>
       /// <param name="AccessRights">Initial access rights</param>
       /// <param name="tagCanonicalType">Canonical Type for the tag</param>
-      public TagInDevice(string itemID, object value, Opc.Da.qualityBits InitialQuality, ItemAccessRights AccessRights, System.Type tagCanonicalType)
-        : base
-          (itemID, value, InitialQuality, AccessRights, tagCanonicalType)
+      public TagInDevice(string itemID, object value, qualityBits InitialQuality, ItemAccessRights AccessRights, System.Type tagCanonicalType)
+        : base(itemID, value, InitialQuality, AccessRights, tagCanonicalType)
       {
         Add(itemID, this);
       }
