@@ -20,12 +20,12 @@
 //  http://www.cas.eu
 //</summary>
 
-using System;
-using System.Collections;
 using CAS.Lib.RTLib;
 using CAS.Lib.RTLib.Utils;
 using Opc;
 using Opc.Da;
+using System;
+using System.Collections;
 
 namespace CAS.Lib.DeviceSimulator
 {
@@ -64,7 +64,7 @@ namespace CAS.Lib.DeviceSimulator
     /// <param name="InitialQuality">Initial quality</param>
     /// <param name="AccessRights">Initial access rights</param>
     /// <param name="tagCanonicalType">Tag CAnonical Type</param>
-    public DeviceItem( string itemID, object value, Opc.Da.qualityBits InitialQuality, ItemAccessRights AccessRights, System.Type tagCanonicalType )
+    public DeviceItem( string itemID, object value, qualityBits InitialQuality, ItemAccessRights AccessRights, System.Type tagCanonicalType )
     {
       m_itemID = itemID;
       if ( value != null )
@@ -76,7 +76,7 @@ namespace CAS.Lib.DeviceSimulator
       }
       else
       {
-        m_quality = new Quality( Opc.Da.qualityBits.badWaitingForInitialData );
+        m_quality = new Quality(qualityBits.badWaitingForInitialData );
         m_datatype = tagCanonicalType;
       }
       switch ( AccessRights )
