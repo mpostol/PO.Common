@@ -3,7 +3,6 @@ using CAS.Lib.DeviceSimulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Opc;
 using Opc.Da;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -19,13 +18,13 @@ namespace CAS.CommServer.DeviceSimulator.UnitTests
       {
         IDevice _iDevice = _device as IDevice;
         Assert.IsNotNull(_iDevice);
-        string[] _deviceItes = _iDevice.getAddressSpace;
-        Assert.AreEqual<int>(UnitTestAssemblyInitialize.NotSortedAddressSpace.Count, _deviceItes.Length);
+        string[] _deviceItems = _iDevice.getAddressSpace;
+        Assert.AreEqual<int>(UnitTestAssemblyInitialize.NotSortedAddressSpace.Count, _deviceItems.Length);
         CollectionAssert.AreNotEqual(UnitTestAssemblyInitialize.NotSortedAddressSpace.Select<UnitTestAssemblyInitialize.TestTagInDevice, string>(x => x.ToString()).ToArray<string>(),
-                                     _deviceItes,
-                                     $"{string.Join(",", UnitTestAssemblyInitialize.NotSortedAddressSpace)} # {string.Join(",", _deviceItes)}");
+                                     _deviceItems,
+                                     $"{string.Join(",", UnitTestAssemblyInitialize.NotSortedAddressSpace)} # {string.Join(",", _deviceItems)}");
         string[] _expected = new string[] { "TestTagInDevice6", "TestTagInDevice3", "TestTagInDevice5", "TestTagInDevice8", "TestTagInDevice1", "TestTagInDevice0", "TestTagInDevice9", "TestTagInDevice2", "TestTagInDevice7", "TestTagInDevice4" };
-        CollectionAssert.AreEqual(_expected, _deviceItes, $"{string.Join(",", UnitTestAssemblyInitialize.NotSortedAddressSpace)} # {string.Join(",", _deviceItes)}");
+        CollectionAssert.AreEqual(_expected, _deviceItems, $"{string.Join(",", UnitTestAssemblyInitialize.NotSortedAddressSpace)} # {string.Join(",", _deviceItems)}");
       }
     }
     [TestMethod]
