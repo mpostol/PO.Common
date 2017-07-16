@@ -22,12 +22,12 @@
 //  http://www.cas.eu
 //</summary>
 
+using CAS.Lib.RTLib;
+using Opc.Da;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
-using CAS.Lib.RTLib;
-using Opc.Da;
 
 namespace CAS.Lib.DeviceSimulator
 {
@@ -92,25 +92,6 @@ namespace CAS.Lib.DeviceSimulator
     {
       internal DeviceException(string msg) : base(msg) { }
     }
-    /// <summary>
-    /// Browse the address space of the device
-    /// </summary>
-    /// <returns>array of all created tags in the device</returns>
-    public static string[] getAddressSpaceStatic()
-    {
-      lock (m_items)
-      {
-        string[] addSpce = new string[m_items.Count];
-        short ix = 0;
-        foreach (DeviceItem elId in m_items.Values)
-          addSpce[ix++] = elId.ItemID;
-        return addSpce;
-      }
-    }//getAddressSpace
-    /// <summary>
-    /// Initializes the object with default values.
-    /// </summary>
-    public Device() { }
     #endregion
 
     #region IDisposable Members
@@ -119,7 +100,6 @@ namespace CAS.Lib.DeviceSimulator
     /// </summary>
     public void Dispose()
     {
-      //        m_disposed = true;
     }
     #endregion
 
@@ -331,7 +311,6 @@ namespace CAS.Lib.DeviceSimulator
     #region Static
 
     #region Private Members
-    //    private bool m_disposed = false;
     private static Hashtable m_items = new Hashtable();
     private static TagInDevice[] m_itemsIndexTab = new TagInDevice[ushort.MaxValue];
     private static ushort m_tagIdx = 0;
@@ -362,6 +341,22 @@ namespace CAS.Lib.DeviceSimulator
       return indexedTagInDevice;
     }
     #endregion
+
+    /// <summary>
+    /// Browse the address space of the device
+    /// </summary>
+    /// <returns>array of all created tags in the device</returns>
+    public static string[] getAddressSpaceStatic()
+    {
+      lock (m_items)
+      {
+        string[] addSpce = new string[m_items.Count];
+        short ix = 0;
+        foreach (DeviceItem elId in m_items.Values)
+          addSpce[ix++] = elId.ItemID;
+        return addSpce;
+      }
+    }//getAddressSpace
     /// <summary>
     /// Finds and returns the specified item by the ID (element name).
     /// </summary>

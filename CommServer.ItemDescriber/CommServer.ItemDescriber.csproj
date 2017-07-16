@@ -189,9 +189,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="CAS_ikona_02.ico" />
-    <Content Include="item_dsc.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="ItemDecriberDataSet.xsc">
       <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </None>
