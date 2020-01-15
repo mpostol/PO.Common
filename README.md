@@ -14,7 +14,7 @@ Id | Title
 
 ## ARchitecture
 
-![Architecture](_media\Architecture.png)
+![Architecture](_media/Architecture.png)
 
 <?--
 
