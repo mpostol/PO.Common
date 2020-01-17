@@ -7,9 +7,9 @@
 //  $URL:  $
 //  $Id:  $
 //
-//  Copyright (c) 2017 CAS LODZ POLAND
-//  +48 (42) 686 25 47
-//  techsupp@cas.eu
+//  Copyright (C) 2019, Mariusz Postol LODZ POLAND.
+//  +48 (608) 619 899
+//  mpostol@cas.eu
 //  www.cas.eu
 //</summary>
 
@@ -19,9 +19,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CAS.CommServer.DeviceSimulator.UnitTests")]
 [assembly: AssemblyDescription("Device Simulator for CommServer family Unit Tests.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CAS")]
-[assembly: AssemblyProduct("CAS CommServer Family")]
-[assembly: AssemblyCopyright("Copyright (c) 2017 CAS LODZ POLAND")]
+[assembly: AssemblyCompany("Mariusz Postol")]
+[assembly: AssemblyProduct("Object Oriented Internet")]
+[assembly: AssemblyCopyright("Copyright (C) 2019, Mariusz Postol LODZ POLAND.")]
 [assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

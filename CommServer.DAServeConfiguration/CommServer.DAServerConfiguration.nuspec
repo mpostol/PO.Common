@@ -4,8 +4,8 @@
     <id>CAS.CommServer.DAServerConfiguration</id>
     <version>5.02.02</version>
     <title>CAS.CommServer.DAServerConfiguration - CAS.CommServer.ProtocolHub configuration</title>
-    <authors>CAS</authors>
-    <owners>commsvr.com</owners>
+    <authors>Mariusz Postol</authors>
+    <owners>Mariusz Postol</owners>
     <projectUrl>http://www.commsvr.com/Download/CAS.CommServer.DA.Server.Configuration/</projectUrl>
     <licenseUrl>http://www.cas.internetdsl.pl/commserver/P_DowloadCenter/Lic-09000401EN_License_Agreement.pdf</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -20,7 +20,7 @@
     <releaseNotes>
       Added CAS.NetworkConfigLib.InterfaceParameters - moved form CommServer.Communication.
     </releaseNotes>
-    <copyright>Copyright (c) 2017 CAS LODZ POLAND</copyright>
+    <copyright>Copyright (C) 2019, Mariusz Postol LODZ POLAND.</copyright>
     <tags>OPC, CommServer, ProtocolHub.</tags>
     <dependencies>
       <dependency id="CAS.CodeProtect" version="6.0.1" />

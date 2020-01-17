@@ -1,15 +1,15 @@
 ﻿//<summary>
 //  Title   : Assembly info for: CAS.RealTime
 //  System  : Microsoft Visual C# .NET
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+//  $LastChangedDate: $
+//  $Rev:  $
+//  $LastChangedBy:  $
+//  $URL:  $
+//  $Id:  $
 //
-//  Copyright (c) 2017 CAS LODZ POLAND
-//  +48 (42) 686 25 47
-//  techsupp@cas.eu
+//  Copyright (C) 2019, Mariusz Postol LODZ POLAND.
+//  +48 (608) 619 899
+//  mpostol@cas.eu
 //  www.cas.eu
 //</summary>
 
@@ -20,9 +20,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CAS.CommServer.DAClientConfiguration")]
 [assembly: AssemblyDescription("OPC Classic Client Configuration Library")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CAS")]
+[assembly: AssemblyCompany("Mariusz Postol")]
 [assembly: AssemblyProduct("CAS Framework Core")]
-[assembly: AssemblyCopyright("Copyright (c) 2017 CAS LODZ POLAND")]
+[assembly: AssemblyCopyright("Copyright (C) 2019, Mariusz Postol LODZ POLAND.")]
 [assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]

@@ -1,15 +1,15 @@
 ﻿//_______________________________________________________________
 //  Title   :  Assembly info for: CAS.CommServer.DA.ItemDescriberEditor
 //  System  : Microsoft VisualStudio 2015 / C#
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+//  $LastChangedDate:  $
+//  $Rev:  $
+//  $LastChangedBy: $
+//  $URL:  $
+//  $Id:  $
 //
-//  Copyright (c) 2017 CAS LODZ POLAND
-//  +48 (42) 686 25 47
-//  techsupp@cas.eu
+//  Copyright (C) 2019, Mariusz Postol LODZ POLAND.
+//  +48 (608) 619 899
+//  mpostol@cas.eu
 //  www.cas.eu
 //_______________________________________________________________
 
@@ -20,9 +20,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("CAS.CommServer.DA.ItemDescriberEditor")]
 [assembly: AssemblyDescription("Item Describer Editor")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("CAS")]
+[assembly: AssemblyCompany("Mariusz Postol")]
 [assembly: AssemblyProduct("CAS CommServer Family")]
-[assembly: AssemblyCopyright("Copyright (c) 2017 CAS LODZ POLAND")]
+[assembly: AssemblyCopyright("Copyright (C) 2019, Mariusz Postol LODZ POLAND.")]
 [assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
 [assembly: Guid("d5ab197f-7133-4bd0-a6db-f9375db33aca")]
