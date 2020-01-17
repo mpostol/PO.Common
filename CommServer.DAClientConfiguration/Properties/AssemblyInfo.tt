@@ -1,19 +1,12 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ output extension=".cs" #>
-//<summary>
-//  Title   : Assembly info for: <#=CASRealTimeName#>
-//  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: $
-//  $Rev:  $
-//  $LastChangedBy:  $
-//  $URL:  $
-//  $Id:  $
+//___________________________________________________________________________________
 //
-//  <#=AssemblyCopyright#>
-//  <#=Phone#>
-//  <#=Email#>
-//  <#=Url#>
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
+
 
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -23,7 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("<#=CASCommServerDAClientConfigurationTitle#>")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("<#=AssemblyCompany#>")]
-[assembly: AssemblyProduct("<#=CoreProductName#>")]
+[assembly: AssemblyProduct("<#=DefaultProductName#>")]
 [assembly: AssemblyCopyright("<#=AssemblyCopyright#>")]
 [assembly: AssemblyTrademark("<#=AssemblyTrademark#>")]
 [assembly: AssemblyCulture("")]

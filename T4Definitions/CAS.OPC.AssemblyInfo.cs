@@ -7,7 +7,7 @@
 //  $URL:  $
 //  $Id:  $
 //
-//  Copyright (C) 2019, Mariusz Postol LODZ POLAND.
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
 //  +48 (608) 619 899
 //  mpostol@cas.eu
 //  www.cas.eu
@@ -18,12 +18,12 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("<Define Assembly Title>")]
-[assembly: AssemblyDescription("CAS CommServer Family: <Define Assembly Title>")]
+[assembly: AssemblyDescription("Process-Observer: <Define Assembly Title>")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mariusz Postol")]
-[assembly: AssemblyProduct("CAS CommServer Family")]
-[assembly: AssemblyCopyright("Copyright (C) 2019, Mariusz Postol LODZ POLAND.")]
-[assembly: AssemblyTrademark("CommServer")]
+[assembly: AssemblyProduct("Process-Observer")]
+[assembly: AssemblyCopyright("Copyright (C) 2020, Mariusz Postol LODZ POLAND.")]
+[assembly: AssemblyTrademark("ProcessObserver")]
 [assembly: AssemblyCulture("")]
 [assembly: Guid("<GUID>")]
 [assembly: ComVisible(false)]

@@ -1,17 +1,11 @@
 ﻿//<summary>
-//  Title   : Assembly info for: CAS.RealTime
-//  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: $
-//  $Rev:  $
-//  $LastChangedBy:  $
-//  $URL:  $
-//  $Id:  $
+//___________________________________________________________________________________
 //
-//  Copyright (C) 2019, Mariusz Postol LODZ POLAND.
-//  +48 (608) 619 899
-//  mpostol@cas.eu
-//  www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
+
 
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -20,8 +14,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("OPC Classic Client Configuration Library Unit Tests")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mariusz Postol")]
-[assembly: AssemblyProduct("CAS Framework Core")]
-[assembly: AssemblyCopyright("Copyright (C) 2019, Mariusz Postol LODZ POLAND.")]
+[assembly: AssemblyProduct("Process-Observer")]
+[assembly: AssemblyCopyright("Copyright (C) 2020, Mariusz Postol LODZ POLAND.")]
 [assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
