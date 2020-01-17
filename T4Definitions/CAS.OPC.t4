@@ -13,7 +13,7 @@ string DefaultProductTrademark = "ProcessObserver";
 string DefaultProductVersion = "1.00.00";
 
 //CommServer
-string AssemblyProduct = "Object Oriented Internet";
+string AssemblyProduct = "Object-Oriented Internet";
 string AssemblyTrademark = "CommServer";
 
 //CAS.CommServer - common part of all CommServers products.
