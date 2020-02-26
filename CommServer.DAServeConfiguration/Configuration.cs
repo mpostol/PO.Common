@@ -1,40 +1,30 @@
-﻿//<summary>
-//  Title   : Configuration For Commserver 
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//  20081006 mzbrzezny: implementation of ItemAccessRights and StateTrigger
-//    20080905: mzbrzezny: NewInterfacesRow function do not assign port interface number 
-//    2007 mpostol - created
+﻿//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using System;
-using Opc.Da;
 using CAS.Lib.RTLib;
+using Opc.Da;
 
 namespace CAS.NetworkConfigLib
 {
   /// <summary>
   /// DataSet representing CommServer network configuration data
   /// </summary>
-  partial class ComunicationNet
+  public partial class ComunicationNet
   {
+
     #region private
     private static char m_IdentSep = '/';
     #endregion
+
+    #region public API
     ///<summary>
     /// Custom helpers for <see cref="SegmentsDataTable"/> DataTable
     ///</summary>
-    partial class SegmentsDataTable
+    public partial class SegmentsDataTable
     {
       /// <summary>
       /// Creates new <see cref="SegmentsRow"/> row and assigns default values
@@ -44,8 +34,8 @@ namespace CAS.NetworkConfigLib
       /// <returns>New <see cref="SegmentsRow"/></returns>
       public SegmentsRow NewSegmentsRow(long pProtocolID, string pPrefix)
       {
-        SegmentsRow sg = this.NewSegmentsRow();
-        sg.Name = String.Format("{1}{2}Segment{0}", sg.SegmentID.ToString(), pPrefix, m_IdentSep);
+        SegmentsRow sg = NewSegmentsRow();
+        sg.Name = string.Format("{1}{2}Segment{0}", sg.SegmentID.ToString(), pPrefix, m_IdentSep);
         sg.ProtocolID = pProtocolID;
         return sg;
       }
@@ -58,7 +48,7 @@ namespace CAS.NetworkConfigLib
       /// <returns>New <see cref="SegmentsRow"/>A shallow copy of the current rowToPaste</returns>
       public void NewSegmentsRow(long pProtocolID, SegmentsRow pRowToBeCopied, string pPrefix)
       {
-        SegmentsRow sg = this.NewSegmentsRow(pProtocolID, pPrefix);
+        SegmentsRow sg = NewSegmentsRow(pProtocolID, pPrefix);
         sg.Address = pRowToBeCopied.Address;
         sg.TimeScan = pRowToBeCopied.TimeScan;
         sg.KeepConnect = pRowToBeCopied.KeepConnect;
@@ -66,14 +56,14 @@ namespace CAS.NetworkConfigLib
         sg.timeKeepConn = pRowToBeCopied.timeKeepConn;
         sg.TimeReconnect = pRowToBeCopied.TimeReconnect;
         sg.TimeIdleKeepConn = pRowToBeCopied.TimeIdleKeepConn;
-        this.AddSegmentsRow(sg);
+        AddSegmentsRow(sg);
         return;
       }
     }
     ///<summary>
     /// Custom helpers for <see cref="TagBitDataTable"/> DataTable
     ///</summary>
-    partial class TagBitDataTable
+    public partial class TagBitDataTable
     {
       /// <summary>
       /// Creates new tag bit row and assigns default values
@@ -83,10 +73,10 @@ namespace CAS.NetworkConfigLib
       /// <returns>New <see cref="TagBitRow"/></returns>
       public TagBitRow NewTagBitRow(TagsRow cParent, string pPrefix)
       {
-        TagBitRow dr = this.NewTagBitRow();
+        TagBitRow dr = NewTagBitRow();
         dr.TagID = cParent.TagID;
         short idx = (short)cParent.GetTagBitRows().Length;
-        dr.Name = String.Format("{0}{1}NewTagBit{2}", pPrefix, m_IdentSep, idx);
+        dr.Name = string.Format("{0}{1}NewTagBit{2}", pPrefix, m_IdentSep, idx);
         dr.BitNumber = idx;
         return dr;
       }
@@ -102,7 +92,7 @@ namespace CAS.NetworkConfigLib
         dr.Name = pRowToBeCopied.Name;
         dr.BitNumber = pRowToBeCopied.BitNumber;
         dr.TagID = cParent.TagID;
-        this.AddTagBitRow(dr);
+        AddTagBitRow(dr);
         return;
       }
       /// <summary>
@@ -114,13 +104,13 @@ namespace CAS.NetworkConfigLib
       public bool Contain(long pTagID, string pName)
       {
         object[] indx = new object[] { pTagID, pName };
-        return this.Rows.Find(indx) != null;
+        return Rows.Find(indx) != null;
       }
     }
     /// <summary>
     /// Data Table of Groups
     /// </summary>
-    partial class GroupsDataTable
+    public partial class GroupsDataTable
     {
       /// <summary>
       /// Creates new group row and assigns default values: GroupID, StationID, Name
@@ -130,9 +120,9 @@ namespace CAS.NetworkConfigLib
       /// <returns>New <see cref="GroupsRow"/></returns>
       public GroupsRow NewGroupsRow(long stationID, string pPrefix)
       {
-        GroupsRow gr = this.NewGroupsRow();
+        GroupsRow gr = NewGroupsRow();
         gr.StationID = stationID;
-        gr.Name = String.Format("{1}{2}Group{0}", gr.GroupID, pPrefix, m_IdentSep);
+        gr.Name = string.Format("{1}{2}Group{0}", gr.GroupID, pPrefix, m_IdentSep);
         return gr;
       }
       /// <summary>
@@ -149,11 +139,11 @@ namespace CAS.NetworkConfigLib
         dr.TimeOut = pRowToBeCopied.TimeOut;
         dr.TimeScanFast = pRowToBeCopied.TimeScanFast;
         dr.TimeOutFast = pRowToBeCopied.TimeOutFast;
-        this.AddGroupsRow(dr);
+        AddGroupsRow(dr);
         if (!pShallowCopy)
         {
           foreach (DataBlocksRow br in pRowToBeCopied.GetDataBlocksRows())
-            ((ComunicationNet)this.DataSet).DataBlocks.NewDataBlocksRow(dr.GroupID, br, false, dr.Name);
+            ((ComunicationNet)DataSet).DataBlocks.NewDataBlocksRow(dr.GroupID, br, false, dr.Name);
         }
         return;
       }
@@ -173,7 +163,7 @@ namespace CAS.NetworkConfigLib
     /// <summary>
     /// Data Table od Stations
     /// </summary>
-    partial class StationDataTable
+    public partial class StationDataTable
     {
       /// <summary>
       /// Creates new station row and assigns default StationID and Name
@@ -186,9 +176,9 @@ namespace CAS.NetworkConfigLib
         //foreach ( StationRow st in this )
         //  id = Math.Max( id, st.StationID );
         //id++;
-        StationRow cr = this.NewStationRow();
+        StationRow cr = NewStationRow();
         //cr.StationID = id;
-        cr.Name = String.Format("{0}{2}Station{1}", pPrefix, cr.StationID.ToString(), m_IdentSep);
+        cr.Name = string.Format("{0}{2}Station{1}", pPrefix, cr.StationID.ToString(), m_IdentSep);
         return cr;
       }
       /// <summary>
@@ -200,17 +190,17 @@ namespace CAS.NetworkConfigLib
       public void NewStationRow(StationRow pRowToBeCopied, bool pShallowCopy, string pPrefix)
       {
         StationRow rw = NewStationRow(pPrefix);
-        this.AddStationRow(rw);
+        AddStationRow(rw);
         if (!pShallowCopy)
           foreach (GroupsRow gr in pRowToBeCopied.GetGroupsRows())
-            ((ComunicationNet)this.DataSet).Groups.NewGroupsRow(rw.StationID, gr, false, rw.Name);
+            ((ComunicationNet)DataSet).Groups.NewGroupsRow(rw.StationID, gr, false, rw.Name);
         return;
       }
     }
     /// <summary>
     /// Data Table of Bloclks
     /// </summary>
-    partial class DataBlocksDataTable
+    public partial class DataBlocksDataTable
     {
       /// <summary>
       /// Creates new data block row and assigns default values
@@ -222,8 +212,8 @@ namespace CAS.NetworkConfigLib
       /// <returns>New <see cref="DataBlocksRow"/></returns>
       public DataBlocksRow NewDataBlocksRow(long groupID, string pPrefix, ulong DataType, ulong Address)
       {
-        DataBlocksRow dr = this.NewDataBlocksRow();
-        dr.Name = String.Format("{1}{2}Block{0}", dr.DatBlockID.ToString(), pPrefix, m_IdentSep);
+        DataBlocksRow dr = NewDataBlocksRow();
+        dr.Name = string.Format("{1}{2}Block{0}", dr.DatBlockID.ToString(), pPrefix, m_IdentSep);
         dr.GroupID = groupID;
         dr.DataType = DataType;
         dr.Address = Address;
@@ -241,17 +231,17 @@ namespace CAS.NetworkConfigLib
       {
         DataBlocksRow dr = NewDataBlocksRow(groupID, pPrefix,
           pRowToBeCopied.DataType, pRowToBeCopied.Address);
-        this.AddDataBlocksRow(dr);
+        AddDataBlocksRow(dr);
         if (!pShallowCopy)
           foreach (TagsRow tr in pRowToBeCopied.GetTagsRows())
-            ((ComunicationNet)this.DataSet).Tags.NewTagsRow(dr.DatBlockID, tr, false, dr.Name);
+            ((ComunicationNet)DataSet).Tags.NewTagsRow(dr.DatBlockID, tr, false, dr.Name);
         return;
       }
     }
     /// <summary>
     /// Data Table of Tags
     /// </summary>
-    partial class TagsDataTable
+    public partial class TagsDataTable
     {
       /// <summary>
       /// Creates new tags row and assigns default values
@@ -261,8 +251,8 @@ namespace CAS.NetworkConfigLib
       /// <returns>New <see cref="TagsRow"/></returns>
       public TagsRow NewTagsRow(int pDatBlockID, string pPrefix)
       {
-        TagsRow tr = this.NewTagsRow();
-        tr.Name = String.Format("{1}{2}Tag{0}", tr.TagID.ToString(), pPrefix, m_IdentSep);
+        TagsRow tr = NewTagsRow();
+        tr.Name = string.Format("{1}{2}Tag{0}", tr.TagID.ToString(), pPrefix, m_IdentSep);
         tr.DatBlockID = pDatBlockID;
         tr.AccessRights = (sbyte)ItemAccessRights.ReadWrite;
         tr.StateTrigger = (sbyte)StateTrigger.None;
@@ -286,15 +276,15 @@ namespace CAS.NetworkConfigLib
         dr.AlarmMask = pRowToBeCopied.AlarmMask;
         dr.StateMask = pRowToBeCopied.StateMask;
 
-        this.AddTagsRow(dr);
+        AddTagsRow(dr);
         //kopiowanie Properties:
         foreach (ItemPropertiesTableRow iptr in pRowToBeCopied.GetItemPropertiesTableRows())
-          ((ComunicationNet)this.DataSet).ItemPropertiesTable.NewItemPropertiesTableRow(iptr, dr.TagID);
+          ((ComunicationNet)DataSet).ItemPropertiesTable.NewItemPropertiesTableRow(iptr, dr.TagID);
 
         //kopiowanie TagBits:
         if (!pShallowCopy)
           foreach (TagBitRow tr in pRowToBeCopied.GetTagBitRows())
-            ((ComunicationNet)this.DataSet).TagBit.NewTagBitRow(dr, string.Empty);
+            ((ComunicationNet)DataSet).TagBit.NewTagBitRow(dr, string.Empty);
         return;
       }
     }
@@ -311,16 +301,16 @@ namespace CAS.NetworkConfigLib
       /// </returns>
       public override string ToString()
       {
-        return this.Name;
+        return Name;
       }
       #region item properties
       private ItemPropertiesTableRow myDataTypeConversionPropertiesRow;
       private ItemPropertiesTableRow GetDataTypeItemPropertiesTableRow()
       {
         // znajdowanie odpowiedniego wiersza w tabeli properties
-        if (this.GetItemPropertiesTableRows().Length == 0)
+        if (GetItemPropertiesTableRows().Length == 0)
           return null;
-        foreach (ItemPropertiesTableRow iptr in this.GetItemPropertiesTableRows())
+        foreach (ItemPropertiesTableRow iptr in GetItemPropertiesTableRows())
         {
           if (iptr.ID_Code == Property.DATATYPE.Code)
           {
@@ -370,14 +360,14 @@ namespace CAS.NetworkConfigLib
           {
             ItemPropertiesTableRow newiptr = GetDataTypeItemPropertiesTableRow();
             if (newiptr == null)
-              newiptr = ((ComunicationNet)this.Table.DataSet).ItemPropertiesTable.NewItemPropertiesTableRow();
-            newiptr.TagID = this.TagID;
+              newiptr = ((ComunicationNet)Table.DataSet).ItemPropertiesTable.NewItemPropertiesTableRow();
+            newiptr.TagID = TagID;
             newiptr.ID_Name_Name = Property.DATATYPE.Name.Name;
             newiptr.ID_Name_Namespace = Property.DATATYPE.Name.Namespace;
             newiptr.ID_Code = Property.DATATYPE.Code;
             newiptr.Value = value;
             if (newiptr.RowState == System.Data.DataRowState.Detached)
-              ((ComunicationNet)this.Table.DataSet).ItemPropertiesTable.AddItemPropertiesTableRow(newiptr);
+              ((ComunicationNet)Table.DataSet).ItemPropertiesTable.AddItemPropertiesTableRow(newiptr);
           }
           else
           {
@@ -390,7 +380,7 @@ namespace CAS.NetworkConfigLib
     /// <summary>
     /// Data  Table of Protocols
     /// </summary>
-    partial class ProtocolDataTable
+    public partial class ProtocolDataTable
     {
       /// <summary>
       /// Creates new protocol row in protocol data table
@@ -405,9 +395,9 @@ namespace CAS.NetworkConfigLib
       /// </remarks>
       public ProtocolRow NewProtocolRow(long channelID, string pPrefix)
       {
-        ProtocolRow protocolRow = this.NewProtocolRow();
+        ProtocolRow protocolRow = NewProtocolRow();
         protocolRow.ChannelID = channelID;
-        protocolRow.Name = String.Format("{1}{2}Protocol{0}", protocolRow.ProtocolID.ToString(), pPrefix, m_IdentSep);
+        protocolRow.Name = string.Format("{1}{2}Protocol{0}", protocolRow.ProtocolID.ToString(), pPrefix, m_IdentSep);
         return protocolRow;
       }
       /// <summary>
@@ -419,23 +409,23 @@ namespace CAS.NetworkConfigLib
       /// <param name="pPrefix">prefix for the name</param>
       public void NewProtocolRow(long channelID, ProtocolRow pRowToBeCopied, bool pShallowCopy, string pPrefix)
       {
-        ProtocolRow pr = this.NewProtocolRow(channelID, pPrefix);
+        ProtocolRow pr = NewProtocolRow(channelID, pPrefix);
         pr.ChannelID = channelID;
         if (!pRowToBeCopied.IsDPIdentifierNull())
           pr.DPIdentifier = pRowToBeCopied.DPIdentifier;
         if (!pRowToBeCopied.IsDPConfigNull())
           pr.DPConfig = pRowToBeCopied.DPConfig;
-        this.AddProtocolRow(pr);
+        AddProtocolRow(pr);
         if (!pShallowCopy)
           foreach (SegmentsRow sr in pRowToBeCopied.GetSegmentsRows())
-            ((ComunicationNet)this.DataSet).Segments.NewSegmentsRow(pr.ProtocolID, sr, pr.Name);
+            ((ComunicationNet)DataSet).Segments.NewSegmentsRow(pr.ProtocolID, sr, pr.Name);
         return;
       }
     }
     ///<summary>
     /// Data Table of Interfaces
     ///</summary>
-    partial class InterfacesDataTable
+    public partial class InterfacesDataTable
     {
       /// <summary>
       /// Creates new interface row and assigns default values
@@ -445,27 +435,27 @@ namespace CAS.NetworkConfigLib
       /// <returns>New <see cref="InterfacesRow"/></returns>
       public InterfacesRow NewInterfacesRow(long segmentID, string pPrefix)
       {
-        InterfacesRow dr = this.NewInterfacesRow();
+        InterfacesRow dr = NewInterfacesRow();
         dr.InterfaceNum = 0;
         dr.SegmentId = segmentID;
-        dr.Name = String.Format("{0}{1}Port", pPrefix, m_IdentSep);
+        dr.Name = string.Format("{0}{1}Port", pPrefix, m_IdentSep);
         return dr;
       }
     }
     /// <summary>
     /// Channels Data TAble
     /// </summary>
-    partial class ChannelsDataTable
+    public partial class ChannelsDataTable
     {
       /// <summary>
       /// creates new channel row
       /// </summary>
       /// <param name="pPrefix">prefix for the name</param>
       /// <returns>new channel row</returns>
-      public ChannelsRow NewChannelsRow(String pPrefix)
+      public ChannelsRow NewChannelsRow(string pPrefix)
       {
-        ComunicationNet.ChannelsRow cr = this.NewChannelsRow();
-        cr.Name = String.Format("{0}{2}Channel{1}", pPrefix, cr.ChannelID.ToString(), m_IdentSep);
+        ComunicationNet.ChannelsRow cr = NewChannelsRow();
+        cr.Name = string.Format("{0}{2}Channel{1}", pPrefix, cr.ChannelID.ToString(), m_IdentSep);
         return cr;
       }
       /// <summary>
@@ -474,28 +464,30 @@ namespace CAS.NetworkConfigLib
       /// <param name="pRowToBeCopied">row to be copied</param>
       /// <param name="pShallowCopy">indicate if the copy is shallow or deep</param>
       /// <param name="pPrefix">prefix for the name</param>
-      public void NewChannelsRow(ChannelsRow pRowToBeCopied, bool pShallowCopy, String pPrefix)
+      public void NewChannelsRow(ChannelsRow pRowToBeCopied, bool pShallowCopy, string pPrefix)
       {
-        ComunicationNet.ChannelsRow cr = this.NewChannelsRow(pPrefix);
-        this.AddChannelsRow(cr);
+        ComunicationNet.ChannelsRow cr = NewChannelsRow(pPrefix);
+        AddChannelsRow(cr);
         if (!pShallowCopy)
           foreach (ProtocolRow pr in pRowToBeCopied.GetProtocolRows())
-            ((ComunicationNet)this.DataSet).Protocol.NewProtocolRow(cr.ChannelID, pr, false, pPrefix);
+            ((ComunicationNet)DataSet).Protocol.NewProtocolRow(cr.ChannelID, pr, false, pPrefix);
         return;
       }
     }
-    partial class ItemPropertiesTableDataTable
+    public partial class ItemPropertiesTableDataTable
     {
       internal void NewItemPropertiesTableRow(ItemPropertiesTableRow iptr, long ParentTagID)
       {
-        ItemPropertiesTableRow newiptr = this.NewItemPropertiesTableRow();
+        ItemPropertiesTableRow newiptr = NewItemPropertiesTableRow();
         newiptr.ID_Code = iptr.ID_Code;
         newiptr.ID_Name_Name = iptr.ID_Name_Name;
         newiptr.ID_Name_Namespace = iptr.ID_Name_Namespace;
         newiptr.TagID = ParentTagID;
         newiptr.Value = iptr.Value;
-        this.AddItemPropertiesTableRow(newiptr);
+        AddItemPropertiesTableRow(newiptr);
       }
     }
+    #endregion
+
   }
 }

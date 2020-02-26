@@ -1,27 +1,11 @@
-//<summary>
-//  Title   : CommServer
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    20090910: mzbrzezny: implementation of I4UAServer
-//    20081006: mzbrzezny: implementation of ItemAccessRights
-//    20071007: mzbrzezny  - DateTimeProvider is use instead of DateTime.Now or UtcNow
-//    Maciej Zbrzezny - 12-04-2006
-//    OZNACZONO PEWNE KLASY JAKO SERIALIZOWALNE, zmieniono pewne czasy z UtcNow na Now
-//    MP - 04-07-2005 created
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006-2009, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using CAS.Lib.RTLib;
-using CAS.Lib.RTLib.Utils;
 using Opc;
 using Opc.Da;
 using System;
@@ -33,53 +17,57 @@ namespace CAS.Lib.DeviceSimulator
   /// A class representing a single data point in a simulated device. 
   /// </summary>
   [Serializable]
-  public abstract class DeviceItem: I4UAServer
+  public abstract class DeviceItem : I4UAServer
   {
-    #region Creators
+
+    #region constructors
     /// <summary>
     /// Initializes the object with the specified item id.
     /// </summary>
-    public DeviceItem( string itemID )
+    /// <param name="itemID">Item identifier</param>
+    /// <param name="UTCTime">if set to <c>true</c> the time-stamp is expressed as the Coordinated Universal Time (UTC).</param>
+    public DeviceItem(string itemID, bool UTCTime = true)
     {
-      m_itemID = itemID;
+      ItemID = itemID;
+      if (UTCTime)
+        m_getCurrentTime = () => DateTime.UtcNow;
+      else
+        m_getCurrentTime = () => DateTime.Now;
     }
     /// <summary>
     /// Initializes the object from a data value.
     /// </summary>
-    public DeviceItem( string itemID, object value )
+    /// <param name="itemID">Item identifier</param>
+    /// <param name="value">Current value</param>
+    /// <param name="UTCTime">if set to <c>true</c> the time-stamp is expressed as the Coordinated Universal Time (UTC).</param>
+    public DeviceItem(string itemID, object value, bool UTCTime = true) : this(itemID, UTCTime)
     {
-      m_itemID = itemID;
-      if ( value != null )
+      if (value != null)
       {
         m_datatype = value.GetType();
         m_value = value;
-        m_timestamp = DateTimeProvider.GetCurrentTime();
+        m_timestamp = DateTime.UtcNow;
       }
     }
     /// <summary>
     /// Initializes the object from a data value.
     /// </summary>
-    /// <param name="itemID">Item identyfier</param>
+    /// <param name="itemID">Item identifier</param>
     /// <param name="value">Current value</param>
     /// <param name="InitialQuality">Initial quality</param>
     /// <param name="AccessRights">Initial access rights</param>
     /// <param name="tagCanonicalType">Tag CAnonical Type</param>
-    public DeviceItem( string itemID, object value, qualityBits InitialQuality, ItemAccessRights AccessRights, System.Type tagCanonicalType )
+    /// <param name="UTCTime">if set to <c>true</c> the time-stamp is expressed as the Coordinated Universal Time (UTC).</param>
+    public DeviceItem(string itemID, object value, qualityBits InitialQuality, ItemAccessRights AccessRights, System.Type tagCanonicalType, bool UTCTime = true) : this(itemID, value, UTCTime)
     {
-      m_itemID = itemID;
-      if ( value != null )
-      {
-        m_datatype = value.GetType();
-        m_value = value;
-        m_timestamp = DateTimeProvider.GetCurrentTime();
-        m_quality = new Quality( InitialQuality );
-      }
+      if (value != null)
+        m_quality = new Quality(InitialQuality);
       else
       {
-        m_quality = new Quality(qualityBits.badWaitingForInitialData );
+        m_quality = new Quality(qualityBits.badWaitingForInitialData);
         m_datatype = tagCanonicalType;
       }
-      switch ( AccessRights )
+      switch (AccessRights)
       {
         case ItemAccessRights.ReadOnly:
           m_accessRights = accessRights.readable;
@@ -93,19 +81,17 @@ namespace CAS.Lib.DeviceSimulator
       }
     }
     #endregion
+
     #region Public Members
     /// <summary>
     /// The unique item identifier.
     /// </summary>
-    internal string ItemID
-    {
-      get { return m_itemID; }
-    }
+    internal string ItemID { get; } = null;
     /// <summary>
-    /// Function used for initialisation the properties of the item
+    /// Function used for initialization the properties of the item
     /// </summary>
     /// <param name="PropertiesCollection">properties to add or write</param>
-    protected void AddProperties( Opc.Da.ItemPropertyCollection PropertiesCollection )
+    protected void AddProperties(Opc.Da.ItemPropertyCollection PropertiesCollection)
     {
       //      if(PropertiesCollection.Count==0)
       //      {
@@ -117,127 +103,107 @@ namespace CAS.Lib.DeviceSimulator
       //          +"  not defined");
       //#endif
       //      }
-      foreach ( Opc.Da.ItemProperty itemProperty in PropertiesCollection )
+      foreach (ItemProperty itemProperty in PropertiesCollection)
       {
-        Opc.Da.ItemValue itemval = new ItemValue( this.m_itemID );
-        itemval.Value = itemProperty.Value;
-        if ( !this.Write( itemProperty.ID, itemval, false ).ResultID.Succeeded() )
+        ItemValue itemval = new ItemValue(ItemID)
         {
-          m_properties.Add( itemProperty.ID, itemProperty.Value );
-        }
-        else
-        {
+          Value = itemProperty.Value
         };
+        if (!Write(itemProperty.ID, itemval, false).ResultID.Succeeded())
+          m_properties.Add(itemProperty.ID, itemProperty.Value);
       }
     }
     /// <summary>
     /// Returns all available properties for the specified item.
     /// </summary>
-    internal Opc.Da.ItemPropertyCollection GetAvailableProperties( bool returnValues )
+    internal Opc.Da.ItemPropertyCollection GetAvailableProperties(bool returnValues)
     {
-      ArrayList ids = new ArrayList();
-
-      // add standard properties.
-      ids.Add( Property.DATATYPE );
-      ids.Add( Property.VALUE );
-      ids.Add( Property.QUALITY );
-      ids.Add( Property.TIMESTAMP );
-      ids.Add( Property.ACCESSRIGHTS );
-      ids.Add( Property.SCANRATE );
-      ids.Add( Property.EUTYPE );
-      ids.Add( Property.EUINFO );
-
-      // add eu limits for analog items.
-      if ( m_euType == euType.analog )
+      ArrayList ids = new ArrayList
       {
-        ids.Add( Property.HIGHEU );
-        ids.Add( Property.LOWEU );
+        // add standard properties.
+        Property.DATATYPE,
+        Property.VALUE,
+        Property.QUALITY,
+        Property.TIMESTAMP,
+        Property.ACCESSRIGHTS,
+        Property.SCANRATE,
+        Property.EUTYPE,
+        Property.EUINFO
+      };
+      // add engineering limits for analog items.
+      if (m_euType == euType.analog)
+      {
+        ids.Add(Property.HIGHEU);
+        ids.Add(Property.LOWEU);
       }
-
       // add limits for date time and decimal items.
-      if ( m_datatype == typeof( DateTime ) || m_datatype == typeof( Decimal ) )
+      if (m_datatype == typeof(DateTime) || m_datatype == typeof(decimal))
       {
-        ids.Add( Property.MINIMUM_VALUE );
-        ids.Add( Property.MAXIMUM_VALUE );
-        ids.Add( Property.VALUE_PRECISION );
+        ids.Add(Property.MINIMUM_VALUE);
+        ids.Add(Property.MAXIMUM_VALUE);
+        ids.Add(Property.VALUE_PRECISION);
       }
-
       // add any additional properties.
-      foreach ( PropertyID id in m_properties.Keys )
-      {
-        ids.Add( id );
-      }
-
+      foreach (PropertyID id in m_properties.Keys)
+        ids.Add(id);
       // fill in the property item ids and values.
-      return GetAvailableProperties( (PropertyID[])ids.ToArray( typeof( PropertyID ) ), returnValues );
+      return GetAvailableProperties((PropertyID[])ids.ToArray(typeof(PropertyID)), returnValues);
     }
     /// <summary>
     /// Returns the specified properties for the specified item.
     /// </summary>
-    internal Opc.Da.ItemPropertyCollection GetAvailableProperties( PropertyID[] propertyIDs, bool returnValues )
+    internal Opc.Da.ItemPropertyCollection GetAvailableProperties(PropertyID[] propertyIDs, bool returnValues)
     {
       // initialize property collection.
-      ItemPropertyCollection properties = new ItemPropertyCollection();
-
-      properties.ItemName = m_itemID;
-      properties.ItemPath = null;
-      properties.ResultID = ResultID.S_OK;
-      properties.DiagnosticInfo = null;
+      ItemPropertyCollection properties = new ItemPropertyCollection
+      {
+        ItemName = ItemID,
+        ItemPath = null,
+        ResultID = ResultID.S_OK,
+        DiagnosticInfo = null
+      };
 
       // fetch information for each requested property.
-      foreach ( PropertyID propertyID in propertyIDs )
+      foreach (PropertyID propertyID in propertyIDs)
       {
-        ItemProperty property = new ItemProperty();
-
-        property.ID = propertyID;
+        ItemProperty property = new ItemProperty
+        {
+          ID = propertyID
+        };
 
         // read the property value.
-        if ( returnValues )
+        if (returnValues)
         {
-          ItemValueResult result = Read( propertyID );
-
-          if ( result.ResultID.Succeeded() )
-          {
+          ItemValueResult result = Read(propertyID);
+          if (result.ResultID.Succeeded())
             property.Value = result.Value;
-          }
-
           property.ResultID = result.ResultID;
           property.DiagnosticInfo = result.DiagnosticInfo;
         }
-
-          // just validate the property id.
+        // just validate the property id.
         else
-        {
-          property.ResultID = ValidatePropertyID( propertyID, accessRights.readWritable );
-        }
-
+          property.ResultID = ValidatePropertyID(propertyID, accessRights.readWritable);
         // set status if one or more errors occur.
-        if ( property.ResultID.Failed() )
-        {
+        if (property.ResultID.Failed())
           properties.ResultID = ResultID.S_FALSE;
-        }
-
         else
         {
           // set property description.
-          PropertyDescription description = PropertyDescription.Find( propertyID );
-
-          if ( description != null )
+          PropertyDescription description = PropertyDescription.Find(propertyID);
+          if (description != null)
           {
             property.Description = description.Name;
             property.DataType = description.Type;
           }
-
           // set property item id.
-          if ( propertyID.Code >= ENGINEERINGUINTS && propertyID.Code <= TIMEZONE )
+          if (propertyID.Code >= ENGINEERINGUINTS && propertyID.Code <= TIMEZONE)
           {
-            property.ItemName = m_itemID + ":" + propertyID.Code.ToString();
+            property.ItemName = ItemID + ":" + propertyID.Code.ToString();
             property.ItemPath = null;
           }
         }
-
         // add to collection.
-        properties.Add( property );
+        properties.Add(property);
       }
       // return collection.
       return properties;
@@ -245,44 +211,40 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Reads the value of the specified item property.
     /// </summary>
-    /// <remarks>It reads olny from cache, it should be solved.</remarks>
-    internal Opc.Da.ItemValueResult Read( PropertyID propertyID )
+    /// <remarks>It reads only from cache, it should be solved.</remarks>
+    internal ItemValueResult Read(PropertyID propertyID)
     {
       //MPTD zaimplementowaæ bezpoœrednie czytanie z prawdziwego device 
       // initialize value and validate property.
-      ItemValueResult value = new ItemValueResult();
-      value.ItemName = m_itemID;
-      value.ItemPath = null;
-      value.ResultID = ValidatePropertyID( propertyID, accessRights.readable );
-      value.DiagnosticInfo = null;
-      value.Value = null;
-      value.Quality = Quality.Bad;
-      value.QualitySpecified = false;
-      value.Timestamp = DateTime.MinValue;
-      value.TimestampSpecified = false;
-
-      if ( value.ResultID.Failed() )
+      ItemValueResult value = new ItemValueResult
       {
+        ItemName = ItemID,
+        ItemPath = null,
+        ResultID = ValidatePropertyID(propertyID, accessRights.readable),
+        DiagnosticInfo = null,
+        Value = null,
+        Quality = Quality.Bad,
+        QualitySpecified = false,
+        Timestamp = DateTime.MinValue,
+        TimestampSpecified = false
+      };
+      if (value.ResultID.Failed())
         return value;
-      }
-
-      // set default quality and timestamp (overridden when returning the item value).
+      // set default quality and time-stamp (overridden when returning the item value).
       value.Quality = Quality.Good;
       value.QualitySpecified = true;
-      value.Timestamp = DateTimeProvider.GetCurrentTime();
+      value.Timestamp = m_getCurrentTime();
       value.TimestampSpecified = true;
-
       // read the property value.
-      switch ( propertyID.Code )
+      switch (propertyID.Code)
       {
         case VALUE:
           {
-            value.Value = Opc.Convert.Clone( m_value );
+            value.Value = Opc.Convert.Clone(m_value);
             value.Quality = m_quality;
             value.Timestamp = m_timestamp;
             break;
           }
-
         // standard properties.
         case DATATYPE: { value.Value = m_datatype; break; }
         case QUALITY: { value.Value = m_quality; break; }
@@ -293,187 +255,167 @@ namespace CAS.Lib.DeviceSimulator
         case EUINFO: { value.Value = m_euInfo; break; }
         case HIGHEU: { value.Value = m_maxValue; break; }
         case LOWEU: { value.Value = m_minValue; break; }
-
         case MINIMUM_VALUE:
           {
-            if ( m_datatype == typeof( DateTime ) )
+            if (m_datatype == typeof(DateTime))
             {
               value.Value = DateTime.MinValue;
               break;
             }
-
-            if ( m_datatype == typeof( Decimal ) )
+            if (m_datatype == typeof(decimal))
             {
-              value.Value = Decimal.MinValue;
+              value.Value = decimal.MinValue;
               break;
             }
-
             value.Value = null;
             break;
           }
-
         case MAXIMUM_VALUE:
           {
-            if ( m_datatype == typeof( DateTime ) )
+            if (m_datatype == typeof(DateTime))
             {
               value.Value = DateTime.MaxValue;
               break;
             }
-
-            if ( m_datatype == typeof( Decimal ) )
+            if (m_datatype == typeof(decimal))
             {
-              value.Value = Decimal.MaxValue;
+              value.Value = decimal.MaxValue;
               break;
             }
-
             value.Value = null;
             break;
           }
-
         case VALUE_PRECISION:
           {
-            if ( m_datatype == typeof( DateTime ) )
+            if (m_datatype == typeof(DateTime))
             {
               value.Value = 1 / (double)TimeSpan.TicksPerMillisecond;
               break;
             }
-
-            if ( m_datatype == typeof( Decimal ) )
+            if (m_datatype == typeof(decimal))
             {
               value.Value = 28;
               break;
             }
-
             value.Value = null;
             break;
           }
-
         // other defined properties.
         default:
           {
-            if ( !m_properties.Contains( propertyID ) )
+            if (!m_properties.Contains(propertyID))
             {
               value.ResultID = ResultID.Da.E_INVALID_PID;
               break;
             }
-
-            value.Value = m_properties[ propertyID ];
+            value.Value = m_properties[propertyID];
             break;
           }
       }
-
       // read completed successfully.
       return value;
     }
-    internal Opc.IdentifiedResult Write( PropertyID propertyID, Opc.Da.ItemValue value )
+    internal IdentifiedResult Write(PropertyID propertyID, Opc.Da.ItemValue value)
     {
-      return Write( propertyID, value, true );
+      return Write(propertyID, value, true);
     }
     /// <summary>
     /// Writes the value of the specified item property.
     /// </summary>
-    protected Opc.IdentifiedResult Write( PropertyID propertyID, Opc.Da.ItemValue value, bool validate )
+    protected IdentifiedResult Write(PropertyID propertyID, ItemValue value, bool validate)
     {
       // initialize result and validate property.
-      IdentifiedResult result = new IdentifiedResult();
-
-      result.ItemName = m_itemID;
-      result.ItemPath = null;
-      if ( validate )
-        result.ResultID = ValidatePropertyID( propertyID, accessRights.writable );
+      IdentifiedResult result = new IdentifiedResult
+      {
+        ItemName = ItemID,
+        ItemPath = null
+      };
+      if (validate)
+        result.ResultID = ValidatePropertyID(propertyID, accessRights.writable);
       else
         result.ResultID = ResultID.S_OK;
       result.DiagnosticInfo = null;
-
       //MP return if modification is not allowed
       //MPNI zg³osiæ Rendy'iemu
-      if ( result.ResultID.Failed() )
+      if (result.ResultID.Failed())
       {
         //nieudalo dodac sie property:
 #if DEBUG
         //tutaj chyba wyswietla wlasnie te co dodal
         System.Console.WriteLine(
           "|problem with the property (Write fails) : "
-          + this.ToString() + ":"
-          + propertyID.ToString().Replace( Opc.Namespace.OPC_DATA_ACCESS, "" )
-          + "  " );
+          + ToString() + ":"
+          + propertyID.ToString().Replace(Opc.Namespace.OPC_DATA_ACCESS, "")
+          + "  ");
 #endif
         return result;
       }
       // handle value writes.
-      if ( propertyID == Property.VALUE )
+      if (propertyID == Property.VALUE)
       {
-        if ( !UpdateRemote( value.Value ) )//MZTD: sprawdzic czy symulator bedzie dzialac (bylo przekazywane cale Opc.Da.ItemValue a teraz idzie tylko value z Opc.Da.ItemValue value)
+        if (!UpdateRemote(value.Value))//MZTD: sprawdzic czy symulator bedzie dzialac (bylo przekazywane cale Opc.Da.ItemValue a teraz idzie tylko value z Opc.Da.ItemValue value)
         {
           result.ResultID = ResultID.E_TIMEDOUT;
           result.DiagnosticInfo = "communication error while writing to the device";
           return result;
         }
-        lock ( this )
+        lock (this)
         {
           m_value = value.Value;
           //MPTD sprawdziæ po co on to kopiuje
           // copy value.
           //m_value = Opc.Convert.Clone(value.Value);
-
           // update quality if specified.
-          if ( value.QualitySpecified )
-          {
+          if (value.QualitySpecified)
             m_quality = value.Quality;
-          }
-
-          // update timestamp if specified.
-          if ( value.TimestampSpecified )
-          {
+          // update time-stamp if specified.
+          if (value.TimestampSpecified)
             m_timestamp = value.Timestamp;
-          }
         }
         // return results.
         return result;
       }
-
       // lookup property description.
-      PropertyDescription property = PropertyDescription.Find( propertyID );
-
-      if ( property == null )
+      PropertyDescription property = PropertyDescription.Find(propertyID);
+      if (property == null)
       {
         result.ResultID = ResultID.Da.E_INVALID_PID;
         return result;
       }
-      if ( !validate )
+      if (!validate)
       {
         //mamy doczynienia z dodawaniem nie validowanych properties i trzeba przekonwertowac je do odpowiedniego typu
-        switch ( propertyID.Code )
+        switch (propertyID.Code)
         {
           // standard properties.
           case DATATYPE:
-            value.Value = System.Type.GetType( System.Convert.ToString( value.Value ) );
+            value.Value = System.Type.GetType(System.Convert.ToString(value.Value));
             break;
           case QUALITY:
-            value.Value = System.Convert.ToInt16( value.Value );
+            value.Value = System.Convert.ToInt16(value.Value);
             break;
           case TIMESTAMP:
-            value.Value = System.Convert.ToDateTime( value.Value );
+            value.Value = System.Convert.ToDateTime(value.Value);
             break;
           case ACCESSRIGHTS:
-            value.Value = System.Convert.ToInt16( value.Value );
+            value.Value = System.Convert.ToInt16(value.Value);
             break;
           case SCANRATE:
-            value.Value = System.Convert.ToDouble( value.Value );
+            value.Value = System.Convert.ToDouble(value.Value);
             break;
           case EUTYPE:
-            if ( System.Convert.ToString( value.Value ).ToLower().Equals( euType.analog.ToString().ToLower() ) )
+            if (System.Convert.ToString(value.Value).ToLower().Equals(euType.analog.ToString().ToLower()))
               value.Value = euType.analog;
-            else if ( System.Convert.ToString( value.Value ).ToLower().Equals( euType.noEnum.ToString().ToLower() ) )
+            else if (System.Convert.ToString(value.Value).ToLower().Equals(euType.noEnum.ToString().ToLower()))
               value.Value = euType.noEnum;
-            else if ( System.Convert.ToString( value.Value ).ToLower().Equals( euType.enumerated.ToString().ToLower() ) )
+            else if (System.Convert.ToString(value.Value).ToLower().Equals(euType.enumerated.ToString().ToLower()))
               value.Value = euType.enumerated;
             else
               value.Value = (int)0;
             break;
           case EUINFO:
-            string[] temp_euinfo = new string[ 1 ];
-            temp_euinfo[ 0 ] = System.Convert.ToString( value.Value );
+            string[] temp_euinfo = new string[1];
+            temp_euinfo[0] = System.Convert.ToString(value.Value);
             value.Value = temp_euinfo;
             break;
           case HIHI_LIMIT:
@@ -482,30 +424,28 @@ namespace CAS.Lib.DeviceSimulator
           case LO_LIMIT:
           case LOWEU:
           case HIGHEU:
-            value.Value = System.Convert.ToDouble( value.Value );
+            value.Value = System.Convert.ToDouble(value.Value);
             break;
           default: //do nothing
             break;
         }
       }
-
       // check datatype.
-      if ( !property.Type.IsInstanceOfType( value.Value ) )
+      if (!property.Type.IsInstanceOfType(value.Value))
       {
 #if DEBUG
         //tutaj chyba wyswietla wlasnie te co dodal
         System.Console.WriteLine(
           "|problem with the property (Write fails) : "
-          + this.ToString() + ":"
-          + propertyID.ToString().Replace( Opc.Namespace.OPC_DATA_ACCESS, "" )
-          + "  " );
+          + ToString() + ":"
+          + propertyID.ToString().Replace(Opc.Namespace.OPC_DATA_ACCESS, "")
+          + "  ");
 #endif
         result.ResultID = ResultID.Da.E_BADTYPE;
         return result;
       }
-
       // write non-value
-      switch ( propertyID.Code )
+      switch (propertyID.Code)
       {
         // standard properties.
         case DATATYPE: { m_datatype = (System.Type)value.Value; return result; }
@@ -514,19 +454,19 @@ namespace CAS.Lib.DeviceSimulator
         case ACCESSRIGHTS: { m_accessRights = (accessRights)value.Value; return result; }
         case SCANRATE: { m_scanRate = (float)value.Value; return result; }
         case EUTYPE: { m_euType = (euType)value.Value; return result; }
-        case EUINFO: { m_euInfo = (string[])Opc.Convert.Clone( value.Value ); return result; }
+        case EUINFO: { m_euInfo = (string[])Opc.Convert.Clone(value.Value); return result; }
         case HIGHEU: { m_maxValue = (double)value.Value; return result; }
         case LOWEU: { m_minValue = (double)value.Value; return result; }
 
         // other defined properties.
         default:
           {
-            if ( !m_properties.Contains( propertyID ) )
+            if (!m_properties.Contains(propertyID))
             {
               result.ResultID = ResultID.Da.E_INVALID_PID;
               return result;
             }
-            m_properties[ propertyID ] = Opc.Convert.Clone( value.Value );
+            m_properties[propertyID] = Opc.Convert.Clone(value.Value);
             break;
           }
       }
@@ -534,15 +474,15 @@ namespace CAS.Lib.DeviceSimulator
       return result;
     } //Write
     /// <summary>
-    /// Set the quality acording to specified bits
+    /// Set the quality according to specified bits
     /// </summary>
     /// <param name="quality"> Quality bits </param>
-    public void MarkTagQuality( Opc.Da.qualityBits quality )
+    public void MarkTagQuality(Opc.Da.qualityBits quality)
     {
       //      object OldTagValue=null;
-      lock ( this )
+      lock (this)
       {
-        m_quality = new Quality( quality );
+        m_quality = new Quality(quality);
       }
       RaiseOnValueChanged();
     }
@@ -550,13 +490,13 @@ namespace CAS.Lib.DeviceSimulator
     /// Updates current value in the cache
     /// </summary>
     /// <param name="val">New value to be set in the cache</param>
-    public virtual void UpdateTag( object val )
+    public virtual void UpdateTag(object val)
     {
-      lock ( this )
+      lock (this)
       {
         m_value = val;
         m_quality = Quality.Good;
-        m_timestamp = DateTimeProvider.GetCurrentTime();
+        m_timestamp = m_getCurrentTime();
         //        return OPC.OPC_Wrapper.UpdateTag(Value, val,(short)Opc.Da.qualityBits.good);
       }
       RaiseOnValueChanged();
@@ -566,9 +506,9 @@ namespace CAS.Lib.DeviceSimulator
     /// </summary>
     /// <param name="Val">Value to be set</param>
     /// <returns>true if quality of the requested value is good  </returns>
-    public virtual bool GetVal( ref object Val )
+    public virtual bool GetVal(ref object Val)
     {
-      lock ( this )
+      lock (this)
       {
         Val = m_value;
         return m_quality == Quality.Good;
@@ -579,22 +519,23 @@ namespace CAS.Lib.DeviceSimulator
     /// </summary>
     /// <param name="data">new value to be set</param>
     /// <returns>true if success </returns>
-    protected abstract bool UpdateRemote( object data );
+    protected abstract bool UpdateRemote(object data);
     /// <summary>
     /// Read new value directly from device
     /// </summary>
     /// <param name="data">new received value</param>
     /// <returns>true if success</returns>
-    protected abstract bool ReadRemote( out object data );
+    protected abstract bool ReadRemote(out object data);
     /// <summary>
     /// Gets or sets the canonical type of the item
     /// </summary>
     public System.Type TagCanonicalType
     {
-      get { return m_datatype; }
-      protected set { lock ( this ) m_datatype = value; }
+      get => m_datatype;
+      protected set { lock (this) m_datatype = value; }
     }
     #endregion
+
     #region override object
     /// <summary>
     /// ToString implementation
@@ -602,9 +543,10 @@ namespace CAS.Lib.DeviceSimulator
     /// <returns>text that describe this item</returns>
     public override string ToString()
     {
-      return "ItemInDevice:" + this.m_itemID + " ";
+      return "ItemInDevice:" + ItemID + " ";
     }
     #endregion
+
     #region Private Members
     /// <summary>
     /// number id for the data type property
@@ -619,11 +561,11 @@ namespace CAS.Lib.DeviceSimulator
     /// </summary>
     protected const int QUALITY = 3;
     /// <summary>
-    /// number id for the timestamp property
+    /// number id for the timestamps property
     /// </summary>
     protected const int TIMESTAMP = 4;
     /// <summary>
-    /// number id for the access righs property
+    /// number id for the access rights property
     /// </summary>
     protected const int ACCESSRIGHTS = 5;
     /// <summary>
@@ -639,7 +581,7 @@ namespace CAS.Lib.DeviceSimulator
     /// </summary>
     protected const int EUINFO = 8;
     /// <summary>
-    /// number id for the eng. units property
+    /// number id for the engineering units property
     /// </summary>
     private const int ENGINEERINGUINTS = 100;
     /// <summary>
@@ -661,8 +603,7 @@ namespace CAS.Lib.DeviceSimulator
     private const int HI_LIMIT = 308;
     private const int LO_LIMIT = 309;
     private const int LOLO_LIMIT = 310;
-
-    private string m_itemID = null;
+    private readonly Func<DateTime> m_getCurrentTime = () => DateTime.UtcNow;
     /// <summary>
     /// the data type of the item
     /// </summary>
@@ -697,13 +638,10 @@ namespace CAS.Lib.DeviceSimulator
     /// <value>The type of the eu.</value>
     protected euType EuType
     {
-      get
-      {
-        return m_euType;
-      }
+      get => m_euType;
       set
       {
-        lock ( this )
+        lock (this)
           m_euType = value;
       }
     }
@@ -714,11 +652,11 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// the Maximal value of the item
     /// </summary>
-    private double m_maxValue = Double.MaxValue;
+    private double m_maxValue = double.MaxValue;
     /// <summary>
     /// the minimal value of the item
     /// </summary>
-    private double m_minValue = Double.MinValue;
+    private double m_minValue = double.MinValue;
     /// <summary>
     /// properties table for this item
     /// </summary>
@@ -726,18 +664,18 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Checks if the specified property is valid for the specifed access type.
     /// </summary>
-    private ResultID ValidatePropertyID( PropertyID propertyID, accessRights accessRequired )
+    private ResultID ValidatePropertyID(PropertyID propertyID, accessRights accessRequired)
     {
-      switch ( propertyID.Code )
+      switch (propertyID.Code)
       {
         // check access rights for value properties.
         case VALUE:
         case QUALITY:
         case TIMESTAMP:
           {
-            if ( m_accessRights != accessRights.readWritable && m_accessRights != accessRequired )
+            if (m_accessRights != accessRights.readWritable && m_accessRights != accessRequired)
             {
-              switch ( accessRequired )
+              switch (accessRequired)
               {
                 case accessRights.readable: { return ResultID.Da.E_WRITEONLY; }
                 case accessRights.writable: { return ResultID.Da.E_READONLY; }
@@ -761,7 +699,7 @@ namespace CAS.Lib.DeviceSimulator
         case HIGHEU:
         case LOWEU:
           {
-            if ( m_euType != euType.analog )
+            if (m_euType != euType.analog)
             {
               return ResultID.Da.E_INVALID_PID;
             }
@@ -774,7 +712,7 @@ namespace CAS.Lib.DeviceSimulator
         case MAXIMUM_VALUE:
         case VALUE_PRECISION:
           {
-            if ( accessRequired == accessRights.writable )
+            if (accessRequired == accessRights.writable)
             {
               return ResultID.Da.E_READONLY;
             }
@@ -785,7 +723,7 @@ namespace CAS.Lib.DeviceSimulator
         // lookup any addition property.
         default:
           {
-            if ( !m_properties.Contains( propertyID ) )
+            if (!m_properties.Contains(propertyID))
             {
               return ResultID.Da.E_INVALID_PID;
             }
@@ -803,9 +741,9 @@ namespace CAS.Lib.DeviceSimulator
     /// <param name="val">The val.</param>
     /// <param name="quality">The quality.</param>
     /// <param name="timestamp">The timestamp.</param>
-    protected void UpdateVQT( object val, Opc.Da.Quality quality, DateTime timestamp )
+    protected void UpdateVQT(object val, Opc.Da.Quality quality, DateTime timestamp)
     {
-      lock ( this )
+      lock (this)
       {
         m_value = val;
         m_quality = quality;
@@ -815,52 +753,44 @@ namespace CAS.Lib.DeviceSimulator
     }
     private void RaiseOnValueChanged()
     {
-      if ( OnValueChanged != null )
-        OnValueChanged( this, new ItemValueArgs( this.Read( Property.VALUE ) ) );
+      OnValueChanged?.Invoke(this, new ItemValueArgs(Read(Property.VALUE)));
     }
     /// <summary>
     /// this value is used by I4UAServer to temporarily store the value to be written by the Flush function
     /// </summary>
-    Opc.Da.ItemValue m_ValueToWrite = null;
+    private ItemValue m_ValueToWrite = null;
     #endregion
+
     #region I4UAServer Members
     /// <summary>
     /// Occurs when value of the process data is changed.
     /// </summary>
     public event EventHandler<ItemValueArgs> OnValueChanged;
-    System.Type I4UAServer.ItemCanonicalType
-    {
-      get { return this.m_datatype; }
-    }
-    ItemValue I4UAServer.LastKnownValue
-    {
-      get { return this.Read( Property.VALUE ); }
-    }
+    System.Type I4UAServer.ItemCanonicalType => m_datatype;
+    ItemValue I4UAServer.LastKnownValue => Read(Property.VALUE);
     object I4UAServer.ValueToWrite
     {
-      set
+      set => m_ValueToWrite = new Opc.Da.ItemValue(ItemID)
       {
-        m_ValueToWrite = new Opc.Da.ItemValue( this.m_itemID )
-         {
-           Value = value,
-           QualitySpecified = true,
-           Quality = Opc.Da.Quality.Good,
-           Timestamp = DateTime.Now,
-           TimestampSpecified = true
-         };
-      }
+        Value = value,
+        QualitySpecified = true,
+        Quality = Opc.Da.Quality.Good,
+        Timestamp = DateTime.Now,
+        TimestampSpecified = true
+      };
     }
     bool I4UAServer.Flush()
     {
       bool result = false;
-      if ( m_ValueToWrite != null )
+      if (m_ValueToWrite != null)
       {
-        IdentifiedResult writeresult = this.Write( Property.VALUE, m_ValueToWrite, true );
-        if ( writeresult.ResultID == ResultID.S_OK )
+        IdentifiedResult writeresult = Write(Property.VALUE, m_ValueToWrite, true);
+        if (writeresult.ResultID == ResultID.S_OK)
           result = true;
       }
       return result;
     }
     #endregion
+
   }
 }

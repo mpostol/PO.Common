@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.DAServerConfiguration</id>
-    <version>5.02.02</version>
+    <version>5.02.08</version>
     <title>CAS.CommServer.DAServerConfiguration - CAS.CommServer.ProtocolHub configuration</title>
     <authors>Mariusz Postol</authors>
     <owners>Mariusz Postol</owners>

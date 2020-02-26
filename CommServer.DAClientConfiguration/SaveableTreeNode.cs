@@ -1,20 +1,12 @@
-﻿//<summary>
-//  Title   : Interface providing functionality to save configuration in the <see cref="OPCCliConfiguration"/>
-//  System  : Microsoft Visual C# .NET 2008
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+﻿//___________________________________________________________________________________
 //
-//  Copyright (C)2008, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto://techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using System;
-using CAS.Lib.ControlLibrary;
+using UAOOI.Windows.Forms;
 
 namespace CAS.DataPorter.Configurator
 {
@@ -62,6 +54,7 @@ namespace CAS.DataPorter.Configurator
     where ObjectType: class
     where ParentType: class, ISave
   {
+
     #region Constructors
     /// <summary>
     /// Initializes a new instance of the class.
@@ -81,6 +74,7 @@ namespace CAS.DataPorter.Configurator
       : base( text, obj )
     { }
     #endregion
+
     #region ISave Members
     /// <summary>
     /// Saves the current configuration in the <see cref="OPCCliConfiguration"/>.
@@ -102,5 +96,6 @@ namespace CAS.DataPorter.Configurator
       Save( configuration, long.MinValue );
     }
     #endregion
+
   }
 }

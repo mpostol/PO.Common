@@ -20,13 +20,13 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("CAS CommServer DA Server Configuration Unit Tests")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mariusz Postol")]
-[assembly: AssemblyProduct("Object Oriented Internet")]
+[assembly: AssemblyProduct("Object-Oriented Internet")]
 [assembly: AssemblyCopyright("Copyright (C) 2020, Mariusz Postol LODZ POLAND.")]
 [assembly: AssemblyTrademark("CommServer")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("35ca4ea5-b285-43a0-a5a7-bd69401b0a28")]
-[assembly: AssemblyVersion("5.01.06.*")]
-[assembly: AssemblyFileVersion("5.01.06")]
+[assembly: AssemblyVersion("5.01.08.*")]
+[assembly: AssemblyFileVersion("5.01.08")]
 
 

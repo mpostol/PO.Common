@@ -1,25 +1,14 @@
-﻿//<summary>
-//  Title   : List of a TreeNode
-//  System  : Microsoft Visual C# .NET 2008
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+﻿//___________________________________________________________________________________
 //
-//  20080616: mzbrzezny: getfullname is allows to return the group name too
-//  20080516: mzbrzezny: created
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
 //
-//  Copyright (C)2008, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto://techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
+using Opc;
 using System;
 using System.Text;
-using CAS.Lib.ControlLibrary;
-using Opc;
+using UAOOI.Windows.Forms;
 using OpcDa = global::Opc.Da;
 
 namespace CAS.DataPorter.Configurator
@@ -29,6 +18,7 @@ namespace CAS.DataPorter.Configurator
   /// </summary>
   public abstract class ItemWrapper: ISaveAdvanced, IDisposable
   {
+
     #region private
     private OpcDa.ItemResult m_Item;
     /// <summary>
@@ -50,6 +40,7 @@ namespace CAS.DataPorter.Configurator
       }
     }
     #endregion
+
     #region static
     static private ISaveAdvancedList mTagTreeNodeList = new ISaveAdvancedList();
     /// <summary>
@@ -64,6 +55,7 @@ namespace CAS.DataPorter.Configurator
       }
     }
     #endregion static
+
     #region public
     /// <summary>
     /// Occurs after changing <see cref="ResultID"/> of the item.
@@ -151,6 +143,7 @@ namespace CAS.DataPorter.Configurator
       return GetFullName();
     }
     #endregion
+
     #region constructors
     /// <summary>
     /// Initializes a new instance of the <see cref="ItemWrapper"/> class.
@@ -181,6 +174,7 @@ namespace CAS.DataPorter.Configurator
       List.Add( this );
     }
     #endregion
+
     #region ISaveAdvanced Members
     /// <summary>
     /// Gets the full name.
@@ -205,6 +199,7 @@ namespace CAS.DataPorter.Configurator
     /// </summary>
     public event EventHandler<GenericEventArgs<ISaveAdvanced>> OnRemove;
     #endregion
+
     #region IDisposable Members
     private bool disposed = false;
     /// <summary>
