@@ -41,7 +41,7 @@ namespace CAS.Lib.RTLib.Management
         + "| AppDomain.CurrentDomain.ToString():" + AppDomain.CurrentDomain.ToString()
         + "| AppDomain.CurrentDomain.SetupInformation.ConfigurationFile:" + AppDomain.CurrentDomain.SetupInformation.ConfigurationFile
         + "| ConfigFilePath" + ConfigFilePath;
-      CAS.Lib.RTLib.Processes.EventLogMonitor.WriteToEventLogInfo
+      EventLogMonitor.WriteToEventLogInfo
         ("Configuration for: " + AppInfo, (int)Error.DataPorter_ApplicationConfiguration);
     }
     #endregion
@@ -61,8 +61,7 @@ namespace CAS.Lib.RTLib.Management
     {
       if (ConfigValues[key] == null)
       {
-        new CAS.Lib.RTLib.Processes.EventLogMonitor
-          (ErrorMsg + key, System.Diagnostics.EventLogEntryType.Warning, (int)Error.RTLib_AppConfigManagement, 43).WriteEntry();
+        new EventLogMonitor(ErrorMsg + key, System.Diagnostics.EventLogEntryType.Warning, (int)Error.RTLib_AppConfigManagement, 43).WriteEntry();
         return defaultVal;
       }
       else
@@ -82,7 +81,7 @@ namespace CAS.Lib.RTLib.Management
         try { return System.Int32.Parse(strVal); }
         catch (Exception ex)
         {
-          new CAS.Lib.RTLib.Processes.EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
+          new EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
             (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;
@@ -120,7 +119,7 @@ namespace CAS.Lib.RTLib.Management
         try { return System.UInt16.Parse(strVal); }
         catch (Exception ex)
         {
-          new CAS.Lib.RTLib.Processes.EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
+          new EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
             (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;
@@ -129,7 +128,7 @@ namespace CAS.Lib.RTLib.Management
     /// It allows to access application configuration information.
     /// </summary>
     /// <param name="key">The String key of the entry to locate. The key can be a null reference.</param>
-    /// <param name="defaultVal">Deafoult value</param>
+    /// <param name="defaultVal">Default value</param>
     /// <returns>The value from the configuration file or if not available default value. </returns>
     /// <remarks>If the specified key is not found or there is a syntax error a message is written to the application log.</remarks>
     public static Single GetAppSetting(string key, Single defaultVal)
@@ -139,7 +138,7 @@ namespace CAS.Lib.RTLib.Management
         try { defaultVal = System.Single.Parse(ConfigValues[key]); }
         catch (Exception ex)
         {
-          new CAS.Lib.RTLib.Processes.EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
+          new EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
             (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;
@@ -158,7 +157,7 @@ namespace CAS.Lib.RTLib.Management
         try { defaultVal = System.Boolean.Parse(ConfigValues[key]); }
         catch (Exception ex)
         {
-          new CAS.Lib.RTLib.Processes.EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
+          new EventLogMonitor(ex.Message, System.Diagnostics.EventLogEntryType.Warning,
             (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;

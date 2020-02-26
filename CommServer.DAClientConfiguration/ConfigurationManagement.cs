@@ -1,29 +1,21 @@
-﻿//<summary>
-//  Title   : Class to save and restore address space data base to/from external dictionary file.
-//  System  : Microsoft Visual C# .NET 2008
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+﻿//___________________________________________________________________________________
 //
-//  Copyright (C)2008, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto://techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
+using CAS.DataPorter.Configurator.Properties;
+using CAS.Lib.CodeProtect;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
-using CAS.DataPorter.Configurator.Properties;
-using CAS.Lib.RTLib.Utils;
 
 namespace CAS.DataPorter.Configurator
 {
   /// <summary>
-  /// Class to save and restore address space data base to/from external dictionary file. c:\VS2008\Projects\OPCViewerTrunk\PR24-Biblioteka\DataPorterConfigLib\ConfigurationManagement.cs
+  /// Class to save and restore address space data base to/from external dictionary file.
   /// </summary>
   public partial class ConfigurationManagement: Component
   {
@@ -60,6 +52,7 @@ namespace CAS.DataPorter.Configurator
       catch { }
     }
     #endregion
+
     #region constructors
     /// <summary>
     /// Initializes a new instance of the <see cref="ConfigurationManagement"/> class.
@@ -86,6 +79,7 @@ namespace CAS.DataPorter.Configurator
       container.Add( this );
     }
     #endregion
+
     #region public
     /// <summary>
     /// enum that provides additional informations from ConfigurationManagement function calls

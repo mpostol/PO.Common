@@ -1,28 +1,17 @@
-//<summary>
-//  Title   : Configuration management utilities
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    20081224: mzbrzezny: XMLManagement.cs is checking whether the configuration file exists before throwing an exception
-//    2005: mzbrzezny: created
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using System.Data;
-using System;
-using System.IO;
-using CAS.Lib.RTLib.Utils;
+using CAS.Lib.CodeProtect;
 using CAS.Lib.RTLib.Processes;
-using System.Xml;
+using System;
+using System.Data;
+using System.IO;
 using System.Text;
+using System.Xml;
 
 namespace BaseStation.ItemDescriber
 {
@@ -31,13 +20,13 @@ namespace BaseStation.ItemDescriber
   /// </summary>
   public class XMLManagement
   {
-    private string itemdscHasNotBeenSet = "The location of the item_dsc.xml file has not been set in the config file";
-    private string itemdscDoesNotExists = "The item description file {0} does not exist";
-    private string itemdscCannotBeOpened = "Item_dsc.xml file cannot be opened";
+    private readonly string itemdscHasNotBeenSet = "The location of the item_dsc.xml file has not been set in the config file";
+    private readonly string itemdscDoesNotExists = "The item description file {0} does not exist";
+    private readonly string itemdscCannotBeOpened = "Item_dsc.xml file cannot be opened";
     private FileStream _FileStream;
 
     /// <summary>
-    /// reading of configuration xml file
+    /// reading of configuration XML file
     /// </summary>
     /// <param name="myData">target data set</param>
     /// <param name="filename">filename</param>
@@ -54,7 +43,7 @@ namespace BaseStation.ItemDescriber
         string itemdscPath = fi.FullName;
         if (!new FileInfo(itemdscPath).Exists)
         {
-          EventLogMonitor.WriteToEventLog(itemdscDoesNotExists, System.Diagnostics.EventLogEntryType.Warning);
+          EventLogMonitor.WriteToEventLog(itemdscDoesNotExists, EventLogEntryType.Warning);
           return;
         }
         else
@@ -62,7 +51,7 @@ namespace BaseStation.ItemDescriber
       }
       else if (!new FileInfo(filename).Exists)
       {
-        EventLogMonitor.WriteToEventLog(string.Format(itemdscDoesNotExists, filename), System.Diagnostics.EventLogEntryType.Warning);
+        EventLogMonitor.WriteToEventLog(string.Format(itemdscDoesNotExists, filename), EventLogEntryType.Warning);
         return;
       }
       myData.Clear();
@@ -72,7 +61,7 @@ namespace BaseStation.ItemDescriber
       }
       catch (Exception)
       {
-        EventLogMonitor.WriteToEventLog(itemdscCannotBeOpened, System.Diagnostics.EventLogEntryType.Warning);
+        EventLogMonitor.WriteToEventLog(itemdscCannotBeOpened, EventLogEntryType.Warning);
       }
     }
     /// <summary>
@@ -84,16 +73,16 @@ namespace BaseStation.ItemDescriber
     {
       _FileStream = new FileStream(filename, FileMode.Create);
       //Create an XmlTextWriter with the fileStream.
-      XmlTextWriter _XmlWriter = new XmlTextWriter(_FileStream, Encoding.Unicode);
-      _XmlWriter.Formatting = Formatting.Indented;
+      XmlTextWriter _XmlWriter = new XmlTextWriter(_FileStream, Encoding.Unicode)
+      {
+        Formatting = Formatting.Indented
+      };
       myData.WriteXml(_XmlWriter);
       _XmlWriter.Close();
     }
     /// <summary>
-    /// constructor for xml management
+    /// constructor for XML management
     /// </summary>
-    public XMLManagement()
-    {
-    }
+    public XMLManagement() { }
   }
 }
