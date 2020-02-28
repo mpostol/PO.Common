@@ -1,17 +1,9 @@
-//<summary>
-//  Title   : DP Setting : this UserControl alow user to set settings for the DPSettings
-//  System  : Microsoft Visual C# .NET 2008
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+//___________________________________________________________________________________
 //
-//  Copyright (C)2009, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto://techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using System;
 using System.Windows.Forms;
@@ -19,10 +11,12 @@ using System.Windows.Forms;
 namespace CAS.Lib.CommonBus.Components
 {
   /// <summary>
-  /// this UserControl alow user to set settings for the DPSettings
+  /// this UserControl allows user to set settings for the DPSettings
   /// </summary>
+  //TODO CommServer.CommonBus - remove dependency on `System.Windows.Forms` #7
   public partial class DPSettings: UserControl
   {
+
     #region creator
       /// <summary>
       /// default creator of the DPSettings
@@ -32,6 +26,7 @@ namespace CAS.Lib.CommonBus.Components
       InitializeComponent();
     }
     #endregion
+
     #region public
       /// <summary>
       /// sets the source object for the property window
@@ -43,6 +38,7 @@ namespace CAS.Lib.CommonBus.Components
       cn_PropertyGridComm.SelectedObject = pDPID.SelectedCommunicationLayer;
     }
     #endregion
+
     #region events handlers
     private void cn_ToolStripButtonApp_Click( object sender, EventArgs e )
     {
@@ -55,5 +51,6 @@ namespace CAS.Lib.CommonBus.Components
       cn_ToolStripButtonApp.Checked = !cn_SplitContainer.Panel1Collapsed;
     }
     #endregion
+
   }
 }

@@ -19,14 +19,12 @@
       Device Simulator for CommServer family.
     </summary>
     <releaseNotes>
-      Released for.NET 4.51 Maintenece 2016
     </releaseNotes>
     <copyright><#=AssemblyCopyright#></copyright>
     <tags>OPCUA, CommServer, ASMD, Address Space Model Designer.</tags>
     <dependencies>
-      <dependency id="CAS.CodeProtect" version="6.0.1"  />
       <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.1062"  />
-      <dependency id="CAS.RealTime" version="5.0.5"  />
+      <dependency id="UAOOI.ProcessObserver.RealTime" version="6.0.0-Alpha" />
     </dependencies>
   </metadata>
   <files>

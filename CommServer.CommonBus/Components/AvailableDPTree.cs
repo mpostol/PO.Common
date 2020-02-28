@@ -1,34 +1,26 @@
-//<summary>
-//  Title   : AvailableDPTree component
-//  System  : Microsoft Visual C# .NET 
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    2007-04 mpostol - created
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 using CAS.Lib.CommonBus.CommunicationLayer;
 using CAS.Lib.CommonBus.Management;
 using CAS.Lib.RTLib;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace CAS.Lib.CommonBus.Components
 {
   /// <summary>
-  /// The form that presents the availiable DataProviders on Tree
+  /// The form that presents the available DataProviders on Tree
   /// </summary>
+  //TODO CommServer.CommonBus - remove dependency on `System.Windows.Forms` #7
   public partial class AvailableDPTree: UserControl
   {
+
     #region private
     private ICanBeAccepted m_OKCnacelForm;
     private PluginCollection m_PluginCollection;
@@ -49,6 +41,7 @@ namespace CAS.Lib.CommonBus.Components
       }
     }
     #endregion
+
     #region public
 
     /// <summary>
@@ -57,6 +50,7 @@ namespace CAS.Lib.CommonBus.Components
     /// <value>The get selected Dataprovider ID.</value>
     public IDataProviderID GetSelectedDPID { get { return m_LastDataProviderID; } }
     #endregion
+
     #region creators
     private AvailableDPTree()
     {
@@ -90,6 +84,7 @@ namespace CAS.Lib.CommonBus.Components
       m_PluginCollection.SetDefaultSsetting( pSetting, pGuid );
     }
     #endregion
+
     #region Events handlers
     private void c_TreeView_AfterSelect( object sender, TreeViewEventArgs e )
     {
@@ -113,5 +108,6 @@ namespace CAS.Lib.CommonBus.Components
       ( (PropertyGrid)s ).Refresh();
     }
     #endregion
+
   }
 }
