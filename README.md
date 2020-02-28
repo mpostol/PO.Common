@@ -12,9 +12,9 @@ Id | Title
 `CAS.CommServer.DAClientConfiguration` | OPC Classic Client Configuration Library
 `CAS.CommServer.CommonBus` | CAS CommServer Family Common Communication Functionality
 
-## ARchitecture
+## Dependency Graph
 
-![Architecture](_media/Architecture.png)
+![Architecture](_media/DependencyGraph.png)
 
 ## See Also
 
