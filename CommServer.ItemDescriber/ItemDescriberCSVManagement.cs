@@ -1,19 +1,10 @@
-//_______________________________________________________________
-//  Title   : CSVManagement
-//  System  : Microsoft VisualStudio 2015 / C#
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+//___________________________________________________________________________________
 //
-//  Copyright (C) 2016, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto://techsupp@cas.eu
-//  http://www.cas.eu
-//_______________________________________________________________
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using System;
 using System.IO;
 
 namespace BaseStation.ItemDescriber
@@ -24,7 +15,7 @@ namespace BaseStation.ItemDescriber
   public class CSVManagement
   {
     /// <summary>
-    /// Saves the the configuration in the CSV file.
+    /// Saves the configuration in the CSV file.
     /// </summary>
     /// <param name="config">The configuration.</param>
     /// <param name="filename">The filename.</param>
@@ -32,14 +23,10 @@ namespace BaseStation.ItemDescriber
     {
       using (StreamWriter _sw = File.CreateText(filename))
       {
-        //zapisujemy najpierw pierwsza linie:
         _sw.Write("ItemID;ItemName;");
         foreach (ItemDecriberDataSet.PropertyRow _row in config.Property.Rows)
-        {
           _sw.Write(_row.Name + ";");
-        }
         _sw.WriteLine();
-        //teraz zapisujemy w³aœciwe dane
         foreach (ItemDecriberDataSet.ItemsRow _itemRow in config.Items.Rows)
         {
           _sw.Write(_itemRow.ItemID.ToString() + ";");
@@ -53,7 +40,6 @@ namespace BaseStation.ItemDescriber
           }
           _sw.WriteLine("ENDLINE;");
         }
-        _sw.Close();
       }
     }
     /// <summary>
@@ -64,59 +50,43 @@ namespace BaseStation.ItemDescriber
     public void LoadCSV(ItemDecriberDataSet config, string filename)
     {
       StreamReader plik = new StreamReader(filename);//,System.Text.Encoding.Default);
-      string sourcefile = plik.ReadToEnd();
+      string _sourceText = plik.ReadToEnd();
       plik.Close();
-      int pos = sourcefile.IndexOf("\r\n");
-      sourcefile = sourcefile.Remove(0, pos + 2);
-      sourcefile = sourcefile.Replace(";\r\n", ";");
-      sourcefile = sourcefile.Replace("\r\n", ";");
-      //przed chwila pozbylismy sie pierwszej lini i wszystkich znakow konca lini teraz:
-      while (sourcefile.Length > 0)
+      int pos = _sourceText.IndexOf("\r\n");
+      _sourceText = _sourceText.Remove(0, pos + 2);
+      _sourceText = _sourceText.Replace(";\r\n", ";");
+      _sourceText = _sourceText.Replace("\r\n", ";");
+      while (_sourceText.Length > 0)
       {
-        //odczytujemy ID
-        pos = sourcefile.IndexOf(";");
-        string itemId_str = sourcefile.Substring(0, pos);
-        sourcefile = sourcefile.Remove(0, pos + 1);
+        pos = _sourceText.IndexOf(";");
+        string itemId_str = _sourceText.Substring(0, pos);
+        _sourceText = _sourceText.Remove(0, pos + 1);
         int itemID = System.Convert.ToInt32(itemId_str);
-        //odczytujemy nazwe
-        pos = sourcefile.IndexOf(";");
-        string item_name = sourcefile.Substring(0, pos);
-        sourcefile = sourcefile.Remove(0, pos + 1);
-        //dodajemy nowego Itema
-        try
-        {
-          ItemDecriberDataSet.ItemsRow row = config.Items.NewItemsRow();
-          row.ItemID = itemID;
-          row.ItemName = item_name;
-          config.Items.AddItemsRow(row);
-        }
-        catch (Exception)
-        {
-        }
+        pos = _sourceText.IndexOf(";");
+        string item_name = _sourceText.Substring(0, pos);
+        _sourceText = _sourceText.Remove(0, pos + 1);
+        ItemDecriberDataSet.ItemsRow row = config.Items.NewItemsRow();
+        row.ItemID = itemID;
+        row.ItemName = item_name;
+        config.Items.AddItemsRow(row);
         string wartosc = "";
         foreach (ItemDecriberDataSet.PropertyRow rowp in config.Property.Rows)
         {
-          pos = sourcefile.IndexOf(";");
-          wartosc = sourcefile.Substring(0, pos);
-          sourcefile = sourcefile.Remove(0, pos + 1);
+          pos = _sourceText.IndexOf(";");
+          wartosc = _sourceText.Substring(0, pos);
+          _sourceText = _sourceText.Remove(0, pos + 1);
           if (wartosc != "")
           {
-            try
-            {
-              ItemDecriberDataSet.ItemPropertyRow row = config.ItemProperty.NewItemPropertyRow();
-              row.ItemID = itemID;
-              row.PropertyCode = rowp.Code;
-              row.Value = wartosc;
-              config.ItemProperty.AddItemPropertyRow(row);
-            }
-            catch (Exception)
-            {
-            }
+            ItemDecriberDataSet.ItemPropertyRow _row = config.ItemProperty.NewItemPropertyRow();
+            _row.ItemID = itemID;
+            _row.PropertyCode = rowp.Code;
+            _row.Value = wartosc;
+            config.ItemProperty.AddItemPropertyRow(_row);
           }
         }
-        pos = sourcefile.IndexOf(";");
-        wartosc = sourcefile.Substring(0, pos);
-        sourcefile = sourcefile.Remove(0, pos + 1);
+        pos = _sourceText.IndexOf(";");
+        wartosc = _sourceText.Substring(0, pos);
+        _sourceText = _sourceText.Remove(0, pos + 1);
       }
     }
   }
