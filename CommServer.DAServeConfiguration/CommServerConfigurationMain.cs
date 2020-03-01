@@ -1,32 +1,25 @@
-﻿//<summary>
-//  Title   : CommServer configuration management main entry point.
-//  System  : Microsoft Visual C# .NET 2008
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
+﻿//___________________________________________________________________________________
 //
-//  Copyright (C)2009, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto://techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
+using CAS.Lib.CodeProtect;
+using CAS.NetworkConfigLib.Properties;
 using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
-using CAS.NetworkConfigLib.Properties;
-using CAS.Lib.CodeProtect;
 
 namespace CAS.NetworkConfigLib
 {
   /// <summary>
   /// CommServer configuration management main entry point.
   /// </summary>
-  public partial class CommServerConfigurationMain: Component
+  public partial class CommServerConfigurationMain : Component
   {
+
     #region creators
     /// <summary>
     /// Initializes a new instance of the <see cref="CommServerConfigurationMain"/> class that is a main 
@@ -41,44 +34,49 @@ namespace CAS.NetworkConfigLib
     /// Initializes a new instance of the <see cref="CommServerConfigurationMain"/> class that is a main 
     /// entry point to use and manage the configuration file.
     /// </summary>
-    /// <param name="container">The container to add thic component.</param>
-    public CommServerConfigurationMain( IContainer container )
+    /// <param name="container">The container to add this component.</param>
+    public CommServerConfigurationMain(IContainer container)
       : this()
     {
-      container.Add( this );
+      container.Add(this);
     }
     #endregion
 
     #region public
     /// <summary>
-    /// Gets the configuartion.
+    /// Gets the configuration.
     /// </summary>
-    /// <value>The configuartion <see cref="ComunicationNet"/>.</value>
-    public ComunicationNet Configuartion { get { return m_CcomunicationNet; } }
+    /// <value>The configuration <see cref="ComunicationNet"/>.</value>
+    public ComunicationNet Configuartion => m_CcomunicationNet;
     /// <summary>
     /// Gets the menu.
     /// </summary>
     /// <value>The menu <see cref="ContextMenuStrip"/>.</value>
+    //TODO DAServerConfiguration - remove dependency on `System.Windows.Forms` #14
     public ToolStripItem[] Menu
     {
       get
       {
-        ToolStripItem[] ret = new ToolStripItem[ 4 ];
-        ret[ 0 ] = new ToolStripMenuItem
-          ( m_TSMI_New.Text, m_TSMI_New.Image, new EventHandler( m_TSMI_New_Click ), "Configuration New" ) { ToolTipText = m_TSMI_New.ToolTipText };
-        ret[ 1 ] = new ToolStripMenuItem
-          ( m_TSMI_Open.Text, m_TSMI_Open.Image, new EventHandler( OnOpen_Click ), "Configuration Open" ) { ToolTipText = m_TSMI_Open.ToolTipText };
-        ret[ 2 ] = new ToolStripMenuItem
-          ( m_TSMI_Save.Text, m_TSMI_Save.Image, new EventHandler( OnSave_Click ), "Configuration Save" ) { ToolTipText = m_TSMI_Save.ToolTipText };
-        ret[ 3 ] = new ToolStripMenuItem
-          ( m_TSMI_SaveAs.Text, m_TSMI_SaveAs.Image, new EventHandler( OnSaveAs_Click ), "Configuration Save As" ) { ToolTipText = m_TSMI_SaveAs.ToolTipText };
+        ToolStripItem[] ret = new ToolStripItem[4];
+        ret[0] = new ToolStripMenuItem
+          (m_TSMI_New.Text, m_TSMI_New.Image, new EventHandler(m_TSMI_New_Click), "Configuration New")
+        { ToolTipText = m_TSMI_New.ToolTipText };
+        ret[1] = new ToolStripMenuItem
+          (m_TSMI_Open.Text, m_TSMI_Open.Image, new EventHandler(OnOpen_Click), "Configuration Open")
+        { ToolTipText = m_TSMI_Open.ToolTipText };
+        ret[2] = new ToolStripMenuItem
+          (m_TSMI_Save.Text, m_TSMI_Save.Image, new EventHandler(OnSave_Click), "Configuration Save")
+        { ToolTipText = m_TSMI_Save.ToolTipText };
+        ret[3] = new ToolStripMenuItem
+          (m_TSMI_SaveAs.Text, m_TSMI_SaveAs.Image, new EventHandler(OnSaveAs_Click), "Configuration Save As")
+        { ToolTipText = m_TSMI_SaveAs.ToolTipText };
         return ret;
       }
     }
     /// <summary>
     /// Specialized Event Argument <see cref="EventArgs"/> sent as parameter to events
     /// </summary>
-    public class ConfigurationEventArg: EventArgs
+    public class ConfigurationEventArg : EventArgs
     {
       /// <summary>
       /// Gets or sets the configuration.
@@ -88,14 +86,14 @@ namespace CAS.NetworkConfigLib
       /// <summary>
       /// Initializes a new instance of the <see cref="ConfigurationEventArg"/> class.
       /// </summary>
-      /// <param name="config">The config.</param>
-      public ConfigurationEventArg( ComunicationNet config )
+      /// <param name="config">The communication network configuration.</param>
+      public ConfigurationEventArg(ComunicationNet config)
       {
         Configuration = config;
       }
     }
     /// <summary>
-    /// Occurs when configuration has been chnged.
+    /// Occurs when configuration has been changed.
     /// </summary>
     public event EventHandler<ConfigurationEventArg> ConfigurationChnged;
     /// <summary>
@@ -113,7 +111,7 @@ namespace CAS.NetworkConfigLib
         m_OpenFileDialog.FileName = value;
         m_Empty = true;
       }
-      get { return m_OpenFileDialog.FileName; }
+      get => m_OpenFileDialog.FileName;
     }
     /// <summary>
     /// Read the CommServer configuration from an external dictionary file. If file name not set it opens the file open
@@ -122,7 +120,7 @@ namespace CAS.NetworkConfigLib
     /// <returns></returns>
     public bool Open()
     {
-      return Open( string.Empty );
+      return Open(string.Empty);
     }
     /// <summary>
     /// Opens the specified file name and reads the CommServer configuration from an external dictionary file. 
@@ -130,15 +128,16 @@ namespace CAS.NetworkConfigLib
     /// </summary>
     /// <param name="FileName">Name of the file with the CommServer configuration.</param>
     /// <returns><c>true</c> if successfully accomplished</returns>
-    public bool Open( string FileName )
+   //TODO DAServerConfiguration - remove dependency on `System.Windows.Forms` #14
+    public bool Open(string FileName)
     {
-      if ( !string.IsNullOrEmpty( FileName ) )
+      if (!string.IsNullOrEmpty(FileName))
       {
         m_OpenFileDialog.FileName = FileName;
       }
       else
       {
-        if ( m_OpenFileDialog.ShowDialog() != DialogResult.OK )
+        if (m_OpenFileDialog.ShowDialog() != DialogResult.OK)
           return false;
       }
       Cursor myPreviousCursor = Cursor.Current;
@@ -146,16 +145,16 @@ namespace CAS.NetworkConfigLib
       {
         Cursor.Current = Cursors.WaitCursor;
         Application.UseWaitCursor = true;
-        ReadConfiguration( m_OpenFileDialog.FileName );
+        ReadConfiguration(m_OpenFileDialog.FileName);
         m_Empty = false;
-        UpdateCurrentDirectoryInConfigurationFile( m_OpenFileDialog );
+        UpdateCurrentDirectoryInConfigurationFile(m_OpenFileDialog);
         return true;
       }
-      catch ( Exception ex )
+      catch (Exception ex)
       {
         m_OpenFileDialog.FileName = "";
         MessageBox.Show
-          ( ex.Message, Properties.Resources.SessionFileOpenError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+          (ex.Message, Properties.Resources.SessionFileOpenError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         return false;
       }
       finally
@@ -174,14 +173,14 @@ namespace CAS.NetworkConfigLib
     /// <exception cref="System.Security.SecurityException">System.Security.Permissions.FileIOPermission is not 
     /// set to System.Security.Permissions.FileIOPermissionAccess.Read.</exception>
     /// <exception cref="System.Data.ConstraintException">One or more constraints cannot be enforced.</exception>
-    public void ReadConfiguration( string fileName )
+    public void ReadConfiguration(string fileName)
     {
-      FileInfo info = new FileInfo( fileName );
-      if ( !info.Exists )
-        throw new FileNotFoundException( fileName );
+      FileInfo info = new FileInfo(fileName);
+      if (!info.Exists)
+        throw new FileNotFoundException(fileName);
       m_CcomunicationNet.Clear();
       m_CcomunicationNet.EnforceConstraints = false;
-      m_CcomunicationNet.ReadXml( fileName, System.Data.XmlReadMode.IgnoreSchema );
+      m_CcomunicationNet.ReadXml(fileName, System.Data.XmlReadMode.IgnoreSchema);
       m_CcomunicationNet.EnforceConstraints = true;
       m_SaveFileDialog.FileName = m_OpenFileDialog.FileName = fileName;
       RaiseConfigurationChnged();
@@ -193,15 +192,16 @@ namespace CAS.NetworkConfigLib
     /// just before file saving.</remarks>
     /// <param name="prompt">If set to <c>true</c> show prompt to enter a file name.</param>
     /// <returns></returns>
-    public bool Save( bool prompt )
+   //TODO DAServerConfiguration - remove dependency on `System.Windows.Forms` #14
+    public bool Save(bool prompt)
     {
-      if ( ConfigurationSaving != null )
-        ConfigurationSaving( this, new ConfigurationEventArg( m_CcomunicationNet ) );
+      if (ConfigurationSaving != null)
+        ConfigurationSaving(this, new ConfigurationEventArg(m_CcomunicationNet));
       prompt = m_Empty || prompt;
-      if ( prompt )
+      if (prompt)
       {
-        m_SaveFileDialog.FileName = string.IsNullOrEmpty( DefaultFileName ) ? "CommServerConfiguration" : DefaultFileName;
-        if ( m_SaveFileDialog.ShowDialog() != DialogResult.OK )
+        m_SaveFileDialog.FileName = string.IsNullOrEmpty(DefaultFileName) ? "CommServerConfiguration" : DefaultFileName;
+        if (m_SaveFileDialog.ShowDialog() != DialogResult.OK)
           return false;
         m_Empty = false;
       }
@@ -210,18 +210,18 @@ namespace CAS.NetworkConfigLib
       {
         Cursor.Current = Cursors.WaitCursor;
         Application.UseWaitCursor = true;
-        m_CcomunicationNet.WriteXml( m_SaveFileDialog.FileName, System.Data.XmlWriteMode.WriteSchema );
+        m_CcomunicationNet.WriteXml(m_SaveFileDialog.FileName, System.Data.XmlWriteMode.WriteSchema);
       }
-      catch ( Exception ex )
+      catch (Exception ex)
       {
         MessageBox.Show
-          ( ex.Message, Properties.Resources.SessionFileSaveError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation );
+          (ex.Message, Properties.Resources.SessionFileSaveError, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
       }
       finally
       {
         Application.UseWaitCursor = false;
         Cursor.Current = myPreviousCursor;
-        UpdateCurrentDirectoryInConfigurationFile( m_SaveFileDialog );
+        UpdateCurrentDirectoryInConfigurationFile(m_SaveFileDialog);
       }
       return true;
     }
@@ -229,7 +229,8 @@ namespace CAS.NetworkConfigLib
     /// Gets the open file dialog - can be used to copy all properties.
     /// </summary>
     /// <value>The open file dialog.</value>
-    public OpenFileDialog OpenFileDialog { get { return m_OpenFileDialog; } }
+    //TODO DAServerConfiguration - remove dependency on `System.Windows.Forms` #14
+    public OpenFileDialog OpenFileDialog => m_OpenFileDialog;
     /// <summary>
     /// Returns a <see cref="T:System.String"/> containing the name of the <see cref="T:System.ComponentModel.Component"/>, if any. This method should not be overridden.
     /// </summary>
@@ -245,25 +246,26 @@ namespace CAS.NetworkConfigLib
     #region private
     private void InitializeThis()
     {
-      m_TSMI_Open.Click += new EventHandler( OnOpen_Click );
-      m_TSMI_Save.Click += new EventHandler( OnSave_Click );
-      m_TSMI_SaveAs.Click += new EventHandler( OnSaveAs_Click );
-      m_TSMI_New.Click += new EventHandler( m_TSMI_New_Click );
-      if ( string.IsNullOrEmpty( Settings.Default.InitialDirectory ) )
-        Settings.Default.InitialDirectory = Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments );
+      m_TSMI_Open.Click += new EventHandler(OnOpen_Click);
+      m_TSMI_Save.Click += new EventHandler(OnSave_Click);
+      m_TSMI_SaveAs.Click += new EventHandler(OnSaveAs_Click);
+      m_TSMI_New.Click += new EventHandler(m_TSMI_New_Click);
+      if (string.IsNullOrEmpty(Settings.Default.InitialDirectory))
+        Settings.Default.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       m_OpenFileDialog.InitialDirectory = InstallContextNames.ApplicationDataPath;
       m_SaveFileDialog.InitialDirectory = InstallContextNames.ApplicationDataPath;
     }
     private bool m_Empty = true;
-    private void UpdateCurrentDirectoryInConfigurationFile( FileDialog fileDialog )
+    //TODO DAServerConfiguration - remove dependency on `System.Windows.Forms` #14
+    private void UpdateCurrentDirectoryInConfigurationFile(FileDialog fileDialog)
     {
       try
       {
         Settings.Default.InitialDirectory = fileDialog.InitialDirectory;
-        if ( !string.IsNullOrEmpty( fileDialog.FileName ) )
+        if (!string.IsNullOrEmpty(fileDialog.FileName))
         {
-          FileInfo fi = new FileInfo( fileDialog.FileName );
-          if ( fi.Exists )
+          FileInfo fi = new FileInfo(fileDialog.FileName);
+          if (fi.Exists)
           {
             Settings.Default.InitialDirectory = fi.DirectoryName;
             m_OpenFileDialog.FileName = fi.FullName;
@@ -277,12 +279,12 @@ namespace CAS.NetworkConfigLib
     }
     private void RaiseConfigurationChnged()
     {
-      if ( ConfigurationChnged != null )
-        ConfigurationChnged( this, new ConfigurationEventArg( m_CcomunicationNet ) );
+      if (ConfigurationChnged != null)
+        ConfigurationChnged(this, new ConfigurationEventArg(m_CcomunicationNet));
     }
 
     #region private menu handlers
-    private void m_TSMI_New_Click( object sender, EventArgs e )
+    private void m_TSMI_New_Click(object sender, EventArgs e)
     {
       m_CcomunicationNet.Clear();
       m_Empty = true;
@@ -293,25 +295,25 @@ namespace CAS.NetworkConfigLib
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-    private void OnSaveAs_Click( object sender, EventArgs e )
+    private void OnSaveAs_Click(object sender, EventArgs e)
     {
-      Save( true );
+      Save(true);
     }
     /// <summary>
     /// Called when Save was clicked.
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-    private void OnSave_Click( object sender, EventArgs e )
+    private void OnSave_Click(object sender, EventArgs e)
     {
-      Save( false );
+      Save(false);
     }
     /// <summary>
     /// Called when Open was clicked.
     /// </summary>
     /// <param name="sender">The sender.</param>
     /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-    private void OnOpen_Click( object sender, EventArgs e )
+    private void OnOpen_Click(object sender, EventArgs e)
     {
       Open();
     }

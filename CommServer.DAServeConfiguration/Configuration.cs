@@ -96,7 +96,7 @@ namespace CAS.NetworkConfigLib
         return;
       }
       /// <summary>
-      /// this function is chcecking if the tag already exists
+      /// this function is checking if the tag already exists
       /// </summary>
       /// <param name="pTagID">tag ID to be found</param>
       /// <param name="pName">tag name to be found</param>
@@ -161,7 +161,7 @@ namespace CAS.NetworkConfigLib
       }
     }
     /// <summary>
-    /// Data Table od Stations
+    /// Data Table of Stations
     /// </summary>
     public partial class StationDataTable
     {
@@ -198,7 +198,7 @@ namespace CAS.NetworkConfigLib
       }
     }
     /// <summary>
-    /// Data Table of Bloclks
+    /// Data Table of Blocks
     /// </summary>
     public partial class DataBlocksDataTable
     {
@@ -266,8 +266,7 @@ namespace CAS.NetworkConfigLib
       /// <param name="pPrefix">Prefix for the name</param>
       /// <param name="pRowToBeCopied">row to be copied</param>
       /// <param name="pShallowCopy">indicates if the copy is shallow or deep</param>
-      public void NewTagsRow
-        (int pDatBlockID, TagsRow pRowToBeCopied, bool pShallowCopy, string pPrefix)
+      public void NewTagsRow(int pDatBlockID, TagsRow pRowToBeCopied, bool pShallowCopy, string pPrefix)
       {
         TagsRow dr = NewTagsRow(pDatBlockID, pPrefix);
         dr.AccessRights = pRowToBeCopied.AccessRights;
@@ -275,13 +274,9 @@ namespace CAS.NetworkConfigLib
         dr.Alarm = pRowToBeCopied.Alarm;
         dr.AlarmMask = pRowToBeCopied.AlarmMask;
         dr.StateMask = pRowToBeCopied.StateMask;
-
         AddTagsRow(dr);
-        //kopiowanie Properties:
         foreach (ItemPropertiesTableRow iptr in pRowToBeCopied.GetItemPropertiesTableRows())
           ((ComunicationNet)DataSet).ItemPropertiesTable.NewItemPropertiesTableRow(iptr, dr.TagID);
-
-        //kopiowanie TagBits:
         if (!pShallowCopy)
           foreach (TagBitRow tr in pRowToBeCopied.GetTagBitRows())
             ((ComunicationNet)DataSet).TagBit.NewTagBitRow(dr, string.Empty);
@@ -307,16 +302,11 @@ namespace CAS.NetworkConfigLib
       private ItemPropertiesTableRow myDataTypeConversionPropertiesRow;
       private ItemPropertiesTableRow GetDataTypeItemPropertiesTableRow()
       {
-        // znajdowanie odpowiedniego wiersza w tabeli properties
         if (GetItemPropertiesTableRows().Length == 0)
           return null;
         foreach (ItemPropertiesTableRow iptr in GetItemPropertiesTableRows())
-        {
           if (iptr.ID_Code == Property.DATATYPE.Code)
-          {
             return iptr;
-          }
-        }
         return null;
       }
       /// <summary>
@@ -327,7 +317,6 @@ namespace CAS.NetworkConfigLib
       /// </returns>
       public bool IsDataTypeConversionNull()
       {
-
         ItemPropertiesTableRow iptr = GetDataTypeItemPropertiesTableRow();
         if (iptr != null)
         {
@@ -370,9 +359,7 @@ namespace CAS.NetworkConfigLib
               ((ComunicationNet)Table.DataSet).ItemPropertiesTable.AddItemPropertiesTableRow(newiptr);
           }
           else
-          {
             myDataTypeConversionPropertiesRow.Value = value;
-          }
         }
       }
       #endregion item properties
@@ -385,7 +372,7 @@ namespace CAS.NetworkConfigLib
       /// <summary>
       /// Creates new protocol row in protocol data table
       /// </summary>
-      /// <param name="channelID">Chanel identfier</param>
+      /// <param name="channelID">Chanel identifier</param>
       /// <param name="pPrefix">prefix for the name</param>
       /// <returns>New <see cref="ProtocolRow"/></returns>
       /// <remarks>
