@@ -36,7 +36,7 @@
   </files>
 </package>
 
-<#@ include file = "..\T4Definitions\CAS.OPC.t4" #>
+<#@ include file = "..\SolutionMetadataTemplate.t4" #>
 <#+
 string m_AssemblyTitle = "CAS.CommServer.CommonBus";
 #>

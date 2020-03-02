@@ -31,5 +31,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("<#= ASCommServerDAServerConfigurationVersion #>.*")]
 [assembly: AssemblyFileVersion("<#= ASCommServerDAServerConfigurationVersion #>")]
 
-<#@ include file = "..\..\T4Definitions\CAS.OPC.t4" #>
+<#@ include file = "..\..\SolutionMetadataTemplate.t4" #>
 
