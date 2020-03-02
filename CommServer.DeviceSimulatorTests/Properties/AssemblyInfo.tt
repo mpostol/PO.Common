@@ -31,7 +31,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("<#=CASCommServerVersion#>.*")]
 [assembly: AssemblyFileVersion("<#=CASCommServerVersion#>")]
 
-<#@ include file = "..\..\T4Definitions\CAS.OPC.t4" #>
+<#@ include file = "..\..\SolutionMetadataTemplate.t4" #>
 <#+
 string m_AssemblyTitle = "CAS.CommServer.DeviceSimulator.UnitTests";
 #>
