@@ -6,9 +6,11 @@
     <title>Obsolete use: CAS.CommServer.DA.ItemDescriber; Item Describer Editor and Library</title>
     <authors>Mariusz Postol</authors>
     <owners>Mariusz Postol</owners>
-    <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer.DA</projectUrl>
-    <licenseUrl>http://www.commsvr.com/DownloadCenter/ProductSoftware/LicenseAgreement.aspx</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>Logo64.PNG</icon>
+    <projectUrl>https://mpostol.github.io/PO.Common/</projectUrl>
+    <repository type="GitHub" url="https://github.com/mpostol/PO.Common" />
     <developmentDependency>false</developmentDependency>
     <description>
       Obsolete use: CAS.CommServer.DA.ItemDescriber;
@@ -19,20 +21,20 @@
       Item Describer Editor and Library
     </summary>
     <releaseNotes>
-      Maintenace 2016 release
+      Machine to Sensors (M2S) connectivity based on Process-Observer
     </releaseNotes>
     <copyright>Copyright (C) 2020, Mariusz Postol LODZ POLAND.</copyright>
-    <tags>CommServer, OPC DA, OPC Client, OPC Server.</tags>
+    <tags>Process-Observer, CommServer, OPC DA, OPC Client, OPC Server.</tags>
     <dependencies>
-      <dependency id="CAS.CodeProtect" version="6.0.1" />
+      <dependency id="CAS.CodeProtect" version="7.0.1-Bravo" />
       <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.1062" />
-      <dependency id="CAS.RealTime" version="5.0.5" />
+      <dependency id="UAOOI.ProcessObserver.RealTime" version="6.0.0-Alpha" />
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\CAS.CommServer.ProtocolHub.ItemDescriber.dll" target="lib\net451\CAS.CommServer.ProtocolHub.ItemDescriber.dll" />
-    <file src="bin\Release\CAS.CommServer.ProtocolHub.ItemDescriber.xml" target="lib\net451\CAS.CommServer.ProtocolHub.ItemDescriber.xml" />
-    <file src="bin\Release\item_dsc.xml" target="lib\net451\item_dsc.xml" />
+    <file src="..\_media\Logo64.PNG" target=""/>
+    <file src="bin\Release\CAS.CommServer.ProtocolHub.ItemDescriber.dll" target="lib\net472\CAS.CommServer.ProtocolHub.ItemDescriber.dll" />
+    <file src="bin\Release\CAS.CommServer.ProtocolHub.ItemDescriber.xml" target="lib\net472\CAS.CommServer.ProtocolHub.ItemDescriber.xml" />
   </files>
 </package>
 
