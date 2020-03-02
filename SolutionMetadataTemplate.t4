@@ -2,7 +2,7 @@
 //Common
 string AssemblyCopyright = "Copyright (C) 2020, Mariusz Postol LODZ POLAND.";
 string AssemblyCompany = "Mariusz Postol";
-string Url = "www.cas.eu";
+string Url = "https://github.com/mpostol/PO.Common";
 string Email = "mpostol@cas.eu";
 string Phone = "+48 (608) 619 899";
 string Owner = "Mariusz Postol";
