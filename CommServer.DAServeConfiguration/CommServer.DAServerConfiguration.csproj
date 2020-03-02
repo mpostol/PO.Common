@@ -12,7 +12,8 @@
     <AssemblyName>CAS.CommServer.DAServerConfiguration</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>cas.snk</AssemblyOriginatorKeyFile>
-    <ApplicationIcon>CAS.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -129,7 +130,6 @@
     <None Include="Configuration.xsx">
       <DependentUpon>Configuration.xsd</DependentUpon>
     </None>
-    <None Include="CAS.ico" />
     <None Include="Configuration.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>

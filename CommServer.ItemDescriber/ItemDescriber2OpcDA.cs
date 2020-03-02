@@ -1,62 +1,50 @@
-//<summary>
-//  Title   : Configuration management utilities
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    <Author> - <date>:
-//    <description>
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.com.pl
-//  http:\\www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
+using Opc.Da;
 
 namespace BaseStation.ItemDescriber
 {
   /// <summary>
   /// Summary description for ItemDescriber2OpcDA.
   /// </summary>
-  public class ItemDescriber2OpcDA
+  public static class ItemDescriber2OpcDA
   {
     /// <summary>
-    /// constructor for ItemDescriber2OpcDA
-    /// </summary>
-    public ItemDescriber2OpcDA() { }
-    /// <summary>
-    /// static function that read item property collection for seleted item
+    /// static function that read item property collection for selected item
     /// </summary>
     /// <param name="ItemName">item name to be read</param>
     /// <param name="ds">data set with settings</param>
-    /// <returns>collection of properies</returns>
-    public static Opc.Da.ItemPropertyCollection GetItemPropertiesCollection(string ItemName, ItemDecriberDataSet ds)
+    /// <returns>collection of properties</returns>
+    public static ItemPropertyCollection GetItemPropertiesCollection(string ItemName, ItemDecriberDataSet ds)
     {
-      Opc.Da.ItemPropertyCollection ret = null;
+      ItemPropertyCollection _ret = null;
       if (ds != null)
       {
-        ret = new Opc.Da.ItemPropertyCollection();
-        foreach (ItemDecriberDataSet.ItemsRow row_items in ds.Items.Rows)
+        _ret = new ItemPropertyCollection();
+        foreach (ItemDecriberDataSet.ItemsRow _row in ds.Items.Rows)
         {
-          if (row_items.ItemName == ItemName)
+          if (_row.ItemName == ItemName)
           {
-            foreach (ItemDecriberDataSet.ItemPropertyRow row_property in row_items.GetItemPropertyRows())
+            foreach (ItemDecriberDataSet.ItemPropertyRow row_property in _row.GetItemPropertyRows())
             {
-              Opc.Da.PropertyDescription prop_dsc = Opc.Da.PropertyDescription.Find(new Opc.Da.PropertyID(row_property.PropertyCode));
-              Opc.Da.ItemProperty itemprop = new Opc.Da.ItemProperty();
-              itemprop.ID = prop_dsc.ID;
-              itemprop.Value = row_property.Value;
-              ret.Add(itemprop);
+              PropertyDescription prop_dsc = PropertyDescription.Find(new PropertyID(row_property.PropertyCode));
+              ItemProperty itemprop = new ItemProperty
+              {
+                ID = prop_dsc.ID,
+                Value = row_property.Value
+              };
+              _ret.Add(itemprop);
             }
             break;
           }
         }
       }
-      return ret;
+      return _ret;
     }
   }
 }

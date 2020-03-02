@@ -14,7 +14,7 @@ using System.Collections;
 namespace CAS.Lib.DeviceSimulator
 {
   /// <summary>
-  /// A class representing a single data point in a simulated device. 
+  /// A class representing a single data point in an underlying process replica. 
   /// </summary>
   [Serializable]
   public abstract class DeviceItem : I4UAServer
@@ -46,7 +46,7 @@ namespace CAS.Lib.DeviceSimulator
       {
         m_datatype = value.GetType();
         m_value = value;
-        m_timestamp = DateTime.UtcNow;
+        m_timestamp = m_getCurrentTime();
       }
     }
     /// <summary>
@@ -162,7 +162,6 @@ namespace CAS.Lib.DeviceSimulator
         ResultID = ResultID.S_OK,
         DiagnosticInfo = null
       };
-
       // fetch information for each requested property.
       foreach (PropertyID propertyID in propertyIDs)
       {
@@ -170,7 +169,6 @@ namespace CAS.Lib.DeviceSimulator
         {
           ID = propertyID
         };
-
         // read the property value.
         if (returnValues)
         {
@@ -430,7 +428,7 @@ namespace CAS.Lib.DeviceSimulator
             break;
         }
       }
-      // check datatype.
+      // check data-type.
       if (!property.Type.IsInstanceOfType(value.Value))
       {
 #if DEBUG
@@ -457,7 +455,6 @@ namespace CAS.Lib.DeviceSimulator
         case EUINFO: { m_euInfo = (string[])Opc.Convert.Clone(value.Value); return result; }
         case HIGHEU: { m_maxValue = (double)value.Value; return result; }
         case LOWEU: { m_minValue = (double)value.Value; return result; }
-
         // other defined properties.
         default:
           {
@@ -681,57 +678,38 @@ namespace CAS.Lib.DeviceSimulator
                 case accessRights.writable: { return ResultID.Da.E_READONLY; }
               }
             }
-
             break;
           }
-
         // no checks required for intrinsic properties.
         case DATATYPE:
         case ACCESSRIGHTS:
         case SCANRATE:
         case EUTYPE:
         case EUINFO:
-          {
-            break;
-          }
-
+          break;
         // eu limits only valid for analog items.
         case HIGHEU:
         case LOWEU:
-          {
-            if (m_euType != euType.analog)
-            {
-              return ResultID.Da.E_INVALID_PID;
-            }
-
-            break;
-          }
-
+          if (m_euType != euType.analog)
+            return ResultID.Da.E_INVALID_PID;
+          break;
         // data type limits properties are always read only.
         case MINIMUM_VALUE:
         case MAXIMUM_VALUE:
         case VALUE_PRECISION:
           {
             if (accessRequired == accessRights.writable)
-            {
               return ResultID.Da.E_READONLY;
-            }
-
             break;
           }
-
         // lookup any addition property.
         default:
           {
             if (!m_properties.Contains(propertyID))
-            {
               return ResultID.Da.E_INVALID_PID;
-            }
-
             break;
           }
       }
-
       // property is valid.
       return ResultID.S_OK;
     }
@@ -740,8 +718,8 @@ namespace CAS.Lib.DeviceSimulator
     /// </summary>
     /// <param name="val">The val.</param>
     /// <param name="quality">The quality.</param>
-    /// <param name="timestamp">The timestamp.</param>
-    protected void UpdateVQT(object val, Opc.Da.Quality quality, DateTime timestamp)
+    /// <param name="timestamp">The time-stamp.</param>
+    protected void UpdateVQT(object val, Quality quality, DateTime timestamp)
     {
       lock (this)
       {
@@ -774,7 +752,7 @@ namespace CAS.Lib.DeviceSimulator
       {
         Value = value,
         QualitySpecified = true,
-        Quality = Opc.Da.Quality.Good,
+        Quality = Quality.Good,
         Timestamp = DateTime.Now,
         TimestampSpecified = true
       };

@@ -19,18 +19,6 @@
     <Shape ID="DesignTable:ItemPropertiesTable" ZOrder="2" X="953" Y="523" Height="129" Width="183" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="125" />
   </Shapes>
   <Connectors>
-    <Connector ID="DesignRelation:FK_Station_Interfaces" ZOrder="9" LineWidth="11">
-      <RoutePoints>
-        <Point>
-          <X>408</X>
-          <Y>344</Y>
-        </Point>
-        <Point>
-          <X>408</X>
-          <Y>541</Y>
-        </Point>
-      </RoutePoints>
-    </Connector>
     <Connector ID="DesignRelation:FK_Segments_Interfaces" ZOrder="8" LineWidth="11">
       <RoutePoints>
         <Point>
@@ -39,6 +27,18 @@
         </Point>
         <Point>
           <X>315</X>
+          <Y>541</Y>
+        </Point>
+      </RoutePoints>
+    </Connector>
+    <Connector ID="DesignRelation:FK_Station_Interfaces" ZOrder="9" LineWidth="11">
+      <RoutePoints>
+        <Point>
+          <X>408</X>
+          <Y>344</Y>
+        </Point>
+        <Point>
+          <X>408</X>
           <Y>541</Y>
         </Point>
       </RoutePoints>

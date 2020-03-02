@@ -1,17 +1,9 @@
-﻿//_______________________________________________________________
-//  Title   : Parameters od the Interface
-//  System  : Microsoft VisualStudio 2015 / C#
-//  $LastChangedDate:  $
-//  $Rev: $
-//  $LastChangedBy: $
-//  $URL: $
-//  $Id:  $
+﻿//___________________________________________________________________________________
 //
-//  Copyright (C) 2017, CAS LODZ POLAND.
-//  TEL: +48 608 61 98 99 
-//  mailto://techsupp@cas.eu
-//  http://www.cas.eu
-//_______________________________________________________________
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using System;
 using static CAS.NetworkConfigLib.ComunicationNet;
@@ -36,7 +28,7 @@ namespace CAS.NetworkConfigLib
     /// </summary>
     public string Name;
     /// <summary>
-    /// The address - addres represented by <see cref="ushort"/> if aplicable
+    /// The address - address represented by <see cref="ushort"/> if applicable
     /// </summary>
     public ushort Address;
     /// <summary>
@@ -47,9 +39,9 @@ namespace CAS.NetworkConfigLib
     /// Gets the interface number max value.
     /// </summary>
     /// <value>The interface number max value.</value>
-    static public byte InterfaceNumberMaxValue { get { return 1; } }
+    public static byte InterfaceNumberMaxValue => 1;
     /// <summary>
-    /// Initializes a new instance of the <see cref="InterfaceParameters"/> struct.
+    /// Initializes a new instance of the <see cref="InterfaceParameters"/> structure.
     /// </summary>
     /// <param name="interfacesRow">The interfaces row.</param>
     public InterfaceParameters(InterfacesRow interfacesRow)

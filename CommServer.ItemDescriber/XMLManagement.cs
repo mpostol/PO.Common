@@ -23,7 +23,6 @@ namespace BaseStation.ItemDescriber
     private readonly string itemdscHasNotBeenSet = "The location of the item_dsc.xml file has not been set in the config file";
     private readonly string itemdscDoesNotExists = "The item description file {0} does not exist";
     private readonly string itemdscCannotBeOpened = "Item_dsc.xml file cannot be opened";
-    private FileStream _FileStream;
 
     /// <summary>
     /// reading of configuration XML file
@@ -71,7 +70,7 @@ namespace BaseStation.ItemDescriber
     /// <param name="filename">target filename</param>
     public void writeXMLFile(DataSet myData, string filename)
     {
-      _FileStream = new FileStream(filename, FileMode.Create);
+      FileStream _FileStream = new FileStream(filename, FileMode.Create);
       //Create an XmlTextWriter with the fileStream.
       XmlTextWriter _XmlWriter = new XmlTextWriter(_FileStream, Encoding.Unicode)
       {
@@ -80,9 +79,5 @@ namespace BaseStation.ItemDescriber
       myData.WriteXml(_XmlWriter);
       _XmlWriter.Close();
     }
-    /// <summary>
-    /// constructor for XML management
-    /// </summary>
-    public XMLManagement() { }
   }
 }

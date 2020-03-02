@@ -46,9 +46,9 @@ namespace CAS.NetworkConfigLib {
         
         private ItemPropertiesTableDataTable tableItemPropertiesTable;
         
-        private global::System.Data.DataRelation relationFK_Segments_Interfaces;
-        
         private global::System.Data.DataRelation relationFK_Station_Interfaces;
+        
+        private global::System.Data.DataRelation relationFK_Segments_Interfaces;
         
         private global::System.Data.DataRelation relationFK_Groups_DataBlocks;
         
@@ -452,8 +452,8 @@ namespace CAS.NetworkConfigLib {
                     this.tableItemPropertiesTable.InitVars();
                 }
             }
-            this.relationFK_Segments_Interfaces = this.Relations["FK_Segments_Interfaces"];
             this.relationFK_Station_Interfaces = this.Relations["FK_Station_Interfaces"];
+            this.relationFK_Segments_Interfaces = this.Relations["FK_Segments_Interfaces"];
             this.relationFK_Groups_DataBlocks = this.Relations["FK_Groups_DataBlocks"];
             this.relationFK_Protocol_Segments = this.Relations["FK_Protocol_Segments"];
             this.relationFK_DataBlocks_Tags = this.Relations["FK_DataBlocks_Tags"];
@@ -495,16 +495,16 @@ namespace CAS.NetworkConfigLib {
             this.tableItemPropertiesTable = new ItemPropertiesTableDataTable();
             base.Tables.Add(this.tableItemPropertiesTable);
             global::System.Data.ForeignKeyConstraint fkc;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Segments_Interfaces", new global::System.Data.DataColumn[] {
-                        this.tableSegments.SegmentIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableInterfaces.SegmentIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Station_Interfaces", new global::System.Data.DataColumn[] {
+                        this.tableStation.StationIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInterfaces.StationIdColumn});
             this.tableInterfaces.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            fkc = new global::System.Data.ForeignKeyConstraint("FK_Station_Interfaces", new global::System.Data.DataColumn[] {
-                        this.tableStation.StationIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableInterfaces.StationIdColumn});
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Segments_Interfaces", new global::System.Data.DataColumn[] {
+                        this.tableSegments.SegmentIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInterfaces.SegmentIdColumn});
             this.tableInterfaces.Constraints.Add(fkc);
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
@@ -558,14 +558,14 @@ namespace CAS.NetworkConfigLib {
             fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
             fkc.DeleteRule = global::System.Data.Rule.Cascade;
             fkc.UpdateRule = global::System.Data.Rule.Cascade;
-            this.relationFK_Segments_Interfaces = new global::System.Data.DataRelation("FK_Segments_Interfaces", new global::System.Data.DataColumn[] {
-                        this.tableSegments.SegmentIDColumn}, new global::System.Data.DataColumn[] {
-                        this.tableInterfaces.SegmentIdColumn}, false);
-            this.Relations.Add(this.relationFK_Segments_Interfaces);
             this.relationFK_Station_Interfaces = new global::System.Data.DataRelation("FK_Station_Interfaces", new global::System.Data.DataColumn[] {
                         this.tableStation.StationIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableInterfaces.StationIdColumn}, false);
             this.Relations.Add(this.relationFK_Station_Interfaces);
+            this.relationFK_Segments_Interfaces = new global::System.Data.DataRelation("FK_Segments_Interfaces", new global::System.Data.DataColumn[] {
+                        this.tableSegments.SegmentIDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableInterfaces.SegmentIdColumn}, false);
+            this.Relations.Add(this.relationFK_Segments_Interfaces);
             this.relationFK_Groups_DataBlocks = new global::System.Data.DataRelation("FK_Groups_DataBlocks", new global::System.Data.DataColumn[] {
                         this.tableGroups.GroupIDColumn}, new global::System.Data.DataColumn[] {
                         this.tableDataBlocks.GroupIDColumn}, false);
@@ -4924,23 +4924,23 @@ namespace CAS.NetworkConfigLib {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public SegmentsRow SegmentsRow {
-                get {
-                    return ((SegmentsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Segments_Interfaces"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Segments_Interfaces"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public StationRow StationRow {
                 get {
                     return ((StationRow)(this.GetParentRow(this.Table.ParentRelations["FK_Station_Interfaces"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Station_Interfaces"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public SegmentsRow SegmentsRow {
+                get {
+                    return ((SegmentsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Segments_Interfaces"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Segments_Interfaces"]);
                 }
             }
         }

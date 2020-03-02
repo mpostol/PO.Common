@@ -7,7 +7,8 @@
     <ProjectGuid>{4D16DA6F-CACB-40B7-820A-704F9141FE8E}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>CAS_ikona_02.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>CAS.CommServer.ProtocolHub.ItemDescriber</AssemblyName>
@@ -112,12 +113,6 @@
       <Name>System.Data</Name>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Drawing">
-      <Name>System.Drawing</Name>
-    </Reference>
-    <Reference Include="System.Windows.Forms">
-      <Name>System.Windows.Forms</Name>
-    </Reference>
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
@@ -172,7 +167,6 @@
       <LastGenOutput>ItemDecriberDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="CAS_ikona_02.ico" />
     <None Include="ItemDecriberDataSet.xsc">
       <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </None>

@@ -1,28 +1,12 @@
-//<summary>
-//  Title   : Device
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History 
-//  20090910: mzbrzezny: changes connected to implementation of I4UAServer
-//  20081006: mzbrzezny: implementation of ItemAccessRights
-//    Maciej Zbrzezny - 12-04-2006
-//    OZNACZONO PEWNE KLASY JAKO SERIALIZOWALNE
-//    MPOstol: 17-12-2005
-//      adapted from OPC Foundation Sample code:
-//    RSA: 2004/03/26
-//      Initial implementation.
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006-2009, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using CAS.Lib.RTLib;
+using Opc;
 using Opc.Da;
 using System;
 using System.Collections;
@@ -55,22 +39,22 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Returns all available properties for the specified item.
     /// </summary>
-    /// <param name="itemIdx">The item idx.</param>
-    /// <param name="returnValues">if set to <c>true</c> function is returning values of the properties.</param>
+    /// <param name="itemIdx">The item index.</param>
+    /// <param name="returnValues">if set to <c>true</c> the function is returning values of the properties.</param>
     /// <returns></returns>
-    Opc.Da.ItemPropertyCollection GetAvailableProperties(ushort itemIdx, bool returnValues);
+    ItemPropertyCollection GetAvailableProperties(ushort itemIdx, bool returnValues);
     /// <summary>
     /// Returns the specified properties for the specified item.
     /// </summary>
-    Opc.Da.ItemPropertyCollection GetAvailableProperties(ushort itemIdx, PropertyID[] propertyIDs, bool returnValues);
+    ItemPropertyCollection GetAvailableProperties(ushort itemIdx, PropertyID[] propertyIDs, bool returnValues);
     /// <summary>
     /// Reads the value of the specified item property.
     /// </summary>
-    Opc.Da.ItemValueResult Read(ushort itemIdx, PropertyID propertyID);
+    ItemValueResult Read(ushort itemIdx, PropertyID propertyID);
     /// <summary>
     /// Writes the value of the specified item property.
     /// </summary>
-    Opc.IdentifiedResult Write(ushort itemIdx, PropertyID propertyID, Opc.Da.ItemValue value);
+    IdentifiedResult Write(ushort itemIdx, PropertyID propertyID, ItemValue value);
     /// <summary>
     /// Get all Items created in the device with indexes
     /// </summary>
@@ -82,6 +66,7 @@ namespace CAS.Lib.DeviceSimulator
   [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
   [ComVisible(false)]
   [Serializable]
+  //TODO CommServer.DeviceSimulator - remove dependency on Remoting #15
   public class Device : MarshalByRefObject, IDeviceIndexed, IDevice, IDisposable
   {
     #region public members
@@ -98,9 +83,7 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Stops all threads and releases all resources.
     /// </summary>
-    public void Dispose()
-    {
-    }
+    public void Dispose() { }
     #endregion
 
     #region IDevice Members
@@ -115,22 +98,21 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Returns all available properties for the specified item.
     /// </summary>
-    Opc.Da.ItemPropertyCollection IDevice.GetAvailableProperties(string itemID, bool returnValues)
+    ItemPropertyCollection IDevice.GetAvailableProperties(string itemID, bool returnValues)
     {
       // initialize result.
-      ItemPropertyCollection properties = new ItemPropertyCollection();
-
-      properties.ItemName = itemID;
-      properties.ItemPath = null;
-      properties.ResultID = Opc.ResultID.S_OK;
-      properties.DiagnosticInfo = null;
-
+      ItemPropertyCollection properties = new ItemPropertyCollection
+      {
+        ItemName = itemID,
+        ItemPath = null,
+        ResultID = Opc.ResultID.S_OK,
+        DiagnosticInfo = null
+      };
       // lookup item.
       DeviceItem item = GetItemFromItemsByItemID(itemID);
-
       if (item == null)
       {
-        properties.ResultID = Opc.ResultID.Da.E_UNKNOWN_ITEM_NAME;
+        properties.ResultID = ResultID.Da.E_UNKNOWN_ITEM_NAME;
         return properties;
       }
       // fetch properties.
@@ -139,22 +121,21 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Returns the specified properties for the specified item.
     /// </summary>
-    Opc.Da.ItemPropertyCollection IDevice.GetAvailableProperties(string itemID, PropertyID[] propertyIDs, bool returnValues)
+    ItemPropertyCollection IDevice.GetAvailableProperties(string itemID, PropertyID[] propertyIDs, bool returnValues)
     {
       // initialize result.
-      ItemPropertyCollection properties = new ItemPropertyCollection();
-
-      properties.ItemName = itemID;
-      properties.ItemPath = null;
-      properties.ResultID = Opc.ResultID.S_OK;
-      properties.DiagnosticInfo = null;
-
+      ItemPropertyCollection properties = new ItemPropertyCollection
+      {
+        ItemName = itemID,
+        ItemPath = null,
+        ResultID = Opc.ResultID.S_OK,
+        DiagnosticInfo = null
+      };
       // lookup item.
       DeviceItem item = GetItemFromItemsByItemID(itemID);
-
       if (item == null)
       {
-        properties.ResultID = Opc.ResultID.Da.E_UNKNOWN_ITEM_NAME;
+        properties.ResultID = ResultID.Da.E_UNKNOWN_ITEM_NAME;
         return properties;
       }
       // fetch properties.
@@ -163,22 +144,21 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Reads the value of the specified item property.
     /// </summary>
-    Opc.Da.ItemValueResult IDevice.Read(string itemID, PropertyID propertyID)
+    ItemValueResult IDevice.Read(string itemID, PropertyID propertyID)
     {
       // initialize result.
-      ItemValueResult result = new ItemValueResult();
-
-      result.ItemName = itemID;
-      result.ItemPath = null;
-      result.ResultID = Opc.ResultID.S_OK;
-      result.DiagnosticInfo = null;
-
+      ItemValueResult result = new ItemValueResult
+      {
+        ItemName = itemID,
+        ItemPath = null,
+        ResultID = ResultID.S_OK,
+        DiagnosticInfo = null
+      };
       // lookup item.
       DeviceItem item = GetItemFromItemsByItemID(itemID);
-
       if (item == null)
       {
-        result.ResultID = Opc.ResultID.Da.E_UNKNOWN_ITEM_NAME;
+        result.ResultID = ResultID.Da.E_UNKNOWN_ITEM_NAME;
         return result;
       }
       // read value.
@@ -187,13 +167,12 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Writes the value of the specified item property.
     /// </summary>
-    Opc.IdentifiedResult IDevice.Write(string itemID, PropertyID propertyID, Opc.Da.ItemValue value)
+    IdentifiedResult IDevice.Write(string itemID, PropertyID propertyID, ItemValue value)
     {
       // lookup item.
       DeviceItem item = GetItemFromItemsByItemID(itemID);
-
       if (item == null)
-        return new Opc.IdentifiedResult(itemID, Opc.ResultID.Da.E_UNKNOWN_ITEM_NAME);
+        return new IdentifiedResult(itemID, ResultID.Da.E_UNKNOWN_ITEM_NAME);
       // write value.
       return item.Write(propertyID, value);
     }
@@ -217,41 +196,40 @@ namespace CAS.Lib.DeviceSimulator
     /// <summary>
     /// Returns all available properties for the specified item.
     /// </summary>
-    Opc.Da.ItemPropertyCollection IDeviceIndexed.GetAvailableProperties(ushort itemIdx, bool returnValues)
+    ItemPropertyCollection IDeviceIndexed.GetAvailableProperties(ushort itemIdx, bool returnValues)
     {
       if (itemIdx >= m_tagIdx)
-        new DeviceException("Item index out of range");
+        throw new DeviceException("Item index out of range");
       // fetch properties.
       return GetItemFromItemsByItemIDx(itemIdx).GetAvailableProperties(returnValues);
     }
     /// <summary>
     /// Returns the specified properties for the specified item.
     /// </summary>
-    Opc.Da.ItemPropertyCollection IDeviceIndexed.GetAvailableProperties
-      (ushort itemIdx, PropertyID[] propertyIDs, bool returnValues)
+    ItemPropertyCollection IDeviceIndexed.GetAvailableProperties(ushort itemIdx, PropertyID[] propertyIDs, bool returnValues)
     {
       if (itemIdx >= m_tagIdx)
-        new DeviceException("Item index out of range");
+        throw new DeviceException("Item index out of range");
       // fetch properties.
       return GetItemFromItemsByItemIDx(itemIdx).GetAvailableProperties(propertyIDs, returnValues);
     }
     /// <summary>
     /// Reads the value of the specified item property.
     /// </summary>
-    Opc.Da.ItemValueResult IDeviceIndexed.Read(ushort itemIdx, PropertyID propertyID)
+    ItemValueResult IDeviceIndexed.Read(ushort itemIdx, PropertyID propertyID)
     {
       if (itemIdx >= m_tagIdx)
-        new DeviceException("Item index out of range");
+        throw new DeviceException("Item index out of range");
       // read value.
       return GetItemFromItemsByItemIDx(itemIdx).Read(propertyID);
     }
     /// <summary>
     /// Writes the value of the specified item property.
     /// </summary>
-    Opc.IdentifiedResult IDeviceIndexed.Write(ushort itemIdx, PropertyID propertyID, Opc.Da.ItemValue value)
+    IdentifiedResult IDeviceIndexed.Write(ushort itemIdx, PropertyID propertyID, ItemValue value)
     {
       if (itemIdx >= m_tagIdx)
-        new DeviceException("Item index out of range");
+        throw new DeviceException("Item index out of range");
       // write value.
       return GetItemFromItemsByItemIDx(itemIdx).Write(propertyID, value);
     }
@@ -312,7 +290,7 @@ namespace CAS.Lib.DeviceSimulator
 
     #region Private Members
     private static Hashtable m_items = new Hashtable();
-    private static TagInDevice[] m_itemsIndexTab = new TagInDevice[ushort.MaxValue];
+    private static readonly TagInDevice[] m_itemsIndexTab = new TagInDevice[ushort.MaxValue];
     private static ushort m_tagIdx = 0;
     private static void Add(string idx, TagInDevice Item)
     {
@@ -367,5 +345,6 @@ namespace CAS.Lib.DeviceSimulator
       return GetItemFromItemsByItemID(itemID);
     }
     #endregion
+
   }
 }

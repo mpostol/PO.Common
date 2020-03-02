@@ -7,7 +7,8 @@
     <ProjectGuid>{35351030-92FF-4547-AD45-6123E09278BE}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ApplicationIcon>CAS.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>CAS.CommServer.DeviceSimulator</AssemblyName>
@@ -150,9 +151,6 @@
       <DependentUpon>CommServer.DeviceSimulator.tt</DependentUpon>
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="CAS.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
