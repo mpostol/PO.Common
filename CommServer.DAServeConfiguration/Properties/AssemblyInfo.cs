@@ -1,28 +1,20 @@
-﻿//<summary>
-//  Title   : Assembly info for: CAS.CommServer.DAServerConfiguration
-//  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: $
-//  $Rev:  $
-//  $LastChangedBy:  $
-//  $URL:  $
-//  $Id:  $
+﻿//___________________________________________________________________________________
 //
 //  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
-//  +48 (608) 619 899
-//  mpostol@cas.eu
-//  www.cas.eu
-//</summary>
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using System.Reflection;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("CAS.CommServer.DAServerConfiguration")]
-[assembly: AssemblyDescription("CAS.CommServer.DAServerConfiguration - CAS.CommServer.ProtocolHub configuration")]
+[assembly: AssemblyDescription("ProcessObserver configuration management library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mariusz Postol")]
 [assembly: AssemblyProduct("Object-Oriented Internet")]
 [assembly: AssemblyCopyright("Copyright (C) 2020, Mariusz Postol LODZ POLAND.")]
-[assembly: AssemblyTrademark("CommServer")]
+[assembly: AssemblyTrademark("ProcessObserver")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("7c0ea31e-34e9-42bb-8751-785b2f85b3cf")]

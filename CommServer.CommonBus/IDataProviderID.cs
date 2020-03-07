@@ -1,22 +1,13 @@
-//<summary>
-//  Title   : Data provider identifying interface – provides general information about the plug-in and its functionality.
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//  20081003: mzbrzezny: AddressSpaceDescriptor implementation
-//  20081003: mzbrzezny: ItemDefaultSettings implementation
-//  Mpostol 21-04-2007: created
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
+using CAS.Lib.CommonBus.ApplicationLayer;
+using CAS.Lib.CommonBus.CommunicationLayer;
+using CAS.Lib.RTLib.Management;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -24,9 +15,6 @@ using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Xml;
-using CAS.Lib.CommonBus.ApplicationLayer;
-using CAS.Lib.CommonBus.CommunicationLayer;
-using CAS.Lib.RTLib.Management;
 
 namespace CAS.Lib.CommonBus
 {
@@ -44,20 +32,20 @@ namespace CAS.Lib.CommonBus
     /// </summary>
     IDataProviderDescription GetDataProviderDescription { get; }
     /// <summary>
-    /// Instantiate object providing  <see cref="IApplicationLayerMaster"/> - an object implementing 
-    /// master (playing the role on the field network of the master station,) interfaces defined for the application layer. 
+    /// Instantiate object providing  <see cref="IApplicationLayerMaster" /> - an object implementing
+    /// master (playing the role on the field network of the master station,) interfaces defined for the application layer.
     /// </summary>
     /// <param name="pStatistic">Statistical information about the communication performance.</param>
-    /// <param name="pParent"><seealso cref="CommonBusControl"/> - Base class responsible for all of resources management used 
+    /// <param name="pParent"><seealso cref="CommonBusControl" /> - Base class responsible for all of resources management used
     /// by the component and providing tracing sources.</param>
     /// <returns>Return an object implementing IApplicationLayerMaster.</returns>
     IApplicationLayerMaster GetApplicationLayerMaster( IProtocolParent pStatistic, CommonBusControl pParent );
     //IApplicationLayerPluginHelperSlave GetALHelperMAsterSlave { get;}
     //IApplicationLayerPluginHelperSniffer GetALHelperMAsterSniffer { get;}
     /// <summary>
-    /// This function is responsible for returning the list of addressspaces in the data provider
+    /// This function is responsible for returning the list of address spaces in the data provider
     /// </summary>
-    /// <returns>Hashtable with addressspaces</returns>
+    /// <returns>Hash-table with address space descriptions</returns>
     IAddressSpaceDescriptor[] GetAvailiableAddressspaces();
     /// <summary>
     /// Gets the item default settings.
@@ -108,6 +96,7 @@ namespace CAS.Lib.CommonBus
   /// </remarks>
   public abstract class DataProviderID: IDataProviderID
   {
+
     #region private
     private const string m_Tag_TreeElement = "Settings";
     private const string m_Tag_CommunicationLayer = "CommunicationLayerId";
@@ -118,6 +107,7 @@ namespace CAS.Lib.CommonBus
       new SortedList<string, ICommunicationLayerId>();
     private ICommunicationLayerId m_SelectedCommunicationLayerId = null;
     #endregion
+
     #region protected
     /// <summary>
     /// When overridden in a derived class, writes custom settings to the XML stream.
@@ -184,6 +174,7 @@ namespace CAS.Lib.CommonBus
       return table;
     }
     #endregion
+
     #region IDataProviderID Members
     /// <summary>
     /// Gets the title custom attribute for the plug-in assembly manifest.
@@ -209,11 +200,10 @@ namespace CAS.Lib.CommonBus
     public abstract IApplicationLayerMaster GetApplicationLayerMaster
       ( IProtocolParent pStatistic, CommonBusControl pParent );
     /// <summary>
-    /// This metchod is responsible for returning the list of addressspaces in the data provider.
+    /// This method is responsible for returning the list of address spaces in the data provider.
     /// </summary>
     /// <returns>
-    /// It returns collection <see cref="Hashtable"/> of pairs (Name, Identifier) each one representing 
-    /// supported address space.
+    /// It returns collection <see cref="Hashtable"/> of pairs (Name, Identifier) each one representing supported address space.
     /// </returns>
     public abstract IAddressSpaceDescriptor[] GetAvailiableAddressspaces();
     /// <summary>
@@ -229,9 +219,9 @@ namespace CAS.Lib.CommonBus
     /// <returns>Return an object implementing <seealso cref="IApplicationLayerMaster"/></returns>
     public ICommunicationLayerId this[ string idx ] { get { return m_CommunicationLayerIdColl[ idx ]; } }
     /// <summary>
-    /// this function creates an string XML representation of the dataprovider settings
+    /// this function creates an string XML representation of the data provider settings
     /// </summary>
-    /// <returns>XML string representation of the dataprovider settings</returns>
+    /// <returns>XML string representation of the data provider settings</returns>
     public virtual string GetSettings()
     {
       XmlWriterSettings m_WS = new XmlWriterSettings();
@@ -257,9 +247,9 @@ namespace CAS.Lib.CommonBus
       return m_TW.GetStringBuilder().ToString();
     }
     /// <summary>
-    /// this function creates an string representation of the dataprovider settings
+    /// this function creates an string representation of the data provider settings
     /// </summary>
-    /// <returns>human readable information about the dataprovider settings</returns>
+    /// <returns>human readable information about the data provider settings</returns>
     public virtual string GetSettingsHumanReadableFormat()
     {
       string Description = this.GetDataProviderDescription +
@@ -314,6 +304,7 @@ namespace CAS.Lib.CommonBus
       }
     }
     #endregion
+
     #region public
     /// <summary>
     /// Retrieves a string representation of the object.
@@ -324,6 +315,7 @@ namespace CAS.Lib.CommonBus
       return m_DataProviderDescription.FullName;
     }
     #endregion
+
     #region IEnumerable<KeyValuePair<string,ICommunicationLayerId>> Members
     /// <summary>
     /// Returns an enumerator that iterates through the collection.
@@ -336,12 +328,14 @@ namespace CAS.Lib.CommonBus
       return m_CommunicationLayerIdColl.GetEnumerator();
     }
     #endregion
+
     #region IEnumerable Members
     System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
     {
       return m_CommunicationLayerIdColl.GetEnumerator();
     }
     #endregion
+
     #region constructor
     /// <summary>
     /// Basic implementation of the <see cref="IDataProviderID"/> interface.
@@ -355,5 +349,6 @@ namespace CAS.Lib.CommonBus
       m_DataProviderDescription = new DataProviderDescription( Assembly.GetCallingAssembly() );
     }
     #endregion
+
   }
 }

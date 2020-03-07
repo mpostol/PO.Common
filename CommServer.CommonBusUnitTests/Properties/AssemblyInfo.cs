@@ -1,17 +1,9 @@
-﻿//<summary>
-//  Title   : Assembly info for: CAS.CommServer.CommonBus.UnitTests
-//  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: 2014-10-17 23:06:15 +0200 (Pt, 17 paź 2014) $
-//  $Rev:  $
-//  $LastChangedBy:  $
-//  $URL:  $
-//  $Id:  $
+﻿//___________________________________________________________________________________
 //
 //  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
-//  +48 (608) 619 899
-//  mpostol@cas.eu
-//  www.cas.eu
-//</summary>
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -22,10 +14,10 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCompany("Mariusz Postol")]
 [assembly: AssemblyProduct("Object-Oriented Internet")]
 [assembly: AssemblyCopyright("Copyright (C) 2020, Mariusz Postol LODZ POLAND.")]
-[assembly: AssemblyTrademark("CommServer")]
+[assembly: AssemblyTrademark("ProcessObserver")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("d7e134e8-6bd7-4250-9722-1991ce44cd3d")]
-[assembly: AssemblyVersion("5.01.08.*")]
-[assembly: AssemblyFileVersion("5.01.08")]
+[assembly: AssemblyVersion("6.00.00.*")]
+[assembly: AssemblyFileVersion("6.00.00")]
 

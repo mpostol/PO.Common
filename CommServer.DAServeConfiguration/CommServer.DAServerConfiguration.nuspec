@@ -3,7 +3,7 @@
   <metadata>
     <id>CAS.CommServer.DAServerConfiguration</id>
     <version>5.02.08</version>
-    <title>CAS.CommServer.DAServerConfiguration - CAS.CommServer.ProtocolHub configuration</title>
+    <title>ProcessObserver configuration management library</title>
     <authors>Mariusz Postol</authors>
     <owners>Mariusz Postol</owners>
     <projectUrl>http://www.commsvr.com/Download/CAS.CommServer.DA.Server.Configuration/</projectUrl>
@@ -21,7 +21,7 @@
       Added CAS.NetworkConfigLib.InterfaceParameters - moved form CommServer.Communication.
     </releaseNotes>
     <copyright>Copyright (C) 2020, Mariusz Postol LODZ POLAND.</copyright>
-    <tags>OPC, CommServer, ProtocolHub.</tags>
+    <tags>ProcessObserver, OOI, OPCUA</tags>
     <dependencies>
       <dependency id="CAS.CodeProtect" version="6.0.1" />
       <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.1062" />

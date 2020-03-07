@@ -1,24 +1,16 @@
 <#+
+
 //Common
 string AssemblyCopyright = "Copyright (C) 2020, Mariusz Postol LODZ POLAND.";
 string AssemblyCompany = "Mariusz Postol";
 string Url = "https://github.com/mpostol/PO.Common";
-string Email = "mpostol@cas.eu";
-string Phone = "+48 (608) 619 899";
 string Owner = "Mariusz Postol";
-
-//Default product description
-string DefaultProductName = "Process-Observer";
-string DefaultProductTrademark = "ProcessObserver";
-string DefaultProductVersion = "1.00.00";
-
-//CommServer
 string AssemblyProduct = "Object-Oriented Internet";
-string AssemblyTrademark = "CommServer";
+string AssemblyTrademark = "ProcessObserver";
 
-//CAS.CommServer - common part of all CommServers products.
-string CASCommServerVersion = "5.01.08";
-string CASCommServerPrerelease = "";
+//CAS.CommServer - common part of all deliverables.
+string CASCommServerVersion = "6.00.00";
+string CASCommServerPrerelease = "-Alpha";
 
 //CAS.CommServer.CommonBus
 string CASCommServerCommonBusVersion = "5.01.08";
@@ -29,24 +21,10 @@ string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfi
 string CASCommServerDAClientConfigurationTitle = "OPC Classic Client Configuration Library";
 
 //CAS.CommServer.DAServerConfiguration
+string DAServerConfigurationVersion = "5.02.08";
+string DAServerConfigurationPrerelease = "";
 string CASCommServerDAServerConfigurationProduct = "CAS.CommServer.DAServerConfiguration";
-string CASCommServerDAServerConfigurationTitle = "CAS.CommServer.DAServerConfiguration - CAS.CommServer.ProtocolHub configuration";
-string ASCommServerDAServerConfigurationVersion = "5.02.08";
-string ASCommServerDAServerConfigurationPrerelease = "";
-
-//____________________________________
-//New Namespaces organization
-//CAS.CommServer
-//CAS.CommServer.DA
-//CAS.CommServer.DA.Viewer
-//CAS.CommServer.DA.Configuration - common server and client configuration access library
-//CAS.CommServer.OPCClassic.SDK
-//CAS.CommServer.UA
-//CAS.CommServer.UA.ModelDesigner
-//CAS.CommServer.UA.SDKServerConfiguration
-//CAS.CommServer.UA.Server
-//CAS.CommServer.UA.Viewer
-//CAS.CommServer.UA.XML
+string CASCommServerDAServerConfigurationTitle = "ProcessObserver configuration management library";
 
 //Note: 
 //Alpha, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliet, 
