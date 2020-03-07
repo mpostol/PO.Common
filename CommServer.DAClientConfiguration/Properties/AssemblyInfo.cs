@@ -14,13 +14,13 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("OPC Classic Client Configuration Library")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Mariusz Postol")]
-[assembly: AssemblyProduct("Process-Observer")]
+[assembly: AssemblyProduct("Object-Oriented Internet")]
 [assembly: AssemblyCopyright("Copyright (C) 2020, Mariusz Postol LODZ POLAND.")]
-[assembly: AssemblyTrademark("CommServer")]
+[assembly: AssemblyTrademark("ProcessObserver")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("7c0ea31e-34e9-42bb-8751-785b2f85b3cf")]
-[assembly: AssemblyVersion("5.01.08.*")]
-[assembly: AssemblyFileVersion("5.01.08")]
+[assembly: AssemblyVersion("6.00.00.*")]
+[assembly: AssemblyFileVersion("6.00.00")]
 
 

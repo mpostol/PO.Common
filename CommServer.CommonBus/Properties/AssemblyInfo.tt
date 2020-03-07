@@ -1,24 +1,16 @@
 ﻿<#@ template debug="false" hostspecific="false" language="C#" #>
 <#@ output extension=".cs" #>
-//<summary>
-//  Title   : Assembly info for: <#=m_AssemblyTitle#>
-//  System  : Microsoft Visual C# .NET
-//  $LastChangedDate: 2014-10-17 23:06:15 +0200 (Pt, 17 paź 2014) $
-//  $Rev:  $
-//  $LastChangedBy:  $
-//  $URL:  $
-//  $Id:  $
+//___________________________________________________________________________________
 //
-//  <#=AssemblyCopyright#>
-//  <#=Phone#>
-//  <#=Email#>
-//  <#=Url#>
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("<#=m_AssemblyTitle#>")]
+[assembly: AssemblyTitle("CAS.CommServer.CommonBus")]
 [assembly: AssemblyDescription("CAS CommServer Family Common Communication Functionality")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("<#=AssemblyCompany#>")]
@@ -32,6 +24,3 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("<#= CASCommServerCommonBusVersion #>")]
 
 <#@ include file = "..\..\SolutionMetadataTemplate.t4" #>
-<#+
-string m_AssemblyTitle = "CAS.CommServer.CommonBus";
-#>

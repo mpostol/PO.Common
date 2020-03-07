@@ -20,7 +20,7 @@ namespace CAS.CommServer.CommonBus.UnitTests
     {
       DataProviderID _provider = new ConcreteDataProviderID();
       Assert.IsNotNull(_provider);
-      Assert.AreEqual<int>(5, _provider.GetDataProviderDescription.Version.Major);
+      Assert.AreEqual<int>(6, _provider.GetDataProviderDescription.Version.Major);
     }
 
     private class ConcreteDataProviderID : DataProviderID
