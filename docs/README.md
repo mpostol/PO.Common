@@ -14,7 +14,7 @@ Id | Title
 
 ## Dependency Graph
 
-![Architecture](_media\DependencyGraph.png)
+![Architecture](_media/DependencyGraph.png)
 
 ## See Also
 
