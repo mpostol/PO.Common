@@ -9,20 +9,20 @@ string AssemblyProduct = "Object-Oriented Internet";
 string AssemblyTrademark = "ProcessObserver";
 
 //CAS.CommServer - common part of all deliverables.
-string CASCommServerVersion = "6.00.00";
-string CASCommServerPrerelease = "-Alpha";
+string CASCommServerVersion = "6.00.03";
+string CASCommServerPrerelease = "-Charlie";
 
 //CAS.CommServer.CommonBus
-string CASCommServerCommonBusVersion = "6.00.00";
-string CASCommServerCommonBusPrerelease = "-Alpha";
+string CASCommServerCommonBusVersion = "6.00.03";
+string CASCommServerCommonBusPrerelease = "-Charlie";
 
 //CAS.CommServer.DAClientConfiguration
 string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfiguration";
 string CASCommServerDAClientConfigurationTitle = "OPC Classic Client Configuration Library";
 
 //CAS.CommServer.DAServerConfiguration
-string DAServerConfigurationVersion = "6.00.01";
-string DAServerConfigurationPrerelease = "-Bravo";
+string DAServerConfigurationVersion = "6.00.03";
+string DAServerConfigurationPrerelease = "-Charlie";
 string CASCommServerDAServerConfigurationProduct = "CAS.CommServer.DAServerConfiguration";
 string CASCommServerDAServerConfigurationTitle = "ProcessObserver configuration management library";
 
