@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.ProtocolHub.ItemDescriber</id>
-    <version>6.00.00-Alpha</version>
+    <version>6.00.03-Charlie</version>
     <title>Obsolete use: CAS.CommServer.DA.ItemDescriber; Item Describer Editor and Library</title>
     <authors>Mariusz Postol</authors>
     <owners>Mariusz Postol</owners>
