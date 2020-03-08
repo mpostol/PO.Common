@@ -13,16 +13,16 @@ string CASCommServerVersion = "6.00.00";
 string CASCommServerPrerelease = "-Alpha";
 
 //CAS.CommServer.CommonBus
-string CASCommServerCommonBusVersion = "5.01.08";
-string CASCommServerCommonBusPrerelease = "";
+string CASCommServerCommonBusVersion = "6.00.00";
+string CASCommServerCommonBusPrerelease = "-Alpha";
 
 //CAS.CommServer.DAClientConfiguration
 string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfiguration";
 string CASCommServerDAClientConfigurationTitle = "OPC Classic Client Configuration Library";
 
 //CAS.CommServer.DAServerConfiguration
-string DAServerConfigurationVersion = "6.00.00";
-string DAServerConfigurationPrerelease = "-Alpha";
+string DAServerConfigurationVersion = "6.00.01";
+string DAServerConfigurationPrerelease = "-Bravo";
 string CASCommServerDAServerConfigurationProduct = "CAS.CommServer.DAServerConfiguration";
 string CASCommServerDAServerConfigurationTitle = "ProcessObserver configuration management library";
 

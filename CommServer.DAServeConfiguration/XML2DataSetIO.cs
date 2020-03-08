@@ -1,21 +1,11 @@
-//<summary>
-//  Title   : XML to DataSet IO helper
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    MP - 01-10-2006: created from XMLManagement
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using CAS.Lib.RTLib.Utils;
+using CAS.Lib.CodeProtect;
 using System.Data;
 using System.IO;
 
