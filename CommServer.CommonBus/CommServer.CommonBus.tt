@@ -3,40 +3,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id><#=m_AssemblyTitle#></id>
+    <id>CAS.CommServer.CommonBus</id>
     <version><#= CASCommServerCommonBusVersion #><#= CASCommServerCommonBusPrerelease #></version>
     <title>CAS CommServer Family Common Communication Functionality</title>
     <authors><#=AssemblyCompany#></authors>
     <owners><#=Owner#></owners>
-    <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer</projectUrl>
-    <licenseUrl>http://www.commsvr.com/DownloadCenter/ProductSoftware/LicenseAgreement.aspx</licenseUrl>
+    <projectUrl>https://mpostol.github.io/PO.Common/</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>Logo64.PNG</icon>
+    <projectUrl>https://mpostol.github.io/PO.Common/</projectUrl>
+    <repository type="GitHub" url="<#=Url #>" />
     <developmentDependency>false</developmentDependency>
     <description>
-      Common Communication Funmctionality for the CommServer family.
+      Common Communication Functionality for the Process Observer.
     </description>
     <summary>
-      Common Communication Funmctionality for the CommServer family.
+      Common Communication Functionality for the Process Observer.
     </summary>
     <releaseNotes>
-      Released for.NET 4.51 Maintenece 2016
+      Maintenance release
     </releaseNotes>
     <copyright><#=AssemblyCopyright#></copyright>
     <tags>OPC DA, CommServer, ASMD</tags>
     <dependencies>
       <group targetFramework=".NETFramework4.51">
-         <dependency id="CAS.CodeProtect" version="6.0.1" />
-        <dependency id="CAS.RealTime" version="5.0.5" />
+        <dependency id="UAOOI.ProcessObserver.RealTime" version="6.0.0-Alpha" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="bin\Release\CAS.CommServer.CommonBus.dll" target="lib\net451\CAS.CommServer.CommonBus.dll" />
-    <file src="bin\Release\CAS.CommServer.CommonBus.xml" target="lib\net451\CAS.CommServer.CommonBus.xml" />
+    <file src="..\_media\Logo64.PNG" target=""/>
+    <file src="bin\Release\CAS.CommServer.CommonBus.dll" target="lib\net472\CAS.CommServer.CommonBus.dll" />
+    <file src="bin\Release\CAS.CommServer.CommonBus.xml" target="lib\net472\CAS.CommServer.CommonBus.xml" />
   </files>
 </package>
 
 <#@ include file = "..\SolutionMetadataTemplate.t4" #>
-<#+
-string m_AssemblyTitle = "CAS.CommServer.CommonBus";
-#>

@@ -21,8 +21,8 @@ string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfi
 string CASCommServerDAClientConfigurationTitle = "OPC Classic Client Configuration Library";
 
 //CAS.CommServer.DAServerConfiguration
-string DAServerConfigurationVersion = "5.02.08";
-string DAServerConfigurationPrerelease = "";
+string DAServerConfigurationVersion = "6.00.00";
+string DAServerConfigurationPrerelease = "-Alpha";
 string CASCommServerDAServerConfigurationProduct = "CAS.CommServer.DAServerConfiguration";
 string CASCommServerDAServerConfigurationTitle = "ProcessObserver configuration management library";
 
