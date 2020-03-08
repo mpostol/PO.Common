@@ -18,7 +18,7 @@
 //  http:\\www.cas.eu
 //</summary>
 
-using CAS.Lib.RTLib.Utils;
+using CAS.Lib.CodeProtect;
 using System;
 using System.IO;
 

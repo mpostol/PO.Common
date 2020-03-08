@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CAS.RealTime" Version="5.0.6" />
+    <PackageReference Include="UAOOI.ProcessObserver.RealTime" Version="6.0.2-Charlie" />
   </ItemGroup>
 
 </Project>

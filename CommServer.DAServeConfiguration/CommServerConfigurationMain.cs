@@ -6,7 +6,6 @@
 //___________________________________________________________________________________
 
 using CAS.Lib.CodeProtect;
-using CAS.NetworkConfigLib.Properties;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -250,8 +249,8 @@ namespace CAS.NetworkConfigLib
       m_TSMI_Save.Click += new EventHandler(OnSave_Click);
       m_TSMI_SaveAs.Click += new EventHandler(OnSaveAs_Click);
       m_TSMI_New.Click += new EventHandler(m_TSMI_New_Click);
-      if (string.IsNullOrEmpty(Settings.Default.InitialDirectory))
-        Settings.Default.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+      if (string.IsNullOrEmpty(Properties.Settings.Default.InitialDirectory))
+        Properties.Settings.Default.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
       m_OpenFileDialog.InitialDirectory = InstallContextNames.ApplicationDataPath;
       m_SaveFileDialog.InitialDirectory = InstallContextNames.ApplicationDataPath;
     }
@@ -261,13 +260,13 @@ namespace CAS.NetworkConfigLib
     {
       try
       {
-        Settings.Default.InitialDirectory = fileDialog.InitialDirectory;
+        Properties.Settings.Default.InitialDirectory = fileDialog.InitialDirectory;
         if (!string.IsNullOrEmpty(fileDialog.FileName))
         {
           FileInfo fi = new FileInfo(fileDialog.FileName);
           if (fi.Exists)
           {
-            Settings.Default.InitialDirectory = fi.DirectoryName;
+            Properties.Settings.Default.InitialDirectory = fi.DirectoryName;
             m_OpenFileDialog.FileName = fi.FullName;
             m_SaveFileDialog.FileName = fi.FullName;
           }
