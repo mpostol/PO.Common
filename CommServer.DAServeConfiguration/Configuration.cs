@@ -5,8 +5,8 @@
 //  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
 //___________________________________________________________________________________
 
-using CAS.Lib.RTLib;
 using Opc.Da;
+using UAOOI.ProcessObserver.RealTime;
 
 namespace CAS.NetworkConfigLib
 {
@@ -69,7 +69,7 @@ namespace CAS.NetworkConfigLib
       /// Creates new tag bit row and assigns default values
       /// </summary>
       /// <param name="cParent">Parent Tag <see cref="TagsRow"/></param>
-      /// <param name="pPrefix">prefix for new tagbit names that are created</param>
+      /// <param name="pPrefix">prefix for new tag-bit names that are created</param>
       /// <returns>New <see cref="TagBitRow"/></returns>
       public TagBitRow NewTagBitRow(TagsRow cParent, string pPrefix)
       {

@@ -5,13 +5,13 @@
 //  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
 //___________________________________________________________________________________
 
-using CAS.Lib.RTLib;
 using Opc;
 using Opc.Da;
 using System;
 using System.Collections;
 using System.Runtime.InteropServices;
 using System.Security.Permissions;
+using UAOOI.ProcessObserver.RealTime;
 
 namespace CAS.Lib.DeviceSimulator
 {
@@ -66,7 +66,7 @@ namespace CAS.Lib.DeviceSimulator
   [SecurityPermissionAttribute(SecurityAction.Demand, SerializationFormatter = true)]
   [ComVisible(false)]
   [Serializable]
-  //TODO CommServer.DeviceSimulator - remove dependency on Remoting #15
+  //TODO CommServer.DeviceSimulator - remove dependency on R emoting #15
   public class Device : MarshalByRefObject, IDeviceIndexed, IDevice, IDisposable
   {
     #region public members

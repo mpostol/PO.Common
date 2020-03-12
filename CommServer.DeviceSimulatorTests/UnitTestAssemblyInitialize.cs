@@ -6,11 +6,11 @@
 //___________________________________________________________________________________
 
 using CAS.Lib.DeviceSimulator;
-using CAS.Lib.RTLib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Opc.Da;
 using System;
 using System.Collections.Generic;
+using UAOOI.ProcessObserver.RealTime;
 
 namespace CAS.CommServer.DeviceSimulator.UnitTests
 {

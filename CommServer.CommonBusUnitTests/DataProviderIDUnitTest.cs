@@ -6,9 +6,9 @@
 //___________________________________________________________________________________
 
 using CAS.Lib.CommonBus;
-using CAS.Lib.RTLib.Management;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using UAOOI.ProcessObserver.RealTime.Management;
 
 namespace CAS.CommServer.CommonBus.UnitTests
 {
