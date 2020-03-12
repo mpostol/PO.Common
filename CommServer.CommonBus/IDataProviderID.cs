@@ -7,7 +7,6 @@
 
 using CAS.Lib.CommonBus.ApplicationLayer;
 using CAS.Lib.CommonBus.CommunicationLayer;
-using CAS.Lib.RTLib.Management;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +14,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Xml;
+using UAOOI.ProcessObserver.RealTime.Management;
 
 namespace CAS.Lib.CommonBus
 {

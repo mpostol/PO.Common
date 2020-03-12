@@ -5,9 +5,8 @@
 //  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
 //___________________________________________________________________________________
 
-
 using CAS.Lib.CommonBus.CommunicationLayer;
-using CAS.Lib.RTLib.Management;
+using UAOOI.ProcessObserver.RealTime.Management;
 
 namespace CAS.Lib.CommonBus.ApplicationLayer
 {

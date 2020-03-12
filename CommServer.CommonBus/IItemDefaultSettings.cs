@@ -1,22 +1,11 @@
-//<summary>
-//  Title   : Data provider identifying interface – provides general information about Item Default Settings.
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//  20081006 mzbrzezny: ItemAccessRights are moved to RtLibComm
-//  20081003: mzbrzezny: created
+//___________________________________________________________________________________
 //
-//  Copyright (C)2008, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using CAS.Lib.RTLib;
+using UAOOI.ProcessObserver.RealTime;
 
 namespace CAS.Lib.CommonBus
 {
@@ -36,9 +25,9 @@ namespace CAS.Lib.CommonBus
     /// <value>The type of the default.</value>
     System.Type DefaultType { get; }
     /// <summary>
-    /// Gets the availiable types.
+    /// Gets the available types.
     /// </summary>
-    /// <value>The availiable types.</value>
+    /// <value>The available types.</value>
     System.Type[] AvailiableTypes { get; }
     /// <summary>
     /// Gets the access rights.

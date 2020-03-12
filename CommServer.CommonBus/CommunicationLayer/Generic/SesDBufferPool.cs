@@ -1,24 +1,15 @@
-﻿//<summary>
-//  Title   : Data buffor pool engine generic version
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    MPostol: 02-04-2007: created
+﻿//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using CAS.Lib.RTLib.Processes;
+using UAOOI.ProcessObserver.RealTime.Processes;
 
 namespace CAS.Lib.CommonBus.CommunicationLayer.Generic
 {
+
   /// <summary>
   /// Interface allowing to return data buffer to the pool.
   /// </summary>
@@ -27,12 +18,12 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Generic
     /// <summary>
     /// Return the data buffer to the common pool. 
     /// </summary>
-    /// <param name="mess">Buffer to be returneed. After returning is assigned null.
+    /// <param name="mess">Buffer to be returned. After returning is assigned null.
     /// </param>
     void ReturnEmptyISesDBuffer( ref ISesDBuffer mess );
   }
   /// <summary>
-  /// Data buffor pool engine
+  /// Data buffer pool engine
   /// </summary>
   /// <typeparam name="TSesDBuffer">Type managed by the buffer.</typeparam>
   public abstract class SesDBufferPool<TSesDBuffer>: IBufferLink where TSesDBuffer: ISesDBuffer
@@ -45,6 +36,7 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Generic
       return newBuff;
     }
     #endregion
+
     #region PUBLIC
     /// <summary>
     /// Abstract method used to create new envelope. New envelope is created each time 
@@ -76,6 +68,7 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Generic
       myPool = new EnvelopePool( new EnvelopePool.CreateEnvelope( this.NewSesDBuffer ) );
     }
     #endregion
+
   }
 }
 

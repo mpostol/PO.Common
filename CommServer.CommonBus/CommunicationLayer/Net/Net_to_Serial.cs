@@ -1,50 +1,26 @@
-//<summary>
-//  Title   : Implementation of ICommunicationLayer for TCP/UDP
-//  System  : Microsoft Visual C# .NET 2008
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    20080612: mzbrzezny: Net_to_Serial priority of some errors that goes to log are changed
-//    MPostol
-//      TCP protocol implemented;
-//      Dodoano obsluge exceptions w operacjach na sket'cie
-//      wywalilem NotMyAnswer, dla UDP tez jest robiony connect, co eleminuje przychodzenie ramek z dowolnego zrodla.
-//    MZbrzezny 2007-01-31
-//   -  usuwanie mechanizmu bazujacego na porcie 
-//    w application layer i communication layer
-//	  - wprowadzono zmiany dot.odswiezania buforow, jest to zwi¹zane 
-//	  z wyjatkami, ktore moga wystapic
+//___________________________________________________________________________________
 //
-//    Maciej Zbrzezny - 12-04-2006
-//    aby usunac warningi wykomentowano return po throw
-//    MPostol - 23-12-2005
-//      zmodyfikowano i przetestowano
-//    MZbrzezny - 2005-12-16:
-//	    created
-//    
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using System;
 using System.Diagnostics;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-using CAS.Lib.RTLib.Processes;
+using UAOOI.ProcessObserver.RealTime.Processes;
 
 namespace CAS.Lib.CommonBus.CommunicationLayer.Net
 {
+
   /// <summary>
   /// Implementation of the <see cref="ICommunicationLayer"/> for the UDP and TCP protocols
   /// </summary>
   internal class Net_to_Serial: Medium_to_Serial, ICommunicationLayer
   {
+
     #region private
     private class MySocket: Socket
     {
@@ -293,7 +269,8 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Net
       MarkException( string.Format( msg, ex.Message ), TraceEventType.Information, position, ex );
     }
     #endregion private
-    #region creators
+
+    #region constructor
     /// <summary>
     /// Initializes a new instance of the <see cref="Net_to_Serial"/> class.
     /// </summary>
@@ -333,6 +310,7 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Net
       }
     }
     #endregion
+
     #region IDisposable
     private bool disposed = false;
     /// <summary>
@@ -362,6 +340,7 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Net
       base.Dispose( true );
     }
     #endregion
+
     #region IConnectionManagement Members
     /// <summary>
     /// Connect Request, this fuction is used for establishing the connection
@@ -517,6 +496,7 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Net
       }
     }
     #endregion
+
     #region ICommunicationLayer
     TGetCharRes ICommunicationLayer.GetChar( out byte lastChr )
     {
@@ -637,6 +617,7 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Net
     /// </summary>
     bool IConnectionManagement.Connected { get { return this.IsConnected; } }
     #endregion
+
     #region PUBLIC
     /// <summary>
     /// ToString representation
@@ -654,5 +635,7 @@ namespace CAS.Lib.CommonBus.CommunicationLayer.Net
         m_Socket.ProtocolType.ToString() + String.Format( " State = {0} sockets L = {1} R = {2}", IsConnected.ToString(), lep, rep );
     }
     #endregion
+
   }
+
 }
