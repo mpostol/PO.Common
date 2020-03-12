@@ -5,9 +5,10 @@
 //  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
 //___________________________________________________________________________________
 
-using CAS.Lib.RTLib.Processes;
 using System;
 using System.Configuration;
+using System.IO;
+using UAOOI.ProcessObserver.RealTime.Processes;
 
 namespace CAS.Lib.RTLib.Management
 {
@@ -28,13 +29,12 @@ namespace CAS.Lib.RTLib.Management
     {
       ConfigValues = ConfigurationManager.AppSettings;
       Configuration CurrConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-      ConfigFilePath = System.IO.Path.GetDirectoryName(CurrConfig.FilePath) + System.IO.Path.DirectorySeparatorChar;
+      ConfigFilePath = Path.GetDirectoryName(CurrConfig.FilePath) + Path.DirectorySeparatorChar;
       string AppInfo = "Base directory:" + AppDomain.CurrentDomain.BaseDirectory
         + "| AppDomain.CurrentDomain.ToString():" + AppDomain.CurrentDomain.ToString()
         + "| AppDomain.CurrentDomain.SetupInformation.ConfigurationFile:" + AppDomain.CurrentDomain.SetupInformation.ConfigurationFile
         + "| ConfigFilePath" + ConfigFilePath;
-      EventLogMonitor.WriteToEventLogInfo
-        ("Configuration for: " + AppInfo, (int)Error.DataPorter_ApplicationConfiguration);
+      EventLogMonitor.WriteToEventLogInfo("Configuration for: " + AppInfo, (int)Error.DataPorter_ApplicationConfiguration);
     }
     #endregion
 
@@ -74,7 +74,7 @@ namespace CAS.Lib.RTLib.Management
         try { return int.Parse(strVal); }
         catch (Exception ex)
         {
-          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
+          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;
     }
@@ -110,7 +110,7 @@ namespace CAS.Lib.RTLib.Management
         try { return ushort.Parse(strVal); }
         catch (Exception ex)
         {
-          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
+          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;
     }
@@ -128,7 +128,7 @@ namespace CAS.Lib.RTLib.Management
         try { defaultVal = float.Parse(ConfigValues[key]); }
         catch (Exception ex)
         {
-          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
+          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;
     }
@@ -146,7 +146,7 @@ namespace CAS.Lib.RTLib.Management
         try { defaultVal = bool.Parse(ConfigValues[key]); }
         catch (Exception ex)
         {
-          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Processes.Error.RTLib_AppConfigManagement, 26).WriteEntry();
+          new EventLogMonitor(ex.Message, EventLogEntryType.Warning, (int)Error.RTLib_AppConfigManagement, 26).WriteEntry();
         }
       return defaultVal;
     }

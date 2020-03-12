@@ -1,28 +1,13 @@
-//<summary>
-//  Title   : COMMUNICATIONS LIBRARY - Protocol Application Layer message class
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//      all registers address are relative to the block begining,
-//      new overloaded version of SetBlockDescription 
-//      ReturnEmptyEnvelope resets the message content
-//      ProtocolALMessage - new parameter stating if big-Endian representatation 
-//      (the most significant byte first) is to use. 
-//      This property cannot be changed later.
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
-using CAS.Lib.RTLib.Processes;
 using CAS.Lib.CommonBus.CommunicationLayer;
 using CAS.Lib.CommonBus.CommunicationLayer.Generic;
+using UAOOI.ProcessObserver.RealTime.Processes;
 
 namespace CAS.Lib.CommonBus.ApplicationLayer
 {
@@ -31,12 +16,14 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
   /// </summary>
   public abstract class ProtocolALMessage: UMessage, IReadValue, IWriteValue, IResponseValue, IReadCMDValue, ISesDBuffer, IBlockAddress
   {
+
     #region IBlockDescription
     int IBlockAddress.station { get { return currStation; } }
     int IBlockDescription.length { get { return currBlockLength; } }
     int IBlockDescription.startAddress { get { return currBlockStartAddress; } }
     short IBlockDescription.dataType { get { return currDataType; } }
     #endregion
+
     #region IReadValue
     /// <summary>
     /// Check if address belongs to the block
@@ -58,6 +45,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// <returns>Converted value.</returns>
     public abstract object ReadValue( int regAddress, System.Type pCanonicalType );
     #endregion
+
     #region IWriteValue
     /// <summary>
     /// Writes the value to the message in the requested type.
@@ -67,6 +55,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// <param name="pRegAddress">Address</param>
     public abstract void WriteValue( object pValue, int pRegAddress );
     #endregion
+
     #region IResponseValue
     /// <summary>
     /// Sets the <see cref="System.Object"/> with the specified register value.
@@ -77,6 +66,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
       set { SetValue( value, regAddressOffset ); }
     }
     #endregion
+
     #region IReadCMDValue
     bool IReadCMDValue.IsInBlock( uint station, ushort address, short myDataType )
     {
@@ -94,6 +84,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// </summary>
     public abstract int GetCommand { get;}
     #endregion
+
     #region Processes.IEnvelope
     /// <summary>
     /// Checks if the buffer is in the pool or otherwise is alone and used by a user. 
@@ -114,6 +105,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
       this.pool.ReturnEmptyISesDBuffer( ref var );
     }
     #endregion
+
     #region abstract – protocol dependent.
     ///// <summary>
     ///// Gets a value from the message according. Must be implemented by the inheritor according to the implemented protocol rules.
@@ -188,6 +180,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
     /// <param name="block">Description of the requested data block.</param>
     internal protected abstract void PrepareRequest( int station, IBlockDescription block );
     #endregion
+
     #region public
     /// <summary>
     /// Assigns description of the block of data to the message.
@@ -243,6 +236,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
       ;
     }
     #endregion
+
     #region PRIVAT
     bool inPoolFlag;
     private int currStation = -1;
@@ -258,5 +252,6 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
         ( myType == currDataType );
     }
     #endregion
+
   } //class ProtocolALMessage
 }

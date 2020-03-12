@@ -6,12 +6,12 @@
 //___________________________________________________________________________________
 
 using CAS.Lib.CodeProtect;
-using CAS.Lib.RTLib.Processes;
 using System;
 using System.Data;
 using System.IO;
 using System.Text;
 using System.Xml;
+using UAOOI.ProcessObserver.RealTime.Processes;
 
 namespace BaseStation.ItemDescriber
 {

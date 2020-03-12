@@ -1,35 +1,25 @@
-//<summary>
-//  Title   : Base implementation of the IApplicationLayerMaster interface
-//  System  : Microsoft Visual C# .NET 2005
-//  $LastChangedDate$
-//  $Rev$
-//  $LastChangedBy$
-//  $URL$
-//  $Id$
-//  History :
-//    20090123: mzbrzezny: some additional checking(if txframe!=null) and debugging (tracing) is added to TxGetResponse
-//    20080612 : mzbrzezny: ApplicationLayerMaster is checking if !(IEnvelope)Rxmsg ).InPool before call ReturnEmptyEnvelope();
-//    03-04-2007: MPostol created
+//___________________________________________________________________________________
 //
-//  Copyright (C)2006, CAS LODZ POLAND.
-//  TEL: +48 (42) 686 25 47
-//  mailto:techsupp@cas.eu
-//  http://www.cas.eu
-//</summary>
+//  Copyright (C) 2020, Mariusz Postol LODZ POLAND.
+//
+//  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
+//___________________________________________________________________________________
 
 using CAS.Lib.CommonBus.CommunicationLayer.Generic;
-using CAS.Lib.RTLib.Management;
-using CAS.Lib.RTLib.Processes;
 using System.Diagnostics;
+using UAOOI.ProcessObserver.RealTime.Management;
+using UAOOI.ProcessObserver.RealTime.Processes;
 
 namespace CAS.Lib.CommonBus.ApplicationLayer
 {
+
   /// <summary>
   /// Base implementation of IapplicationLayerMaster interface.
   /// </summary>
   /// <typeparam name="T_ALMessage">The type of the message that is used in communication through this protocol.</typeparam>
   public abstract class ApplicationLayerMaster<T_ALMessage> : ApplicationLayerCommon, IApplicationLayerMaster where T_ALMessage : ProtocolALMessage
   {
+
     #region private
     private SesDBufferPool<T_ALMessage> m_Pool;
     private ALProtocol<T_ALMessage> m_protocol;
@@ -172,6 +162,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
       }//while (true)
     }
     #endregion
+
     #region IApplicationLayerMaster Members
     /// <summary>
     /// Read Data
@@ -253,6 +244,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
       return response;
     }
     #endregion
+
     #region IDisposable
     /// <summary>
     /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
@@ -278,6 +270,7 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
       base.Dispose(disposing);
     }
     #endregion
+
     #region creator
     /// <summary>
     /// ApplicationLayerMaster creator
@@ -293,5 +286,6 @@ namespace CAS.Lib.CommonBus.ApplicationLayer
       InterfrarmeStopwatch.Start();
     }
     #endregion
+
   }
 }

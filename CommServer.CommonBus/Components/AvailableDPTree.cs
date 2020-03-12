@@ -7,10 +7,10 @@
 
 using CAS.Lib.CommonBus.CommunicationLayer;
 using CAS.Lib.CommonBus.Management;
-using CAS.Lib.RTLib;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using UAOOI.ProcessObserver.RealTime;
 
 namespace CAS.Lib.CommonBus.Components
 {
