@@ -62,8 +62,11 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="UAOOI.ProcessObserver.RealTime, Version=6.1.0.0, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
-      <HintPath>..\packages\UAOOI.ProcessObserver.RealTime.6.1.0-Delta\lib\net451\UAOOI.ProcessObserver.RealTime.dll</HintPath>
+    <Reference Include="UAOOI.ASMD.GUIAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\UAOOI.ASMD.GUIAbstractions.1.0.0-Alpha\lib\netstandard2.0\UAOOI.ASMD.GUIAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="UAOOI.ProcessObserver.RealTime, Version=6.2.0.0, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\UAOOI.ProcessObserver.RealTime.6.2.0-Echo\lib\net451\UAOOI.ProcessObserver.RealTime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

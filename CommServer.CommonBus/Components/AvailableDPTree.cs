@@ -10,7 +10,7 @@ using CAS.Lib.CommonBus.Management;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using UAOOI.ProcessObserver.RealTime;
+using UAOOI.ASMD.GUIAbstractions;
 
 namespace CAS.Lib.CommonBus.Components
 {
@@ -24,7 +24,6 @@ namespace CAS.Lib.CommonBus.Components
     #region private
     private ICanBeAccepted m_OKCnacelForm;
     private PluginCollection m_PluginCollection;
-    private IDataProviderID m_LastDataProviderID;
     private void FillTree( PluginCollection pPlugins )
     {
       foreach ( KeyValuePair<Guid, IDataProviderID> dp in pPlugins )
@@ -45,10 +44,10 @@ namespace CAS.Lib.CommonBus.Components
     #region public
 
     /// <summary>
-    /// Gets the get selected Dataprovider ID.
+    /// Gets the get selected Data-provider ID.
     /// </summary>
-    /// <value>The get selected Dataprovider ID.</value>
-    public IDataProviderID GetSelectedDPID { get { return m_LastDataProviderID; } }
+    /// <value>The get selected Data-provider ID.</value>
+    public IDataProviderID GetSelectedDPID { get; private set; }
     #endregion
 
     #region creators
@@ -91,15 +90,15 @@ namespace CAS.Lib.CommonBus.Components
       if ( e.Node.Tag is ICommunicationLayerId )
       {
         c_PropertyGrid.SelectedObject = ( (ICommunicationLayerId)e.Node.Tag ).GetCommunicationLayerDescription;
-        m_LastDataProviderID = (IDataProviderID)e.Node.Parent.Tag;
-        m_LastDataProviderID.SelectedCommunicationLayer = (ICommunicationLayerId)e.Node.Tag;
+        GetSelectedDPID = (IDataProviderID)e.Node.Parent.Tag;
+        GetSelectedDPID.SelectedCommunicationLayer = (ICommunicationLayerId)e.Node.Tag;
         m_OKCnacelForm.CanBeAccepted( true );
       }
       else
       {
         if ( e.Node.Tag is IDataProviderID )
           c_PropertyGrid.SelectedObject = ( (IDataProviderID)e.Node.Tag ).GetDataProviderDescription;
-        m_LastDataProviderID = null;
+        GetSelectedDPID = null;
         m_OKCnacelForm.CanBeAccepted( false );
       }
     }
