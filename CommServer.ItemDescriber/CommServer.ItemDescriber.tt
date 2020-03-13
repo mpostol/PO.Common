@@ -30,7 +30,7 @@
     <dependencies>
       <dependency id="CAS.CodeProtect" version="7.0.1-Bravo" />
       <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.1062" />
-      <dependency id="UAOOI.ProcessObserver.RealTime" version="6.0.0-Alpha" />
+      <dependency id="UAOOI.ProcessObserver.RealTime" version="6.2.0-Echo" />
     </dependencies>
   </metadata>
   <files>
