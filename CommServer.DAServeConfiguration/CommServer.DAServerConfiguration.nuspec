@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.DAServerConfiguration</id>
-    <version>6.21.00-Foxtrot</version>
+    <version>6.21.01-Golf</version>
     <title>ProcessObserver configuration management library</title>
     <authors>Mariusz Postol</authors>
     <owners>Mariusz Postol</owners>
