@@ -70,20 +70,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UAOOI.ProcessObserver.RealTime, Version=6.2.0.0, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
       <HintPath>..\packages\UAOOI.ProcessObserver.RealTime.6.2.0-Echo\lib\net451\UAOOI.ProcessObserver.RealTime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommServerConfigurationMain.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CommServerConfigurationMain.designer.cs">
-      <DependentUpon>CommServerConfigurationMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Configuration.cs">
       <DependentUpon>Configuration.xsd</DependentUpon>
     </Compile>
@@ -160,9 +152,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CommServerConfigurationMain.resx">
-      <DependentUpon>CommServerConfigurationMain.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
