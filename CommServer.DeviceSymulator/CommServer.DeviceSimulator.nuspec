@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.DeviceSimulator</id>
-    <version>6.20.00-Echo</version>
-    <title>CommServer Device Simulator Library</title>
+    <version>6.20.01-Foxtrot</version>
+    <title>Device Simulator Library</title>
     <authors>Mariusz Postol</authors>
     <owners>Mariusz Postol</owners>
     <projectUrl>svn://svnserver.hq.cas.com.pl/VS/trunk/CommServer</projectUrl>

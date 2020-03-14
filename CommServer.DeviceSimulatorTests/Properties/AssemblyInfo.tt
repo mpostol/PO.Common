@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
 [assembly: Guid("a3446e1f-680a-4f9c-afa7-b8fa01124e7d")]
-[assembly: AssemblyVersion("<#=CASCommServerVersion#>.*")]
-[assembly: AssemblyFileVersion("<#=CASCommServerVersion#>")]
+[assembly: AssemblyVersion("<#=DeviceSimulatorVersion#>.*")]
+[assembly: AssemblyFileVersion("<#=DeviceSimulatorVersion#>")]
 
 <#@ include file = "..\..\SolutionMetadataTemplate.t4" #>

@@ -8,19 +8,23 @@ string Owner = "Mariusz Postol";
 string AssemblyProduct = "Object-Oriented Internet";
 string AssemblyTrademark = "ProcessObserver";
 
-//CAS.CommServer - common part of all deliverables
+//CommServer - common part of all deliverables
 string CASCommServerVersion = "6.20.00";
 string CASCommServerPrerelease = "-Echo";
 
-//CAS.CommServer.CommonBus
+//DeviceSimulator - common part of all deliverables
+string DeviceSimulatorVersion = "6.20.01";
+string DeviceSimulatorPrerelease = "-Foxtrot";
+
+//CommonBus
 string CASCommServerCommonBusVersion = "6.21.00";
 string CASCommServerCommonBusPrerelease = "-Foxtrot";
 
-//CAS.CommServer.DAClientConfiguration
+//DAClientConfiguration
 string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfiguration";
 string CASCommServerDAClientConfigurationTitle = "OPC Classic Client Configuration Library";
 
-//CAS.CommServer.DAServerConfiguration
+//DAServerConfiguration
 string DAServerConfigurationVersion = "6.21.01";
 string DAServerConfigurationPrerelease = "-Golf";
 string CASCommServerDAServerConfigurationProduct = "CAS.CommServer.DAServerConfiguration";
