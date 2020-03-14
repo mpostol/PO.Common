@@ -58,9 +58,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="UAOOI.ASMD.GUIAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8832ff1a67ea61a3, processorArchitecture=MSIL">
       <HintPath>..\packages\UAOOI.ASMD.GUIAbstractions.1.0.0-Alpha\lib\netstandard2.0\UAOOI.ASMD.GUIAbstractions.dll</HintPath>
@@ -103,18 +100,6 @@
     </Compile>
     <Compile Include="CommunicationLayer\RS\SerialPortSettings.cs" />
     <Compile Include="CommunicationLayer\UMessage.cs" />
-    <Compile Include="Components\AvailableDPTree.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\AvailableDPTree.Designer.cs">
-      <DependentUpon>AvailableDPTree.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Components\DPSettings.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Components\DPSettings.Designer.cs">
-      <DependentUpon>DPSettings.cs</DependentUpon>
-    </Compile>
     <Compile Include="IAddressSpaceDescriptor.cs" />
     <Compile Include="IConnectionManagement.cs" />
     <Compile Include="IDataProviderDescription.cs" />
@@ -151,14 +136,6 @@
     <EmbeddedResource Include="CommonBusControl.resx">
       <SubType>Designer</SubType>
       <DependentUpon>CommonBusControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Components\AvailableDPTree.resx">
-      <DependentUpon>AvailableDPTree.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Components\DPSettings.resx">
-      <DependentUpon>DPSettings.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -13,8 +13,8 @@ string CASCommServerVersion = "6.20.00";
 string CASCommServerPrerelease = "-Echo";
 
 //CAS.CommServer.CommonBus
-string CASCommServerCommonBusVersion = "6.20.00";
-string CASCommServerCommonBusPrerelease = "-Echo";
+string CASCommServerCommonBusVersion = "6.21.00";
+string CASCommServerCommonBusPrerelease = "-Foxtrot";
 
 //CAS.CommServer.DAClientConfiguration
 string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfiguration";
