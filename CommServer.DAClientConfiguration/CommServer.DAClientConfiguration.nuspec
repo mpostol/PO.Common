@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>CAS.CommServer.DAClientConfiguration</id>
-    <version>6.20.00-Echo</version>
+    <version>6.20.01-Foxtrot</version>
     <title>OPC Classic Client Configuration Library</title>
     <authors>Mariusz Postol</authors>
     <owners>Mariusz Postol</owners>
