@@ -13,12 +13,12 @@ string CASCommServerVersion = "6.20.04";
 string CASCommServerPrerelease = "-India";
 
 //DeviceSimulator - common part of all deliverables
-string DeviceSimulatorVersion = "6.20.03";
-string DeviceSimulatorPrerelease = "-Hotel";
+string DeviceSimulatorVersion = "6.20.04";
+string DeviceSimulatorPrerelease = "-India";
 
 //CommonBus
-string CASCommServerCommonBusVersion = "6.21.02";
-string CASCommServerCommonBusPrerelease = "-Hotel";
+string CASCommServerCommonBusVersion = "6.21.03";
+string CASCommServerCommonBusPrerelease = "-India";
 
 //DAClientConfiguration
 string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfiguration";
