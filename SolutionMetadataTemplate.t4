@@ -9,8 +9,8 @@ string AssemblyProduct = "Object-Oriented Internet";
 string AssemblyTrademark = "ProcessObserver";
 
 //CommServer - common part of all deliverables
-string CASCommServerVersion = "6.20.02";
-string CASCommServerPrerelease = "-Golf";
+string CASCommServerVersion = "6.20.03";
+string CASCommServerPrerelease = "-Hotel";
 
 //DeviceSimulator - common part of all deliverables
 string DeviceSimulatorVersion = "6.20.03";
