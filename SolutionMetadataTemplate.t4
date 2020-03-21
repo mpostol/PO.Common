@@ -9,24 +9,24 @@ string AssemblyProduct = "Object-Oriented Internet";
 string AssemblyTrademark = "ProcessObserver";
 
 //CommServer - common part of all deliverables
-string CASCommServerVersion = "6.20.04";
-string CASCommServerPrerelease = "-India";
+string CASCommServerVersion = "6.20.06";
+string CASCommServerPrerelease = "-Juliet";
 
 //DeviceSimulator - common part of all deliverables
-string DeviceSimulatorVersion = "6.20.04";
-string DeviceSimulatorPrerelease = "-India";
+string DeviceSimulatorVersion = "6.20.05";
+string DeviceSimulatorPrerelease = "-Juliet";
 
 //CommonBus
-string CASCommServerCommonBusVersion = "6.21.03";
-string CASCommServerCommonBusPrerelease = "-India";
+string CASCommServerCommonBusVersion = "6.21.04";
+string CASCommServerCommonBusPrerelease = "-Juliet";
 
 //DAClientConfiguration
 string CASCommServerDAClientConfigurationProduct = "CAS.CommServer.DAClientConfiguration";
 string CASCommServerDAClientConfigurationTitle = "OPC Classic Client Configuration Library";
 
 //DAServerConfiguration
-string DAServerConfigurationVersion = "6.21.04";
-string DAServerConfigurationPrerelease = "-Juliet";
+string DAServerConfigurationVersion = "6.21.05";
+string DAServerConfigurationPrerelease = "-Kilo";
 string CASCommServerDAServerConfigurationProduct = "CAS.CommServer.DAServerConfiguration";
 string CASCommServerDAServerConfigurationTitle = "ProcessObserver configuration management library";
 
