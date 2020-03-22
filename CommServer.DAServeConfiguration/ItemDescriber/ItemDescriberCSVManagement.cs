@@ -7,7 +7,7 @@
 
 using System.IO;
 
-namespace BaseStation.ItemDescriber
+namespace UAOOI.ProcessObserver.Configuration.ItemDescriber
 {
   /// <summary>
   /// Summary description for CSVManagement.

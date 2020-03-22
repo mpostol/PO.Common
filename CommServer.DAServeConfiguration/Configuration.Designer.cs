@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace CAS.NetworkConfigLib {
+namespace UAOOI.ProcessObserver.Configuration {
     
     
     /// <summary>

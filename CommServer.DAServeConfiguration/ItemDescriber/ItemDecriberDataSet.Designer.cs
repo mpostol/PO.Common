@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace BaseStation.ItemDescriber {
+namespace UAOOI.ProcessObserver.Configuration.ItemDescriber {
     
     
     /// <summary>

@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using UAOOI.ProcessObserver.Configuration.ItemDescriber;
 
 namespace CAS.CommServer.DA.ItemDescriberEditor
 {
@@ -49,7 +50,7 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
     {
       this.components = new System.ComponentModel.Container();
       System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFormItemDescriber));
-      this.m_ItemDescriberDataSet = new BaseStation.ItemDescriber.ItemDecriberDataSet();
+      this.m_ItemDescriberDataSet = new ItemDecriberDataSet();
       this.dataGrid_items = new System.Windows.Forms.DataGrid();
       this.mainMenu_form = new System.Windows.Forms.MainMenu(this.components);
       this.menuItem1 = new System.Windows.Forms.MenuItem();

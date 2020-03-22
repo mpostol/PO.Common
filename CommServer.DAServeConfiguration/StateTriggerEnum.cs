@@ -5,7 +5,7 @@
 //  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
 //___________________________________________________________________________________
 
-namespace CAS.NetworkConfigLib
+namespace UAOOI.ProcessObserver.Configuration
 {
   /// <summary>
   /// State Triggers Enum
@@ -16,10 +16,12 @@ namespace CAS.NetworkConfigLib
     /// None trigger
     /// </summary>
     None = 0,
+
     /// <summary>
     /// State high trigger
     /// </summary>
     StateHigh = 1,
+
     /// <summary>
     /// State low trigger
     /// </summary>

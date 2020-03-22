@@ -10,7 +10,7 @@ using System.Configuration;
 using System.IO;
 using UAOOI.ProcessObserver.RealTime.Processes;
 
-namespace CAS.Lib.RTLib.Management
+namespace UAOOI.ProcessObserver.Configuration.Settings
 {
   /// <summary>
   /// Application configuration access helper
@@ -19,16 +19,19 @@ namespace CAS.Lib.RTLib.Management
   public class ApplicationConfiguration
   {
     #region private
+
     private const string ErrorMsg = "Unable to retrieve from an application configuration file the values associated with the key: ";
+
     /// <summary>
-    /// The AppSettingsSection data <see cref="System.Configuration.ConfigurationManager.AppSettings"/>for the current application's 
-    /// default configuration. 
+    /// The AppSettingsSection data <see cref="System.Configuration.ConfigurationManager.AppSettings"/>for the current application's
+    /// default configuration.
     /// </summary>
     private static readonly System.Collections.Specialized.NameValueCollection ConfigValues;
+
     static ApplicationConfiguration()
     {
       ConfigValues = ConfigurationManager.AppSettings;
-      Configuration CurrConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+      System.Configuration.Configuration CurrConfig = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
       ConfigFilePath = Path.GetDirectoryName(CurrConfig.FilePath) + Path.DirectorySeparatorChar;
       string AppInfo = "Base directory:" + AppDomain.CurrentDomain.BaseDirectory
         + "| AppDomain.CurrentDomain.ToString():" + AppDomain.CurrentDomain.ToString()
@@ -36,13 +39,16 @@ namespace CAS.Lib.RTLib.Management
         + "| ConfigFilePath" + ConfigFilePath;
       EventLogMonitor.WriteToEventLogInfo("Configuration for: " + AppInfo, (int)Error.DataPorter_ApplicationConfiguration);
     }
-    #endregion
+
+    #endregion private
 
     #region public
+
     /// <summary>
-    /// The directory information for the configuration file. 
+    /// The directory information for the configuration file.
     /// </summary>
     public static readonly string ConfigFilePath;
+
     /// <summary>
     /// It allows to access application configuration information.
     /// </summary>
@@ -60,6 +66,7 @@ namespace CAS.Lib.RTLib.Management
       else
         return ConfigValues[key];
     }
+
     /// <summary>
     /// It allows to access application configuration information.
     /// </summary>
@@ -78,6 +85,7 @@ namespace CAS.Lib.RTLib.Management
         }
       return defaultVal;
     }
+
     /// <summary>
     /// It allows to access application configuration information.
     /// </summary>
@@ -96,6 +104,7 @@ namespace CAS.Lib.RTLib.Management
         }
       return defaultVal;
     }
+
     /// <summary>
     /// It allows to access application configuration information.
     /// </summary>
@@ -114,6 +123,7 @@ namespace CAS.Lib.RTLib.Management
         }
       return defaultVal;
     }
+
     /// <summary>
     /// It allows to access application configuration information.
     /// </summary>
@@ -132,6 +142,7 @@ namespace CAS.Lib.RTLib.Management
         }
       return defaultVal;
     }
+
     /// <summary>
     /// It allows to access application configuration information.
     /// </summary>
@@ -150,7 +161,7 @@ namespace CAS.Lib.RTLib.Management
         }
       return defaultVal;
     }
-    #endregion
 
+    #endregion public
   }
 }

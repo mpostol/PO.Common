@@ -8,8 +8,8 @@
     <ProjectGuid>{531FA61A-6106-442D-9380-B4991DCECF19}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CAS.NetworkConfigLib</RootNamespace>
-    <AssemblyName>CAS.CommServer.DAServerConfiguration</AssemblyName>
+    <RootNamespace>UAOOI.ProcessObserver.Configuration</RootNamespace>
+    <AssemblyName>UAOOI.ProcessObserver.Configuration</AssemblyName>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>cas.snk</AssemblyOriginatorKeyFile>
     <ApplicationIcon>
@@ -45,7 +45,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\CAS.CommServer.DAServerConfiguration.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\UAOOI.ProcessObserver.Configuration.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -55,7 +55,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\CAS.CommServer.DAServerConfiguration.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\UAOOI.ProcessObserver.Configuration.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
@@ -89,7 +89,9 @@
       <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ItemDescriber\ItemDecriberDataSet.Designer.cs">
-      <DependentUpon>ItemDecriberDataSet.cs</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ItemDescriber\ItemDescriber2OpcDA.cs" />
     <Compile Include="ItemDescriber\ItemDescriberCSVManagement.cs" />
@@ -130,11 +132,12 @@
     <None Include="ItemDescriber\ItemDecriberDataSet.xsc">
       <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </None>
-    <None Include="ItemDescriber\ItemDecriberDataSet.xsd" />
-    <None Include="ItemDescriber\ItemDecriberDataSet.xss">
-      <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
+    <None Include="ItemDescriber\ItemDecriberDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ItemDecriberDataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="ItemDescriber\ItemDecriberDataSet.xsx">
+    <None Include="ItemDescriber\ItemDecriberDataSet.xss">
       <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />

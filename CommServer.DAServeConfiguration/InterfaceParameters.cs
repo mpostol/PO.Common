@@ -6,9 +6,9 @@
 //___________________________________________________________________________________
 
 using System;
-using static CAS.NetworkConfigLib.ComunicationNet;
+using static UAOOI.ProcessObserver.Configuration.ComunicationNet;
 
-namespace CAS.NetworkConfigLib
+namespace UAOOI.ProcessObserver.Configuration
 {
   /// <summary>
   /// Parameters of the interface
@@ -16,30 +16,36 @@ namespace CAS.NetworkConfigLib
   public struct InterfaceParameters
   {
     /// <summary>
-    /// The inactivity time - after this time the segment will be disconnected 
+    /// The inactivity time - after this time the segment will be disconnected
     /// </summary>
     public readonly TimeSpan InactivityTime;
+
     /// <summary>
     /// The inactivity after failure time.
     /// </summary>
     public readonly TimeSpan InactivityAfterFailureTime;
+
     /// <summary>
     /// The name
     /// </summary>
     public string Name;
+
     /// <summary>
     /// The address - address represented by <see cref="ushort"/> if applicable
     /// </summary>
     public ushort Address;
+
     /// <summary>
     /// The interface number
     /// </summary>
     public byte InterfaceNumber;
+
     /// <summary>
     /// Gets the interface number max value.
     /// </summary>
     /// <value>The interface number max value.</value>
     public static byte InterfaceNumberMaxValue => 1;
+
     /// <summary>
     /// Initializes a new instance of the <see cref="InterfaceParameters"/> structure.
     /// </summary>
