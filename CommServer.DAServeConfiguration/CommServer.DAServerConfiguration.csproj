@@ -85,6 +85,15 @@
       <DependentUpon>Configuration.xsd</DependentUpon>
     </Compile>
     <Compile Include="InterfaceParameters.cs" />
+    <Compile Include="ItemDescriber\ItemDecriberDataSet.cs">
+      <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDescriber\ItemDecriberDataSet.Designer.cs">
+      <DependentUpon>ItemDecriberDataSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemDescriber\ItemDescriber2OpcDA.cs" />
+    <Compile Include="ItemDescriber\ItemDescriberCSVManagement.cs" />
+    <Compile Include="ItemDescriber\XMLManagement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -117,6 +126,16 @@
       <Generator>MSDataSetGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Configuration.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ItemDescriber\ItemDecriberDataSet.xsc">
+      <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ItemDescriber\ItemDecriberDataSet.xsd" />
+    <None Include="ItemDescriber\ItemDecriberDataSet.xss">
+      <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ItemDescriber\ItemDecriberDataSet.xsx">
+      <DependentUpon>ItemDecriberDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

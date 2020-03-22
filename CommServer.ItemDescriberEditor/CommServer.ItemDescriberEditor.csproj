@@ -108,12 +108,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommServer.ItemDescriber\CommServer.ItemDescriber.csproj">
-      <Project>{4d16da6f-cacb-40b7-820a-704f9141fe8e}</Project>
-      <Name>CommServer.ItemDescriber</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Properties\AssemblyInfo.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>AssemblyInfo.cs</LastGenOutput>
@@ -133,6 +127,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CommServer.DAServeConfiguration\CommServer.DAServerConfiguration.csproj">
+      <Project>{531fa61a-6106-442d-9380-b4991dcecf19}</Project>
+      <Name>CommServer.DAServerConfiguration</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
