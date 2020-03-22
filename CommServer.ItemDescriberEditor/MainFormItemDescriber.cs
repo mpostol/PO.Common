@@ -5,24 +5,22 @@
 //  To be in touch join the community at GITTER: https://gitter.im/mpostol/OPC-UA-OOI
 //___________________________________________________________________________________
 
-using BaseStation.ItemDescriber;
 using Opc.Da;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
+using UAOOI.ProcessObserver.Configuration.ItemDescriber;
 using UAOOI.Windows.Forms;
 using UAOOI.Windows.Forms.CodeProtectControls;
-using CSVManagement = BaseStation.ItemDescriber.CSVManagement;
+using CSVManagement = UAOOI.ProcessObserver.Configuration.ItemDescriber.CSVManagement;
 
 namespace CAS.CommServer.DA.ItemDescriberEditor
 {
-
   /// <summary>
   /// Summary description for Form1.
   /// </summary>
   public partial class MainFormItemDescriber : Form
   {
-
     /// <summary>
     /// Initializes a new instance of the <see cref="MainFormItemDescriber"/> class.
     /// </summary>
@@ -33,11 +31,14 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
     }
 
     #region private
+
     private ItemDecriberDataSet m_ItemDescriberDataSet;
+
     private void CloseForm()
     {
       Close();
     }
+
     private void ClearAndInitialize()
     {
       m_ItemDescriberDataSet.ItemProperty.Clear();
@@ -51,6 +52,7 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
         m_ItemDescriberDataSet.Property.AddPropertyRow(row);
       }
     }
+
     private void SaveXML()
     {
       SaveFileDialog saveXMLFileDialog = new SaveFileDialog
@@ -65,10 +67,12 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
           m_ItemDescriberDataSet.Items.AcceptChanges();
           m_ItemDescriberDataSet.ItemProperty.AcceptChanges();
           break;
+
         default:
           break;
       }
     }
+
     private void LoadXML()
     {
       if ((m_ItemDescriberDataSet.Items.GetChanges() != null) || (m_ItemDescriberDataSet.ItemProperty.GetChanges() != null))
@@ -95,10 +99,12 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
           m_ItemDescriberDataSet.Items.AcceptChanges();
           m_ItemDescriberDataSet.ItemProperty.AcceptChanges();
           break;
+
         default:
           break;
       }
     }
+
     private void ExportCSV()
     {
       SaveFileDialog saveXMLFileDialog = new SaveFileDialog
@@ -115,10 +121,12 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
           //itemDecriberDataSet1.Items.AcceptChanges();
           //itemDecriberDataSet1.ItemProperty.AcceptChanges();
           break;
+
         default:
           break;
       }
     }
+
     private void ImportCSV()
     {
       if ((m_ItemDescriberDataSet.Items.GetChanges() != null) || (m_ItemDescriberDataSet.ItemProperty.GetChanges() != null))
@@ -138,24 +146,29 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
           CSVManagement _csvManagement = new CSVManagement();
           _csvManagement.LoadCSV(m_ItemDescriberDataSet, openFileDialogXMLFile.FileName);
           break;
+
         default:
           break;
       }
     }
 
     #region handlers
+
     private void menuItem10_Click(object sender, System.EventArgs e)
     {
       CloseForm();
     }
+
     private void menuItem3_Click(object sender, System.EventArgs e)
     {
       LoadXML();
     }
+
     private void menuItem7_Click(object sender, System.EventArgs e)
     {
       SaveXML();
     }
+
     private void menuItem2_Click(object sender, System.EventArgs e)
     {
       if (MessageBox.Show(this, "Clear all data grids???", "Clear", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -163,10 +176,12 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
         ClearAndInitialize();
       }
     }
+
     private void menuItem9_Click(object sender, System.EventArgs e)
     {
       ExportCSV();
     }
+
     private void ShowAboutDialog()
     {
       string usr = "";
@@ -176,14 +191,17 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
         cAboutForm.ShowDialog();
       }
     }
+
     private void menuItem12_Click(object sender, System.EventArgs e)
     {
       ShowAboutDialog();
     }
+
     private void menuItem6_Click(object sender, System.EventArgs e)
     {
       ImportCSV();
     }
+
     private void menuItem14_Click(object sender, EventArgs e)
     {
       string usr = "";
@@ -198,9 +216,11 @@ namespace CAS.CommServer.DA.ItemDescriberEditor
         }
       }
     }
-    #endregion    
 
-    #endregion
+    #endregion handlers
 
+
+
+    #endregion private
   }
 }

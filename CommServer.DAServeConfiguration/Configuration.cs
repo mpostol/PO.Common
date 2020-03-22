@@ -8,7 +8,7 @@
 using Opc.Da;
 using UAOOI.ProcessObserver.RealTime;
 
-namespace CAS.NetworkConfigLib
+namespace UAOOI.ProcessObserver.Configuration
 {
   /// <summary>
   /// DataSet representing CommServer network configuration data

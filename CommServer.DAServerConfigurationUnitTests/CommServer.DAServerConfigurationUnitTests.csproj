@@ -38,7 +38,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
@@ -61,7 +60,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CommServer.DAServeConfiguration\CommServer.DAServerConfiguration.csproj">
+    <ProjectReference Include="..\CommServer.DAServeConfiguration\Configuration.csproj">
       <Project>{531fa61a-6106-442d-9380-b4991dcecf19}</Project>
       <Name>CommServer.DAServerConfiguration</Name>
     </ProjectReference>

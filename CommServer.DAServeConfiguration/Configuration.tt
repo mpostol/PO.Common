@@ -8,8 +8,6 @@
     <title><#=CASCommServerDAServerConfigurationTitle#></title>
     <authors><#=AssemblyCompany#></authors>
     <owners><#=Owner#></owners>
-    <projectUrl>http://www.commsvr.com/Download/CAS.CommServer.DA.Server.Configuration/</projectUrl>
-    <licenseUrl>http://www.cas.internetdsl.pl/commserver/P_DowloadCenter/Lic-09000401EN_License_Agreement.pdf</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <icon>Logo64.PNG</icon>
@@ -17,26 +15,27 @@
     <repository type="GitHub" url="<#=Url #>" />
     <developmentDependency>false</developmentDependency>
     <description>
-      CAS.CommServer.DAServer.Configuration - CAS.CommServer.ProtocolHub configuration Management Library provides CAS.NetworkConfigLib name space
-      The namespace is subject to change according to Id.
+      ProcessObserver configuration management library.
+      Old ID=CAS.CommServer.DAServerConfiguration
     </description>
     <summary>
-      CAS.CommServer.ProtocolHub configuration management library.
+      ProcessObserver configuration management library.
     </summary>
     <releaseNotes>
-      Added CAS.NetworkConfigLib.InterfaceParameters - moved form CommServer.Communication.
+      New package name. Deprecates the CAS.CommServer.DAServerConfiguration identifier
     </releaseNotes>
     <copyright><#=AssemblyCopyright#></copyright>
-    <tags>ProcessObserver, OOI, OPCUA</tags>
+    <tags>ProcessObserver, UAOOI, OPCUA</tags>
     <dependencies>
       <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.1062" />
-      <dependency id="UAOOI.ProcessObserver.RealTime" version="6.0.0-Alpha"   />
+      <dependency id="UAOOI.ProcessObserver.RealTime" version="6.6.0" targetFramework="net472" />
+      <dependency id="CAS.CodeProtect" version="7.0.1-Bravo" targetFramework="net451" />
     </dependencies>
   </metadata>
   <files>
     <file src="..\_media\Logo64.PNG" target=""/>
-    <file src="bin\Release\CAS.CommServer.DAServerConfiguration.dll" target="lib\net472\CAS.CommServer.DAServerConfiguration.dll" />
-    <file src="bin\Release\CAS.CommServer.DAServerConfiguration.xml" target="lib\net472\CAS.CommServer.DAServerConfiguration.xml" />
+    <file src="bin\Release\UAOOI.ProcessObserver.Configuration.dll" target="lib\net472\UAOOI.ProcessObserver.Configuration.dll" />
+    <file src="bin\Release\UAOOI.ProcessObserver.Configuration.xml" target="lib\net472\UAOOI.ProcessObserver.Configuration.xml" />
   </files>
 </package>
 

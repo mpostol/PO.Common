@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>UAOOI.ProcessObserver.Configuration</id>
+    <version>6.40.00-Mike</version>
+    <title>ProcessObserver configuration management library</title>
+    <authors>Mariusz Postol</authors>
+    <owners>Mariusz Postol</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <icon>Logo64.PNG</icon>
+    <projectUrl>https://mpostol.github.io/PO.Common/</projectUrl>
+    <repository type="GitHub" url="https://github.com/mpostol/PO.Common" />
+    <developmentDependency>false</developmentDependency>
+    <description>
+      ProcessObserver configuration management library.
+      Old ID=CAS.CommServer.DAServerConfiguration
+    </description>
+    <summary>
+      ProcessObserver configuration management library.
+    </summary>
+    <releaseNotes>
+      New package name. Deprecates the CAS.CommServer.DAServerConfiguration identifier
+    </releaseNotes>
+    <copyright>Copyright (C) 2020, Mariusz Postol LODZ POLAND.</copyright>
+    <tags>ProcessObserver, UAOOI, OPCUA</tags>
+    <dependencies>
+      <dependency id="CAS.CommServer.OPCClassic.SDK.Core" version="2.01.1062" />
+      <dependency id="UAOOI.ProcessObserver.RealTime" version="6.6.0" targetFramework="net472" />
+      <dependency id="CAS.CodeProtect" version="7.0.1-Bravo" targetFramework="net451" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\_media\Logo64.PNG" target=""/>
+    <file src="bin\Release\UAOOI.ProcessObserver.Configuration.dll" target="lib\net472\UAOOI.ProcessObserver.Configuration.dll" />
+    <file src="bin\Release\UAOOI.ProcessObserver.Configuration.xml" target="lib\net472\UAOOI.ProcessObserver.Configuration.xml" />
+  </files>
+</package>
+

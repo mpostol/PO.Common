@@ -18,7 +18,7 @@
 //</summary>
 
 
-namespace BaseStation.ItemDescriber
+namespace UAOOI.ProcessObserver.Configuration.ItemDescriber
 {
   partial class ItemDecriberDataSet
   {

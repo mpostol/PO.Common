@@ -13,7 +13,7 @@ using System.Text;
 using System.Xml;
 using UAOOI.ProcessObserver.RealTime.Processes;
 
-namespace BaseStation.ItemDescriber
+namespace UAOOI.ProcessObserver.Configuration.ItemDescriber
 {
   /// <summary>
   /// Opens and reads configuration from XML file.
